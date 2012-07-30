@@ -1,0 +1,41 @@
+时间:2012/4/9 15:16:22
+【edm1@taofantian.net】【password1】---
+System.Net.Mail.SmtpException: The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.5.1 Authentication Required. Learn more at
+   at System.Net.Mail.MailCommand.CheckResponse(SmtpStatusCode statusCode, String response)
+   at System.Net.Mail.MailCommand.Send(SmtpConnection conn, Byte[] command, String from)
+   at System.Net.Mail.SmtpTransport.SendMail(MailAddress sender, MailAddressCollection recipients, String deliveryNotify, SmtpFailedRecipientException& exception)
+   at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   at pages_Default.SendGMail(String[] to, String subject, String content, String sendFrom, String sendPwd) in d:\my\SellerHelp\SellerHelpWeb\SellerMail\Product.aspx.cs:line 211
+
+时间:2012/4/26 14:40:06
+【edm6@taofantian.net】【password6】---
+System.InvalidOperationException: A recipient must be specified.
+   at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   at pages_Default.SendGMail(String[] to, String subject, String content, String sendFrom, String sendPwd) in d:\my\SellerHelp\SellerHelpWeb\SellerMail\Product.aspx.cs:line 211
+
+时间:2012/4/26 14:42:24
+【edm2@taofantian.net】【password2】---
+System.Net.Mail.SmtpException: The operation has timed out.
+   at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   at pages_Default.SendGMail(String[] to, String subject, String content, String sendFrom, String sendPwd) in d:\my\SellerHelp\SellerHelpWeb\SellerMail\Product.aspx.cs:line 211
+
+时间:2012/4/26 16:09:18
+【edm3@taofantian.net】【password3】---
+System.InvalidOperationException: A recipient must be specified.
+   at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   at pages_Default.SendGMail(String[] to, String subject, String content, String sendFrom, String sendPwd, Int32& sendCount) in d:\my\SellerHelp\SellerHelpWeb\SellerMail\Product.aspx.cs:line 152
+
+时间:2012/4/26 16:11:31
+【edm6@taofantian.net】【password6】---
+System.Net.Mail.SmtpException: The operation has timed out.
+   at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   at pages_Default.SendGMail(String[] to, String subject, String content, String sendFrom, String sendPwd, Int32& sendCount) in d:\my\SellerHelp\SellerHelpWeb\SellerMail\Product.aspx.cs:line 152
+
+时间:2012/4/27 19:13:56
+【edm7@taofantian.net】【password7】---System.Net.Mail.SmtpException: The SMTP server requires a secure connection or the client was not authenticated. The server response was: 5.5.1 Authentication Required. Learn more at
+   at System.Net.Mail.MailCommand.CheckResponse(SmtpStatusCode statusCode, String response)
+   at System.Net.Mail.MailCommand.Send(SmtpConnection conn, Byte[] command, String from)
+   at System.Net.Mail.SmtpTransport.SendMail(MailAddress sender, MailAddressCollection recipients, String deliveryNotify, SmtpFailedRecipientException& exception)
+   at System.Net.Mail.SmtpClient.Send(MailMessage message)
+   at pages_Default.SendGMail(String[] to, String subject, String content, String sendFrom, String sendPwd, Int32& sendCount) in d:\my\SellerHelp\SellerHelpWeb\SellerMail\Product.aspx.cs:line 160
+
