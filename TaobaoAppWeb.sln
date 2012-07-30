@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "SellerHelpWeb", "D:\MY\SellerHelp_65020\SellerHelpWeb\", "{C3243A38-9A8E-421E-A62C-7DCBB97B9654}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFramework = "2.0"
+		Debug.AspNetCompiler.VirtualPath = "/SellerHelpWeb"
+		Debug.AspNetCompiler.PhysicalPath = "D:\MY\SellerHelp_65020\SellerHelpWeb\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\SellerHelpWeb\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/SellerHelpWeb"
+		Release.AspNetCompiler.PhysicalPath = "D:\MY\SellerHelp_65020\SellerHelpWeb\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\SellerHelpWeb\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "21274"
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|.NET = Debug|.NET
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C3243A38-9A8E-421E-A62C-7DCBB97B9654}.Debug|.NET.ActiveCfg = Debug|.NET
+		{C3243A38-9A8E-421E-A62C-7DCBB97B9654}.Debug|.NET.Build.0 = Debug|.NET
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
