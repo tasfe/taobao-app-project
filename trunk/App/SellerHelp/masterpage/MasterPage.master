@@ -1,0 +1,53 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="SellerHelp_MasterPage2" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+       <title>欢迎使用淘翻天卖家助手</title>
+    <link href="../static/css/default.css" rel="stylesheet" type="text/css" />
+    <link href="../static/js/jquery-ui-1.8.16.custom/css/cupertino/jquery-ui-1.8.16.custom.css" rel="stylesheet" type="text/css" />
+    <script src="<%=siteUrl %>/static/js/jquery-1.6.2.min.js" type="text/javascript"></script>
+    <script src="<%=siteUrl %>/static/js/jquery-ui-1.8.16.custom/js/jquery-ui-1.8.16.custom.min.js" type="text/javascript"></script>
+    <script src="<%=siteUrl %>/static/js/default.js?v=2" type="text/javascript"></script>
+    
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+       <div class="wrapper ad">还在为产品推广发愁吗？快来
+       <a href="http://fuwu.taobao.com/serv/detail.htm?service_id=12485" class="red" style="font-weight:bold" target="_blank">试试</a>淘翻天微博推广平台吧
+       <a href="http://fuwu.taobao.com/serv/detail.htm?service_id=12485" target="_blank">
+       <img src="<%=siteUrl %>/static/images/weibo.jpg" /></a>
+       </div>
+        <div class="wrapper head">
+    <h1>淘翻天卖家助手</h1>
+    <div class="headurl">
+    <a  href="<%=siteUrl %>/Main.aspx">买家导出</a> | 
+     <a  href="<%=siteUrl %>/Rate.aspx"><img src="<%=siteUrl %>/static/images/new.gif" />批量评价</a> | 
+    <a  href="<%=siteUrl %>/help/help.aspx">帮助</a> | 
+    <a  href="?action=logout" onclick="if(confirm('确认退出?')){window.close();return false;}else{return false;}">退出</a> | 
+      <a  href="<%=siteUrl %>/help/help.aspx" >有问题？联系我</a> 
+    </div>
+    
+    </div>
+    <div class="wrapper">
+    <span class="msg-red"><img src="<%=siteUrl %>/static/images/new.gif" />2012-05-18.导出评价功能上线啦，及时与各种评价的买家沟通，赶快<a href="<%=siteUrl %>/RateHistory.aspx">试试</a>吧 </span><br/>
+    <span class="msg-red"><img src="<%=siteUrl %>/static/images/new.gif" />2011-09-18.批量评价功能上线啦，赶快<a href="<%=siteUrl %>/Rate.aspx">试试</a>吧 </span><br/>
+    </div>
+     <div class="wrapper upgrade" id="upgrade">
+     
+     </div>
+    <div class="wrapper nav">
+   
+    <ul><li><a href="#"><%=nick%>你好，欢迎使用淘翻天卖家助手</a></li><li><a href=""></a></li></ul>
+<span class="navR">做卖家从此轻松啦......</span>
+</div>
+        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder>
+        <div class="wrapper foot">Copyright &copy; 1998-2013 taofantian All Rights Reserved</div>
+         <div id="msg"><div class="msg-body"></div></div>
+    </form>
+</body>
+</html>
