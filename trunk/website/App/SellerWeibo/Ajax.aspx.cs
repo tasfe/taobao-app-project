@@ -245,7 +245,7 @@ public partial class pages_Ajax : UI.PageBase
             access_weibo.GetModelByKey(key);
             if (access_weibo.day_send >= 3)
             {
-                Response.Write("{\"msg\":\"no\",\"detail\":\" 免费用户每天只能发送3条微博，赶快<a href='http://seller.taobao.com/ser/detail.htm?service_id=12485' target='_blank'>点击我升级</a>吧，只要1毛一天哦 \"}");
+                Response.Write("{\"msg\":\"no\",\"detail\":\" 免费用户每天只能发送3条微博，赶快<a href='http://fuwu.taobao.com/item/subsc.htm?items=ts-12485-1:1' target='_blank'>点击我升级</a>吧，只要1毛一天哦 \"}");
                 //Response.End();
             }
             else

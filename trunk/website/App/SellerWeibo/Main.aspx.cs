@@ -100,24 +100,25 @@ public partial class pages_Default : UI.PageBase
         string action = GetQueryString("a");
         if (!string.IsNullOrEmpty(action))
         {
-            if(action=="unbindtx")
+            if (CheckUserWeiBoCount())
             {
-                weibo.DataAccess.tb_user tb_user = new weibo.DataAccess.tb_user();
-                tb_user.tb_nick = GetSession("tb_nick").ToString();
-                tb_user.UpdateByNick(string.Format("tx_key='{0}',tx_secret='{1}'", "", ""));
-                SetSession("tx_key", null);
-            }
-            else if(action=="unbindsina")
-            {
-                weibo.DataAccess.tb_user tb_user = new weibo.DataAccess.tb_user();
-                tb_user.tb_nick = GetSession("tb_nick").ToString();
-                tb_user.UpdateByNick(string.Format("sina_key='{0}',sina_secret='{1}'", "", ""));
-                SetSession("sina_key", null);
-            }
-            else if (action == "addweibo")
-            {
-                if (CheckUserWeiBoCount())
+                if (action == "unbindtx")
                 {
+                    weibo.DataAccess.tb_user tb_user = new weibo.DataAccess.tb_user();
+                    tb_user.tb_nick = GetSession("tb_nick").ToString();
+                    tb_user.UpdateByNick(string.Format("tx_key='{0}',tx_secret='{1}'", "", ""));
+                    SetSession("tx_key", null);
+                }
+                else if (action == "unbindsina")
+                {
+                    weibo.DataAccess.tb_user tb_user = new weibo.DataAccess.tb_user();
+                    tb_user.tb_nick = GetSession("tb_nick").ToString();
+                    tb_user.UpdateByNick(string.Format("sina_key='{0}',sina_secret='{1}'", "", ""));
+                    SetSession("sina_key", null);
+                }
+                else if (action == "addweibo")
+                {
+
                     string id = GetQueryString("id");
                     if (id == "1")
                     {
@@ -127,29 +128,29 @@ public partial class pages_Default : UI.PageBase
                     {
                         RedirectSina();
                     }
+
                 }
-                else
+                else if (action == "unbind")
                 {
-                    lblMsg.Text = @"亲，你是免费的用户，只能添加两个帐号哦，<a href='http://seller.taobao.com/fuwu/service.htm?service_id=12485' target='_blank'>点此
-     <img alt='升级' class='uimg'  src='static/images/hp-update.gif' />  </a>吧，只要1毛一天哦：）";
+                    string id = GetQueryString("id");
+                    weibo.DataAccess.tb_access_weibo access_weibo = new weibo.DataAccess.tb_access_weibo();
+                    access_weibo.Delete(int.Parse(id));
+                }
+                else if (action == "rebind")
+                {
+                    string id = GetQueryString("id");
+                    weibo.DataAccess.tb_access_weibo access_weibo = new weibo.DataAccess.tb_access_weibo();
+                    access_weibo.Delete(int.Parse(id));
+
+                    Response.Redirect("main.aspx?a=addweibo&id=" + GetQueryString("pltid"));
                 }
             }
-            else if (action == "unbind")
+            else
             {
-                string id = GetQueryString("id");
-                weibo.DataAccess.tb_access_weibo access_weibo = new weibo.DataAccess.tb_access_weibo();
-                access_weibo.Delete(int.Parse(id));
+                lblMsg.Text = @"亲，你是免费的用户，只能添加两个帐号哦，<a href='http://fuwu.taobao.com/item/subsc.htm?items=ts-12485-1:1' target='_blank'>点此
+     <img alt='升级' class='uimg'  src='static/images/hp-update.gif' />  </a>吧，只要1毛一天哦：）";
             }
-            else if (action == "rebind")
-            {
-                string id = GetQueryString("id");
-                weibo.DataAccess.tb_access_weibo access_weibo = new weibo.DataAccess.tb_access_weibo();
-                access_weibo.Delete(int.Parse(id));
-
-                Response.Redirect("main.aspx?a=addweibo&id=" + GetQueryString("pltid"));
-            }
-
-            else if (action == "logout")
+            if (action == "logout")
             {
                 SetSession("tb_user", null);
                 CheckLogin();

@@ -34,9 +34,9 @@
        <span class="msg-red">2011-07-23升级提示：1.增加了绑定多个账户功能。2.增加了保存模板功能。3.请老用户重新绑定帐号，感谢您的支持！</span>
     </div>
      <div class="wrapper upgrade" id="upgrade">
-   免费用户<a href="http://seller.taobao.com/fuwu/service.htm?service_id=12485" target="_blank">点此
+   免费用户<a href="http://fuwu.taobao.com/item/subsc.htm?items=ts-12485-1:1" target="_blank">点此
      <img alt="升级" class="uimg" longdesc="升级" src="static/images/hp-update.gif" />
-     </a>升级享受更多的服务
+     </a>每天只需1毛钱，升级享受更多的服务
    <%--  <a href="#" class="usertypea">区别呢?</a>--%>
 
      <div >
@@ -65,7 +65,7 @@
     <div class="category add_weibo">
     <input type='button' value='添加微博帐号' id='add_weibo'/>
     <br />
-    <asp:Label ID="lblMsg" runat="server" Text="" ForeColor="Red"></asp:Label>
+    <asp:Label ID="lblMsg" runat="server" Text="" ForeColor="Red" Font-Bold="true"></asp:Label>
     </div>
     <div class="category">
      <asp:Repeater ID="rptAccessWeibo" runat="server">
@@ -100,7 +100,7 @@
                 <div class="fl"><input  type="checkbox" class="chk-item"/></div><div class="fl"><img class="pic" src="<%#Eval("PicUrl") %>" alt="<%#Eval("title") %>"/></div>
                 <div class="fl item-t"><a class="link" href="http://item.taobao.com/item.htm?id=<%#Eval("numiid") %>" target="_blank"><%#Eval("title") %></a> ￥<span class="price"><%#Eval("price") %></span><br/><input type='button' value='发微博' class='btnt'/></div>
                 <span class="addthis_org_cn">
-                <div  onmouseover="setShare('<%#Eval("title") %>;', 'http://item.taobao.com/item.htm?id=<%#Eval("numiid") %>','<%#Eval("title") %>http://item.taobao.com/item.htm?id=<%#Eval("numiid") %>');alert($('#ckepop a').length)">
+                <div  onmouseover="setShare('<%#Eval("title") %>;', 'http://item.taobao.com/item.htm?id=<%#Eval("numiid") %>','<%#Eval("title") %>http://item.taobao.com/item.htm?id=<%#Eval("numiid") %>');">
 	<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt" target="_blank"><img src="http://v3.jiathis.com/code_mini/images/btn/v1/jiathis5.gif" border="0" /></a>
 </div>
  

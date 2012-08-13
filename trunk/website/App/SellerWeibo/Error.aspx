@@ -1,11 +1,11 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="About.aspx.cs" Inherits="pages_help_About" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Error.aspx.cs" Inherits="pages_help_About" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
      <title>淘翻天推广平台-发微博从此轻松啦......</title>
-    <link href="../static/css/default.css" rel="stylesheet" type="text/css" />
+    <link href="static/css/default.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
     <form id="form1" runat="server">
@@ -21,7 +21,7 @@
 <span class="navR">发微博从此轻松啦......</span>
 </div>
 <div class="wrapper mainb help">
-
+<h1 align='center'><img src="static/images/cry.gif" />非常抱歉，系统出现异常，<a href='Default.aspx?'>点击返回重试</a>！</h1>
 </div>
  <div class="wrapper foot">Copyright &copy; 1998-2012 taofantian All Rights Reserved</div>
     </form>
