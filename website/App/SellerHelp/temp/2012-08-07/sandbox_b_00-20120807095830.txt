@@ -1,0 +1,5 @@
+交易时间,交易金额,收货信息,旺旺,手机 电话,邮箱
+2012-07-03 14:57:31,105.00,江苏省 常州市 天宁区 测试的啦   不要这么认真啦 htm 213003,sandbox_htm,13405365684 ,sandbox_htm@tbminisandbox.com
+2012-07-03 14:58:18,105.00,江苏省 常州市 天宁区 测试的啦   不要这么认真啦 htm 213003,sandbox_htm,13405365684 ,sandbox_htm@tbminisandbox.com
+2012-06-27 14:27:50,105.00,福建省 厦门市 思明区 又一城有限公司 刘建华 361001,sandbox_yycuser1,15860789127 ,sandbox_yycuser1@tbminisandbox.com
+2012-06-21 10:17:35,105.00,上海 上海市 长宁区 金钟路658弄 张嘉豪 200050,sandbox_wishlala10,13641994501 ,sandbox_wishlala10@tbminisandbox.com

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="TaobaoApp_VS2008">
+</Property><Property Name="Solution File" Value="E:\my\taobao-app-project\TaobaoApp_VS2008.sln">
+</Property><Property Name="Date" Value="星期二 2012年8月7日">
+</Property><Property Name="Time" Value="20:24">
+</Property></Properties><Event ErrorLevel="0" Project="ShopUtils" Source="Util\ShopUtils.csproj" Description="The project file does not require conversion.">
+</Event><Event ErrorLevel="3" Project="ShopUtils" Source="Util\ShopUtils.csproj" Description="No Conversion Required">
+</Event><Event ErrorLevel="0" Project="TaobaoUtil" Source="TaobaoUtil\TaobaoUtil.csproj" Description="The project file does not require conversion.">
+</Event><Event ErrorLevel="3" Project="TaobaoUtil" Source="TaobaoUtil\TaobaoUtil.csproj" Description="No Conversion Required">
+</Event><Event ErrorLevel="0" Project="DataAccess" Source="DataAccess\DataAccess.csproj" Description="The project file does not require conversion.">
+</Event><Event ErrorLevel="3" Project="DataAccess" Source="DataAccess\DataAccess.csproj" Description="No Conversion Required">
+</Event><Event ErrorLevel="0" Project="TopSdk" Source="taobao-sdk-net\TopSdk.csproj" Description="The project file does not require conversion.">
+</Event><Event ErrorLevel="3" Project="TopSdk" Source="taobao-sdk-net\TopSdk.csproj" Description="No Conversion Required">
+</Event><Event ErrorLevel="0" Project="NetDimension.Weibo20" Source="NetDimension.Weibo\NetDimension.Weibo20.csproj" Description="The project file does not require conversion.">
+</Event><Event ErrorLevel="3" Project="NetDimension.Weibo20" Source="NetDimension.Weibo\NetDimension.Weibo20.csproj" Description="No Conversion Required">
+</Event><Event ErrorLevel="0" Project="OAuthTXWeibo" Source="OAuthTXWeibo\OAuthTXWeibo.csproj" Description="The project file does not require conversion.">
+</Event><Event ErrorLevel="3" Project="OAuthTXWeibo" Source="OAuthTXWeibo\OAuthTXWeibo.csproj" Description="No Conversion Required">
+</Event><Event ErrorLevel="0" Project="ShopUI" Source="ShopUI\ShopUI.csproj" Description="The project file does not require conversion.">
+</Event><Event ErrorLevel="3" Project="ShopUI" Source="ShopUI\ShopUI.csproj" Description="No Conversion Required">
+</Event><Event ErrorLevel="0" Project="" Source="TaobaoApp_VS2008.sln" Description="Solution converted successfully">
+</Event><Event ErrorLevel="3" Project="" Source="TaobaoApp_VS2008.sln" Description="Converted">
+</Event></UpgradeLog>

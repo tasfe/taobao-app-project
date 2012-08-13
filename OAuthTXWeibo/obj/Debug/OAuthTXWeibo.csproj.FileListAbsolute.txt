@@ -1,0 +1,15 @@
+D:\MY\taobao-app-project\OAuthTXWeibo\obj\Debug\ResolveAssemblyReference.cache
+D:\MY\taobao-app-project\OAuthTXWeibo\bin\Debug\OAuthTXWeibo.dll
+D:\MY\taobao-app-project\OAuthTXWeibo\bin\Debug\OAuthTXWeibo.pdb
+D:\MY\taobao-app-project\OAuthTXWeibo\obj\Debug\OAuthTXWeibo.dll
+D:\MY\taobao-app-project\OAuthTXWeibo\obj\Debug\OAuthTXWeibo.pdb
+E:\my\taobao-app-project-8-2\OAuthTXWeibo\bin\Debug\OAuthTXWeibo.dll
+E:\my\taobao-app-project-8-2\OAuthTXWeibo\bin\Debug\OAuthTXWeibo.pdb
+E:\my\taobao-app-project-8-2\OAuthTXWeibo\obj\Debug\ResolveAssemblyReference.cache
+E:\my\taobao-app-project-8-2\OAuthTXWeibo\obj\Debug\OAuthTXWeibo.dll
+E:\my\taobao-app-project-8-2\OAuthTXWeibo\obj\Debug\OAuthTXWeibo.pdb
+E:\my\taobao-app-project\OAuthTXWeibo\bin\Debug\OAuthTXWeibo.dll
+E:\my\taobao-app-project\OAuthTXWeibo\bin\Debug\OAuthTXWeibo.pdb
+E:\my\taobao-app-project\OAuthTXWeibo\obj\Debug\ResolveAssemblyReference.cache
+E:\my\taobao-app-project\OAuthTXWeibo\obj\Debug\OAuthTXWeibo.dll
+E:\my\taobao-app-project\OAuthTXWeibo\obj\Debug\OAuthTXWeibo.pdb
