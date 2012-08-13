@@ -8,6 +8,8 @@ public partial class pages_test : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        Response.Write(Server.MapPath("~/pages"));
+        //Response.Write(Server.MapPath("~/pages"));
+        Response.Write(Request.Url.ToString());
+        Response.Write(Request.Url.Port);
     }
 }
