@@ -14,16 +14,19 @@ namespace UI
             System.Web.HttpContext ctx = System.Web.HttpContext.Current;
             Exception exception = ctx.Server.GetLastError();
             string errorInfo =
-                "<br>Offending URL: " + ctx.Request.Url.ToString() +
-                "<br>Source: " + exception.Source +
-                "<br>Message: " + exception.Message +
-                "<br>Stack trace: " + exception.StackTrace;
+                "\r\nOffending URL: " + ctx.Request.Url.ToString() +
+                "\r\nSource: " + exception.Source +
+                "\r\nMessage: " + exception.Message +
+                "\r\nStack trace: " + exception.StackTrace;
             //PageErrorLog(Shop.BaseFunction.NoHTML(errorInfo));
             //ctx.Server.ClearError();
             //Response.Redirect("~/web/Sorry.htm");
-            ShopUtil.Mail.SendMail("29738637@qq.com", "淘翻天卖家助手", errorInfo);
+            //ShopUtil.Mail.SendMail("29738637@qq.com", "淘翻天卖家助手", errorInfo);
 
-            Response.Write("<h1 align='center'>非常抱歉，系统出现异常，<a href='?'>点击返回重试</a>！</h1>");
+            ShopUtil.LogInfo.FileLogPath = Server.MapPath("~/app/Sellerweibo/log");
+            ShopUtil.LogInfo.WriteLog("page_error_log_" + DateTime.Now.ToString("yyyy_MM_dd") + ".txt", errorInfo);
+
+            Response.Redirect("Error.aspx");
             Response.End();
 
             base.OnError(e);
