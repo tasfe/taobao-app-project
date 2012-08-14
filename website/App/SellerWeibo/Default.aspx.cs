@@ -58,6 +58,7 @@ public partial class pages_Default : UI.PageBase
             }
             else if (from == "tx")
             {
+                CheckLogin();
                 //OAuthTXWeibo.OAuthTXWeiboBase oAuthTXWeiboBase = new OAuthTXWeibo.OAuthTXWeiboBase();
                 OAuthTXWeibo.AccessToken accessToken = OAuthTXWeibo.OAuthTXWeiboBase.GetAccessToken(Request.QueryString["code"],
                ShopUtil.XmlCOM.ReadConfig("TXAppKey"),
@@ -113,6 +114,8 @@ public partial class pages_Default : UI.PageBase
             }
             else if (from == "sina" || from == "sinareview")
             {
+                CheckLogin();
+
                 NetDimension.Weibo.OAuth oauth = new NetDimension.Weibo.OAuth(ShopUtil.XmlCOM.ReadConfig("SinaAppKey"),
                 ShopUtil.XmlCOM.ReadConfig("SinaAppSecret"),
                 ShopUtil.XmlCOM.ReadConfig("SinaCallbackUrl"));
