@@ -6,6 +6,7 @@ namespace OAuthTXWeibo
 {
     public class AccessToken
     {
+        //access_token=37e1a2ae977d9d82ac47ae731ff42881&expires_in=1209600&refresh_token=163cccbfa0fbf7ba330ebd4ee5625ee5&name=twriter_&nick=娌堥噾濂
         //访问第三方资源的凭证
         public string access_token{get;set;}
         
