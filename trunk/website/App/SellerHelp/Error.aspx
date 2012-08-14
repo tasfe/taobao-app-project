@@ -21,7 +21,7 @@
 <span class="navR">发微博从此轻松啦......</span>
 </div>
 <div class="wrapper mainb help">
-<h1 align='center'><img src="static/images/cry.gif" />非常抱歉，系统正在维护中，预计会影响一个小时，请您稍后再试！</h1>
+<h1 align='center'><img src="static/images/cry.gif" />非常抱歉，系统正在维护中，请您稍后再试！</h1>
 </div>
  <div class="wrapper foot">Copyright &copy; 1998-2012 taofantian All Rights Reserved</div>
     </form>
