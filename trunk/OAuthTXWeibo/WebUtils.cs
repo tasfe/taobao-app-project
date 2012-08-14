@@ -16,16 +16,16 @@ namespace OAuthTXWeibo
     /// </summary>
     public sealed class WebUtils
     {
-        private int _timeout = 100000;
+        private static int _timeout = 100000;
 
         /// <summary>
         /// 请求与响应的超时时间
         /// </summary>
-        public int Timeout
-        {
-            get { return this._timeout; }
-            set { this._timeout = value; }
-        }
+        //public int Timeout
+        //{
+        //    get { return this._timeout; }
+        //    set { this._timeout = value; }
+        //}
 
         /// <summary>
         /// 执行HTTP POST请求。
@@ -54,7 +54,7 @@ namespace OAuthTXWeibo
         /// <param name="url">请求地址</param>
         /// <param name="parameters">请求参数</param>
         /// <returns>HTTP响应</returns>
-        public string DoGet(string url, IDictionary<string, string> parameters)
+        public static string DoGet(string url, IDictionary<string, string> parameters)
         {
             if (parameters != null && parameters.Count > 0)
             {
@@ -135,12 +135,12 @@ namespace OAuthTXWeibo
         //    return GetResponseAsString(rsp, encoding);
         //}
 
-        public bool CheckValidationResult(object sender, X509Certificate certificate, X509Chain chain, SslPolicyErrors errors)
+        public static bool CheckValidationResult(object sender, X509Certificate certificate, X509Chain chain, SslPolicyErrors errors)
         { //直接确认，否则打不开
             return true;
         }
 
-        public HttpWebRequest GetWebRequest(string url, string method)
+        public static HttpWebRequest GetWebRequest(string url, string method)
         {
             HttpWebRequest req = null;
             if (url.Contains("https"))
@@ -157,7 +157,7 @@ namespace OAuthTXWeibo
             req.Method = method;
             req.KeepAlive = true;
             req.UserAgent = "Top4Net";
-            req.Timeout = this._timeout;
+            req.Timeout = _timeout;
 
             return req;
         }
@@ -168,7 +168,7 @@ namespace OAuthTXWeibo
         /// <param name="rsp">响应流对象</param>
         /// <param name="encoding">编码方式</param>
         /// <returns>响应文本</returns>
-        public string GetResponseAsString(HttpWebResponse rsp, Encoding encoding)
+        public static string GetResponseAsString(HttpWebResponse rsp, Encoding encoding)
         {
             System.IO.Stream stream = null;
             StreamReader reader = null;
