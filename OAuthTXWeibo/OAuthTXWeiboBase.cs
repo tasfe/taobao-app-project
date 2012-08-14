@@ -29,8 +29,11 @@ namespace OAuthTXWeibo
                 string[] item = s.Split('=');
                 Type t = accessToken.GetType();
                 System.Reflection.PropertyInfo propertyInfo = t.GetProperty(item[0]);
-                Type t1= propertyInfo.PropertyType;
-                propertyInfo.SetValue(accessToken, Convert.ChangeType(item[1],t1), null);
+                if (propertyInfo != null)
+                {
+                    Type t1 = propertyInfo.PropertyType;
+                    propertyInfo.SetValue(accessToken, Convert.ChangeType(item[1], t1), null);
+                }
             }
 
             return accessToken;
