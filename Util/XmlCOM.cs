@@ -31,15 +31,24 @@ namespace ShopUtil
         /// </summary>
         public static string ReadConfig(string name, string key)
         {
-            System.Xml.XmlDocument xd = new System.Xml.XmlDocument();
-            xd.Load(name);
-            System.Xml.XmlNodeList xnl = xd.GetElementsByTagName(key);
-            if (xnl.Count == 0)
-                return "";
+            Object cache= ShopUtil.CacheCustom.Get(name + "-" + key);
+            if (cache == null)
+            {
+                System.Xml.XmlDocument xd = new System.Xml.XmlDocument();
+                xd.Load(name);
+                System.Xml.XmlNodeList xnl = xd.GetElementsByTagName(key);
+                if (xnl.Count == 0)
+                    return "";
+                else
+                {
+                    System.Xml.XmlNode mNode = xnl[0];
+                    ShopUtil.CacheCustom.Insert(name + "-" + key, mNode.InnerText);
+                    return mNode.InnerText;
+                }
+            }
             else
             {
-                System.Xml.XmlNode mNode = xnl[0];
-                return mNode.InnerText;
+                return cache.ToString();
             }
         }
         /// <summary>
