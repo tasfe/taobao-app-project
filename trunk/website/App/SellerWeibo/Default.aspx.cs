@@ -58,8 +58,8 @@ public partial class pages_Default : UI.PageBase
             }
             else if (from == "tx")
             {
-                OAuthTXWeibo.OAuthTXWeiboBase oAuthTXWeiboBase = new OAuthTXWeibo.OAuthTXWeiboBase();
-                OAuthTXWeibo.AccessToken accessToken = oAuthTXWeiboBase.GetAccessToken(Request.QueryString["code"],
+                //OAuthTXWeibo.OAuthTXWeiboBase oAuthTXWeiboBase = new OAuthTXWeibo.OAuthTXWeiboBase();
+                OAuthTXWeibo.AccessToken accessToken = OAuthTXWeibo.OAuthTXWeiboBase.GetAccessToken(Request.QueryString["code"],
                ShopUtil.XmlCOM.ReadConfig("TXAppKey"),
                ShopUtil.XmlCOM.ReadConfig("TXAppSecret"),
                ShopUtil.XmlCOM.ReadConfig("TXCallbackUrl"));

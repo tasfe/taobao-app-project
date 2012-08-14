@@ -25,7 +25,7 @@ public partial class App_SellerWeibo_TXWeiboTest : System.Web.UI.Page
         }
         else
         {
-            oAuthTXWeiboBase.GetAccessToken(Request.QueryString["code"],
+            OAuthTXWeibo.OAuthTXWeiboBase.GetAccessToken(Request.QueryString["code"],
                 ShopUtil.XmlCOM.ReadConfig("TXAppKey"),
                 ShopUtil.XmlCOM.ReadConfig("TXAppSecret"),
                 "http://127.0.0.1:13396/website/App/Sellerweibo/TXWeiboTest.aspx");
