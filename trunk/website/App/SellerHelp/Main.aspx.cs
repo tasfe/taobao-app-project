@@ -36,7 +36,10 @@ public partial class SellerHelp_Main : Shop.ShopUI.BasePage
 
         currPage = GetQueryInt("p");
         currPage = currPage == 0 ? 1 : currPage;
-
+        if (IsFreeUser())
+        {
+            pageSize = 5;
+        }
         if (!Page.IsPostBack)
         {
             SetSearch();
