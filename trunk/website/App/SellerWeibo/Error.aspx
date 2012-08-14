@@ -12,8 +12,8 @@
         <div class="wrapper head">
     <h1>淘翻天微博推广平台</h1>
     <div class="headurl">
-    <a  href="../Default.aspx">首页</a> | 
-    <a  href="?">帮助</a> | 
+    <a  href="Default.aspx">首页</a> | 
+    <a  href="help/help.aspx">帮助</a> | 
     </div>
     </div>
     <div class="wrapper nav">
@@ -21,7 +21,7 @@
 <span class="navR">发微博从此轻松啦......</span>
 </div>
 <div class="wrapper mainb help">
-<h1 align='center'><img src="static/images/cry.gif" />非常抱歉，系统正在维护中，预计会影响一个小时，请您稍后再试！</h1>
+<h1 align='center'><img src="static/images/cry.gif" />非常抱歉，操作失败，请您稍后再试！</h1>
 </div>
  <div class="wrapper foot">Copyright &copy; 1998-2012 taofantian All Rights Reserved</div>
     </form>
