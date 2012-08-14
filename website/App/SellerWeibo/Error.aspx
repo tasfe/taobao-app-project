@@ -22,6 +22,7 @@
 </div>
 <div class="wrapper mainb help">
 <h1 align='center'><img src="static/images/cry.gif" />非常抱歉，操作失败，请您稍后再试！</h1>
+您可以 <a  href="main.aspx">返回首页</a> 或者<a  href="help/help.aspx">查看帮助</a> 
 </div>
  <div class="wrapper foot">Copyright &copy; 1998-2012 taofantian All Rights Reserved</div>
     </form>
