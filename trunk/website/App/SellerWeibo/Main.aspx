@@ -55,6 +55,8 @@
      </div>
      
      </div>
+     <div class="wrapper"> 
+    <asp:Label ID="lblMsg" runat="server" Text="" ForeColor="Red" Font-Bold="true"></asp:Label></div>
     <div class="wrapper nav">
    
     <ul><li><a href="#"><%=nick %>你好，欢迎使用淘翻天微博推广平台</a></li><li><a href=""></a></li></ul>
@@ -64,8 +66,7 @@
     <div class="left">
     <div class="category add_weibo">
     <input type='button' value='添加微博帐号' id='add_weibo'/>
-    <br />
-    <asp:Label ID="lblMsg" runat="server" Text="" ForeColor="Red" Font-Bold="true"></asp:Label>
+   
     </div>
     <div class="category">
      <asp:Repeater ID="rptAccessWeibo" runat="server">

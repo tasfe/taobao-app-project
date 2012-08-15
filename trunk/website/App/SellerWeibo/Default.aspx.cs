@@ -59,6 +59,7 @@ public partial class pages_Default : UI.PageBase
             else if (from == "tx")
             {
                 CheckLogin();
+
                 //OAuthTXWeibo.OAuthTXWeiboBase oAuthTXWeiboBase = new OAuthTXWeibo.OAuthTXWeiboBase();
                 OAuthTXWeibo.AccessToken accessToken = OAuthTXWeibo.OAuthTXWeiboBase.GetAccessToken(Request.QueryString["code"],
                ShopUtil.XmlCOM.ReadConfig("TXAppKey"),
@@ -114,15 +115,29 @@ public partial class pages_Default : UI.PageBase
             }
             else if (from == "sina" || from == "sinareview")
             {
+                if (!string.IsNullOrEmpty(Request.QueryString["error_code"]))
+                {
+                    if (Request.QueryString["error_code"] == "21330")
+                    {
+                        Response.Redirect("Error.aspx?detail="+Server.UrlEncode("您拒绝了新浪微博的授权,绑定账户失败！"));
+                    }
+                }
                 CheckLogin();
 
                 NetDimension.Weibo.OAuth oauth = new NetDimension.Weibo.OAuth(ShopUtil.XmlCOM.ReadConfig("SinaAppKey"),
                 ShopUtil.XmlCOM.ReadConfig("SinaAppSecret"),
                 ShopUtil.XmlCOM.ReadConfig("SinaCallbackUrl"));
 
-                NetDimension.Weibo.AccessToken accessToken = oauth.GetAccessTokenByAuthorizationCode(Request.QueryString["code"]);
-                //Session["accessToken"] = accessToken.Token;
-
+                NetDimension.Weibo.AccessToken accessToken = new NetDimension.Weibo.AccessToken();
+                try
+                {
+                    accessToken = oauth.GetAccessTokenByAuthorizationCode(Request.QueryString["code"]);
+                    //Session["accessToken"] = accessToken.Token;
+                }
+                catch( NetDimension.Weibo.WeiboException ex)
+                {
+                    Response.Redirect("Error.aspx?detail=" + Server.UrlEncode("绑定新浪微博的账户失败，请确认您开通了新浪微博帐号<a href='http://www.weibo.com' target='_blank'>点击我去看看有没开通吧</a>！"));
+                }
 
                 weibo.DataAccess.tb_access_weibo access_weibo = new weibo.DataAccess.tb_access_weibo();
                 access_weibo.GetModelBySinaUID(accessToken.UID);
