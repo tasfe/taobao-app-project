@@ -1,16 +1,17 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
-
-<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
-<style>
-.category{border-bottom:1px dashed #ccc;padding-top:10px;width:100%;}
-.category a{text-align:center;border:1px solid #ccc;-webkit-border-radius:12px;-moz-border-radius:12px;border-radius:12px;float:left;white-space:nowrap;height:20px;line-height:20px;margin-right:5px;margin-bottom:10px;background:#EAECEB;_line-height:21px;padding:0 8px;}
-.category a.active{color:#fff;background:#FE73AB;border:1px solid #FCBFD4;}.rec_nav .category a.active:hover{color:#fff;}
-
-</style>
-</asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-<div class="content_fluid" style="width: 100%;">
-<div class="category" style="border: none;">
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeFile="HotSearch.ascx.cs" Inherits="UserCtrl_HotSearch" %>
+<div class="rec_nav red_tb">
+                    <h2>
+                        社区热荐</h2>
+                    <div class="category">
+                        <a class=" active " href="TSearch_hot">24小时最热</a> <a class=""
+                            href="TSearch_popular">7天最热</a> <a class="" href="TSearch_new">
+                                最新</a>
+                        <div class="clear_f">
+                        </div>
+                    </div>
+                    <h2 class="mt10_f">
+                        热门搜索</h2>
+                    <div class="category" style="border: none;">
                         <a class="" href="TSearch_%E8%BF%9E%E8%A1%A3%E8%A3%99.aspx">连衣裙</a>
                         <a class="" href="TSearch_%E8%A1%AC%E8%A1%AB.aspx">衬衫</a> <a class=""
                             href="TSearch_%E9%95%BF%E8%A3%99.aspx">长裙</a>
@@ -45,6 +46,12 @@
                         <div class="clear_f">
                         </div>
                     </div>
-</div>
-</asp:Content>
-
+                    <div class="cate_ser">
+                        <form action="TSearch.aspx" method="get">
+                        <span class="text">
+                            <input class="searchKeyCatalog" type="text" name="searchKey" value="" placeholder="去其他关键词"></span>
+                        <span class="btn">
+                            <input type="submit" value="搜索"></span>
+                        </form>
+                    </div>
+                </div>

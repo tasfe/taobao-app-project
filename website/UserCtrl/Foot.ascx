@@ -57,7 +57,7 @@
                 </ul>
             </div>
             <div class="weixin_code">
-                <img src="./guang_files/mls_weixin_code.jpg" alt="BiuBiu街二维码">
+                
                 <div>
                     BiuBiu街二维码<br>
                    
