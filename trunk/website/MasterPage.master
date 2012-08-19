@@ -1,0 +1,26 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+<%@ Register src="UserCtrl/Head.ascx" tagname="Head" tagprefix="uc1" %>
+<%@ Register src="UserCtrl/Foot.ascx" tagname="Foot" tagprefix="uc2" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>BiuBiu街-要Beautiful的女孩纸逛的街</title>
+    <meta name="keywords" id="keywords" runat="server" content="BiuBiu街,网购,购物分享,淘宝网购物,淘宝网女装,衣服搭配,团购"/>
+    <meta name="description" id="description" runat="server" content="BiuBiu街是百万MM一起修炼变美的购物社区。各路扮美达人与你分享美人心计、购物经验、搭配秘笈、当红好店，记录你的美丽成长。快来BiuBiu街说需找你的美丽点滴吧"/>
+    
+    <link href="static/css/base.css" rel="stylesheet" type="text/css" />
+    <script src="static/js/jquery-1.6.2.min.js" type="text/javascript"></script>
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <uc1:Head ID="Head1" runat="server" />
+<asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+        </asp:ContentPlaceHolder> 
+        <uc2:Foot ID="Foot1" runat="server" />
+    </form>
+</body>
+</html>
