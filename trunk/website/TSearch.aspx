@@ -1,12 +1,15 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Jie.aspx.cs" Inherits="Jie" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="TSearch.aspx.cs" Inherits="Jie" %>
 
 <%@ Register src="UserCtrl/HotSearch.ascx" tagname="HotSearch" tagprefix="uc1" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <link href="static/css/page_guang.css" rel="stylesheet" type="text/css" />
+    <style>
+    .pageNav ul li{ float:left;}
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-  <div class="content_fluid" style="width: 1200px;">
+    <div class="content_fluid" style="width: 1200px;">
         <div class="ads_banner ads_top none_f" style="display: block;">
             <div class="boxImg">
                 <ul class="_img" style="width: 100%; position: absolute; top: 0px;">
@@ -52,7 +55,7 @@
         </div>
         <div class="goods_wall mlsWall" style="position: relative;">
             <div class="corner_notic">
-          <uc1:HotSearch ID="HotSearch1" runat="server" />
+               <uc1:HotSearch ID="HotSearch1" runat="server" />
 <h2 class="mt14_f f14_f">
                     推荐杂志</h2>
                 <div class="groupBox">
@@ -155,15 +158,19 @@
                         </div>
                     </div>
                 </div>
+                
             </div>
-            <div class="poster_grid poster_wall pins" twitter_id="365824987" twitter_author_uid="2207513"
-                twitter_source_tid="0" twitter_show_type="7" like_twitter_id="365824987" style="position: absolute;
-                top: 0px; left: 240px;">
+            
+         
+        </div>
+        <asp:Repeater ID="rptList" runat="server">
+                <ItemTemplate>
+                <div class="poster_grid poster_wall pins"  style="">
                 <div class="new_poster">
                     <div class="np_pic">
-                        <a class="pic_load" href="http://www.meilishuo.com/share/365824987?wzz=p0r0c0" target="_blank">
-                            <img class="goods_pic" width="200" height="300" src="./guang_files/77498f6b41c030efdc5a83e3355e_500_750.jpeg"
-                                title="美丽说推荐 小清新系列 白色激光瞳孔镂空手柄编织女包大包包单肩" alt="美丽说推荐 小清新系列 白色激光瞳孔镂空手柄编织女包大包包单肩"></a>
+                        <a class="pic_load" href="Goods_<%#Eval("NumIid") %>.aspx" target="_blank">
+                            <img class="goods_pic" width="200"  src="<%#Eval("PicUrl") %>"
+                                title="BiuBiu街推荐 <%#Eval("Title") %>" alt="BiuBiu街推荐 <%#Eval("Title") %>"></a>
                         <div class="like_merge">
                             <a class="hw46 right_f poster_comment" href="javascript:void(0)"><span class="plm_bgr">
                             </span><em class="lm_comm">&nbsp;</em>评论</a> <a class="hw73 left_f poster_forward"
@@ -174,37 +181,37 @@
                     </div>
                     <div class="comm_box">
                         <p class="l18_f posterContent">
-                            不错的一款白色大包包，款式超大方呢，很有气质的款式，编织的包带非常好看，美啊</p>
+                             </p>
                         <p class="comm_num">
                             <span><b>265</b> 收进杂志</span> <span><b>1292</b> 喜欢</span> <span><b>19</b> 评论</span></p>
                     </div>
                     <div class="np_share">
-                        <a class="avatar32_f trans07" href="http://www.meilishuo.com/person/u/2207513" user_id="2207513"
+                        <a class="avatar32_f trans07" href="#" user_id="2207513"
                             target="_blank">
-                            <img src="./guang_files/8efa579f69ce8ba015f2c9f3014e_500_500.jpg"></a>
+                            </a>
                         <p class="ml40_f">
-                            <a class="fb_f" href="http://www.meilishuo.com/person/u/2207513" target="_blank">百利滋</a>
-                            <span>分享到</span><a href="http://www.meilishuo.com/group/15087582" target="_blank">#♣包♣大人#</a>&nbsp;&nbsp;
+                            <a class="fb_f" href="#" target="_blank"></a>
+                            <span>分享到</span><a href="#" target="_blank"></a>&nbsp;&nbsp;
                         </p>
                         <div class="clear_f">
                         </div>
                     </div>
                     <div class="comm_share">
-                        <a class="avatar32_f trans07" user_id="19022539" href="http://www.meilishuo.com/person/u/19022539"
+                        <a class="avatar32_f trans07" user_id="19022539" href="#"
                             target="_blank">
-                            <img src="./guang_files/ff7f3898027343ec9603c97e9764_193_193.jpg"></a>
+                          
                         <p class="ml40_f">
-                            <a class="fb_f" href="http://www.meilishuo.com/person/u/19022539" target="_blank">最后之舞_qq917</a><span
-                                class="gray_f">蛮好看的</span></p>
+                            <a class="fb_f" href="Goods_<%#Eval("NumIid") %>.aspx" target="_blank"></a><span
+                                class="gray_f"></span></p>
                         <div class="clear_f">
                         </div>
                     </div>
                     <div class="comm_share c_f">
-                        <a href="http://www.meilishuo.com/share/365824987" target="_blank">查看全部19条评论...</a>
+                        <a href="Goods_<%#Eval("NumIid") %>.aspx" target="_blank">查看全部评论...</a>
                     </div>
                     <div class="poster_cmt none_f">
-                        <a class="avatar32_f" href="http://www.meilishuo.com/person/u/0" user_id="0" target="_blank">
-                            <img src="./guang_files/0.gif"></a>
+                        <a class="avatar32_f" href="#" user_id="0" target="_blank">
+                          
                         <div class="cmt_r">
                             <textarea class="poster_textarea"></textarea>
                             <div class="clear_f">
@@ -218,26 +225,18 @@
                     </div>
                 </div>
             </div>
-         
-        </div>
+                </ItemTemplate>
+                </asp:Repeater>
         <div class="goods_banner">
-            <a href="http://www.meilishuo.com/welcome" target="_blank"></a>
+            <a href="#" target="_blank"></a>
         </div>
-        <div class="spinner botSpinner none_f" style="display: block;">
-        </div>
+        
         <div class="clear_f">
         </div>
-        <div class="paging_panel c_f none_f">
+        <div class="paging_panel">
             <div class="pageNav bgcnt">
-                <a class="currentpage" href="http://www.meilishuo.com/guang?page=0">1</a> <a href="http://www.meilishuo.com/guang?page=1">
-                    2</a> <a href="http://www.meilishuo.com/guang?page=2">3</a> <a href="http://www.meilishuo.com/guang?page=3">
-                        4</a> <a href="http://www.meilishuo.com/guang?page=4">5</a> <a href="http://www.meilishuo.com/guang?page=5">
-                            6</a> <a href="http://www.meilishuo.com/guang?page=6">7</a> <a href="http://www.meilishuo.com/guang?page=7">
-                                8</a> <a href="http://www.meilishuo.com/guang?page=8">9</a> <a href="http://www.meilishuo.com/guang?page=9">
-                                    10</a> <i>...</i> <a href="http://www.meilishuo.com/guang?page=144">145</a>
-                <a class="pageNext" href="http://www.meilishuo.com/guang?page=1">下一页&gt;</a> <a style="background: none;
-                    border: none; height: 58px; width: 55px; position: absolute; right: 0; top: 0;"
-                    href="http://www.meilishuo.com/guang?page=1"></a>
+                <%=ShopUtil.HtmlPager.GetPageBar(3, "html", 1, (int)count, pageSize, currPage, "TSearch_"+Server.UrlEncode(Request.QueryString["k"])+"_<#page#>.aspx")%>
+       
             </div>
         </div>
         <div class="ads_banner ads_bottom none_f" style="display: block;">
