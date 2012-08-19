@@ -12,7 +12,7 @@
         <asp:GridView ID="GridView1" runat="server" CellPadding="4" 
             DataSourceID="AccessDataSource1" EnableModelValidation="True" 
             ForeColor="#333333" GridLines="None" AutoGenerateColumns="False" 
-            DataKeyNames="ID">
+            >
             <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
             <Columns>
                 <asp:BoundField DataField="weibo_id" HeaderText="weibo_id" 
@@ -33,8 +33,7 @@
                     SortExpression="weibo_name" />
                 <asp:BoundField DataField="weibo_url" HeaderText="weibo_url" 
                     SortExpression="weibo_url" />
-                <asp:BoundField DataField="ID" HeaderText="ID" InsertVisible="False" 
-                    ReadOnly="True" SortExpression="ID" />
+               
             </Columns>
             <EditRowStyle BackColor="#999999" />
             <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
@@ -45,7 +44,7 @@
         </asp:GridView>
         <asp:AccessDataSource ID="AccessDataSource1" runat="server" 
             DataFile="~/app/sellerWeibo/database/data.mdb" 
-            SelectCommand="SELECT * FROM [tb_access_weibo]">
+            SelectCommand="SELECT [tb_access_weibo].* FROM [tb_access_weibo] a  INNER  JOIN [tb_user]   on [tb_access_weibo].user_id=[tb_user].ID">
         </asp:AccessDataSource>
     </div>
     </form>
