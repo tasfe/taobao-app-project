@@ -165,7 +165,7 @@
             $("#rate-list").html(html)
         }
 </script>
-<script type="text/javascript" src="http://rate.taobao.com/feedRateList.htm?userNumId=141347455&auctionNumId=<%=taobaokeItemDetail.Item.NumIid%>&currentPageNum=1&rateType=&orderType=sort_weight&showContent=1&attribute=&callback=jsonp_reviews_list"></script>
+<script type="text/javascript" src="http://rate.taobao.com/feedRateList.htm?userNumId=<%=taobaokeShop.UserId %>&auctionNumId=<%=taobaokeItemDetail.Item.NumIid%>&currentPageNum=1&rateType=&orderType=sort_weight&showContent=1&attribute=&callback=jsonp_reviews_list"></script>
 
 
 </asp:Content>

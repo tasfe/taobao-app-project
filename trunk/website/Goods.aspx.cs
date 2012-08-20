@@ -12,6 +12,7 @@ using Top.Api.Domain;
 public partial class Goods : System.Web.UI.Page
 {
     protected TaobaokeItemDetail taobaokeItemDetail;
+    protected TaobaokeShop taobaokeShop;
 
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -33,7 +34,15 @@ public partial class Goods : System.Web.UI.Page
         if (taobaokeItemDetail != null)
         {
             this.Title = taobaokeItemDetail.Item.Title + "[BiuBiu街]";
-            
+
+            TaobaokeShopsConvertRequest taobaokeShopsConvertRequest = new TaobaokeShopsConvertRequest();
+            taobaokeShopsConvertRequest.Fields = "user_id";
+            taobaokeShopsConvertRequest.SellerNicks = taobaokeItemDetail.Item.Nick;
+            taobaokeShopsConvertRequest.Nick = "shenjinkui1984";
+
+            TaobaokeShopsConvertResponse taobaokeShopsConvertResponse = client.Execute(taobaokeShopsConvertRequest);
+            taobaokeShop = taobaokeShopsConvertResponse.TaobaokeShops[0];
+
             ((HtmlMeta)this.Master.FindControl("keywords")).Content = taobaokeItemDetail.Item.Title + " 买家 评价 购物体验";
             ((HtmlMeta)this.Master.FindControl("description")).Content = ShopUtil.Strings.Left(ShopUtil.Strings.NoHTML(taobaokeItemDetail.Item.Desc), 100) + "[来自买家的真实评价]";
             //taobaokeItemDetail.Item.NumIid;
