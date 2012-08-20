@@ -31,7 +31,7 @@
         <div class="clear"></div>
             <div class="code_pic">
 
-            <a href="http://www.meilishuo.com/u/EBYRRl/365824987?frm=out_pic" target="_blank">
+            <a href="<%=taobaokeItemDetail.ClickUrl%>" target="_blank">
                                     <img src="<%=taobaokeItemDetail.Item.PicUrl%>" width="450" alt="<%=taobaokeItemDetail.Item.Title%>"/>
              </a>
             <div id="xiu"></div>
@@ -87,7 +87,7 @@
             <ul class="pl_list none" id="rate-temp">
              <li class="list_info" >
 								<a class="img_face" href="#" target="_blank">
-                                <img class="namecard js_processed" alt="" src="static/images/1.gif"></a>
+                                <img class="namecard js_processed" alt="" src="{avatar}"></a>
 								<p><span class="cgray r">{time}</span><span class="red"><a href="#" target="_blank">{nick}</a></span></p>
 								<p>{content}<span class="red" style="padding-left:10px;"><a onclick="return false;" href="javascript:;"></a></span>
 																	</p>
@@ -160,6 +160,7 @@
             .replace("{content}", rate.comments[i].content)
             .replace("{time}", rate.comments[i].date)
             .replace("{nick}", rate.comments[i].user.nick)
+            .replace("{avatar}", rate.comments[i].user.avatar)
             }
 
             $("#rate-list").html(html)
