@@ -6,7 +6,7 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-		 <div class="top box_inset">
+         <div class="top box_inset">
 		     <div class="top_con box_inset">
 		         <a class="hot" href="?" target="_blank">今日最热</a>
 		         <a class="dress" href="?cata_id=2000000000000&frm=book_section1" target="_blank">衣服榜</a>
@@ -32,7 +32,7 @@
             <div class="code_pic">
 
             <a href="http://www.meilishuo.com/u/EBYRRl/365824987?frm=out_pic" target="_blank">
-                                    <img src="<%=taobaokeItemDetail.Item.PicUrl%>" alt="<%=taobaokeItemDetail.Item.Title%>"/>
+                                    <img src="<%=taobaokeItemDetail.Item.PicUrl%>" width="450" alt="<%=taobaokeItemDetail.Item.Title%>"/>
              </a>
             <div id="xiu"></div>
         </div>
@@ -165,7 +165,7 @@
             $("#rate-list").html(html)
         }
 </script>
-<script type="text/javascript" src="http://rate.taobao.com/feedRateList.htm?userNumId=141347455&auctionNumId=15174591318&currentPageNum=1&rateType=&orderType=sort_weight&showContent=1&attribute=&callback=jsonp_reviews_list"></script>
+<script type="text/javascript" src="http://rate.taobao.com/feedRateList.htm?userNumId=141347455&auctionNumId=<%=taobaokeItemDetail.Item.NumIid%>&currentPageNum=1&rateType=&orderType=sort_weight&showContent=1&attribute=&callback=jsonp_reviews_list"></script>
 
 
 </asp:Content>
