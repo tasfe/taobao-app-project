@@ -20,7 +20,7 @@ public partial class Goods : System.Web.UI.Page
 
     protected void GetTaoBaoKeFormApi(string numiid)
     {
-        Top.Api.ITopClient client =ShopUtil.OpenTaobaoUtil.GetDefaultTopClient();
+        Top.Api.ITopClient client = ShopUtil.OpenTaobaoUtil.GetTopClientInatance();
 
         TaobaokeItemsDetailGetRequest taobaokeItemsDetailGetRequest = new TaobaokeItemsDetailGetRequest();
         
@@ -35,8 +35,8 @@ public partial class Goods : System.Web.UI.Page
             this.Title = taobaokeItemDetail.Item.Title + "[BiuBiu街]";
             
             ((HtmlMeta)this.Master.FindControl("keywords")).Content = taobaokeItemDetail.Item.Title + " 买家 评价 购物体验";
-            ((HtmlMeta)this.Master.FindControl("description")).Content = ShopUtil.Strings.Left(ShopUtil.Strings.NoHTML(taobaokeItemDetail.Item.Desc), 100) + "[来自买家的真实评价]"; 
- 
+            ((HtmlMeta)this.Master.FindControl("description")).Content = ShopUtil.Strings.Left(ShopUtil.Strings.NoHTML(taobaokeItemDetail.Item.Desc), 100) + "[来自买家的真实评价]";
+            //taobaokeItemDetail.Item.NumIid;
             //ltlTitle.Text = TaobaokeItemDetail.Item.Title;
             //ltlPrice.Text = TaobaokeItemDetail.Item.Price;
             //ltlPrice1.Text = BaseFunction.GetMarketPrice(decimal.Parse(TaobaokeItemDetail.Item.Price)).ToString();
