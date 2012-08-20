@@ -12,17 +12,17 @@ namespace ShopUtil
 {
     public class OpenTaobaoUtil
     {
-        static ITopClient client;
+        //static ITopClient client;
         public OpenTaobaoUtil()
         {
-            client = new DefaultTopClient(ShopUtil.XmlCOM.ReadConfig("TaobaoRestUrl"), ShopUtil.XmlCOM.ReadConfig("TaobaoAppKey"), ShopUtil.XmlCOM.ReadConfig("TaobaoAppSecret"), "json"); 
+            //client = new DefaultTopClient(ShopUtil.XmlCOM.ReadConfig("TaobaoRestUrl"), ShopUtil.XmlCOM.ReadConfig("TaobaoAppKey"), ShopUtil.XmlCOM.ReadConfig("TaobaoAppSecret"), "json"); 
         }
         public UserGetResponse GetLoginUser(string top_session)
         {
             UserGetRequest req = new UserGetRequest();
             req.Fields = "user_id,nick";
-            
-            return client.Execute(req, top_session);
+
+            return GetDefaultTopClient().Execute(req, top_session);
         }
 
         //ts-12485
@@ -37,17 +37,20 @@ namespace ShopUtil
             vasSubscribeGetRequest.ArticleCode = articleCode;
             vasSubscribeGetRequest.Nick = nick;
 
-            return client.Execute(vasSubscribeGetRequest);
+            return GetDefaultTopClient().Execute(vasSubscribeGetRequest);
         }
 
         //static ITopClient topClient;
         public static ITopClient GetDefaultTopClient()
         {
-            if (client == null)
-            {
-                client = new DefaultTopClient(ShopUtil.XmlCOM.ReadConfig("TaobaoRestUrl"), ShopUtil.XmlCOM.ReadConfig("TaobaoAppKey"), ShopUtil.XmlCOM.ReadConfig("TaobaoAppSecret"), "json"); 
-            }
-            return client;
+
+            return new DefaultTopClient(ShopUtil.XmlCOM.ReadConfig("TaobaoRestUrl"), ShopUtil.XmlCOM.ReadConfig("TaobaoAppKey"), ShopUtil.XmlCOM.ReadConfig("TaobaoAppSecret"), "json");
+        }
+
+        //static ITopClient topClient;
+        public static ITopClient GetTopClientInatance()
+        {
+            return new DefaultTopClient(ShopUtil.XmlCOM.ReadConfig("TaobaoRestUrl"), ShopUtil.XmlCOM.ReadConfig("TaobaoAppKey"), ShopUtil.XmlCOM.ReadConfig("TaobaoAppSecret"), "json");
         }
 
         public static Trade GetTrade(string fields, long tid, string top_session)
