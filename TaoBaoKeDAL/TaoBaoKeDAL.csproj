@@ -76,6 +76,7 @@
     <Compile Include="DataAccess\TB_feedBack.cs" />
     <Compile Include="DataAccess\Tb_yinping.cs" />
     <Compile Include="DataAccess\TB_zhaoping.cs" />
+    <Compile Include="DBUtil.cs" />
     <Compile Include="MODEL\Article.cs" />
     <Compile Include="MODEL\Column.cs" />
     <Compile Include="MODEL\TB_IMPOWER.cs" />
