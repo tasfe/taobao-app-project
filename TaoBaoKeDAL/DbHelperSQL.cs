@@ -15,7 +15,7 @@ namespace Shop.DBUtility
     public abstract class DbHelperSQL
     {
         //数据库连接字符串(web.config来配置)，可以动态更改connectionString支持多数据库.		
-        public static string connectionString = "PROVIDER=Microsoft.Jet.OLEDB.4.0;DATA Source=" + ConfigurationSettings.AppSettings["AccessPath"];
+        public static string connectionString = "PROVIDER=Microsoft.Jet.OLEDB.4.0;DATA Source=|DataDirectory|\\db.mdb";
         public DbHelperSQL()
         {
         }
