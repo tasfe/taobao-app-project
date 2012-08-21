@@ -39,60 +39,60 @@ namespace Shop.DataAccess
                 return colID;
             }
         }
-        public static List<KeyValuePair<string,string>> GetColumnList(string colId)
-        {
-            List<KeyValuePair<string, string>> categoryList = new List<KeyValuePair<string, string>>();
-            DataTable dt = GetProductCategory();
-            DataRow[] dr = dt.Select("id='" + colId + "'");
+        //public static List<KeyValuePair<string,string>> GetColumnList(string colId)
+        //{
+        //    List<KeyValuePair<string, string>> categoryList = new List<KeyValuePair<string, string>>();
+        //    DataTable dt = GetProductCategory();
+        //    DataRow[] dr = dt.Select("id='" + colId + "'");
 
-            if (dr.Length > 0)
-            {
-                string tempId = dr[0]["id"].ToString();
-                categoryList.Add(new KeyValuePair<string,string>(tempId,dr[0]["title"].ToString()));
+        //    if (dr.Length > 0)
+        //    {
+        //        string tempId = dr[0]["id"].ToString();
+        //        categoryList.Add(new KeyValuePair<string,string>(tempId,dr[0]["title"].ToString()));
 
-                string tempPId = dr[0]["parentid"].ToString();
-                if (tempPId != "0")
-                {
-                    categoryList.Add(GetColumnList(tempPId)[0]);
-                }
-            }
+        //        string tempPId = dr[0]["parentid"].ToString();
+        //        if (tempPId != "0")
+        //        {
+        //            categoryList.Add(GetColumnList(tempPId)[0]);
+        //        }
+        //    }
 
-            return categoryList;
-        }
+        //    return categoryList;
+        //}
 
-        public static string GetColumnPath(string colId)
-        {
-            string pathHtml = ""; 
-            List<KeyValuePair<string, string>> categoryList = ColumnCommon.GetColumnList(colId);
-            for (int i = 1; i <= categoryList.Count; i++)
-            {
-                pathHtml += "<a href=\"Category_" + categoryList[categoryList.Count - i].Key + ".aspx\" target=_blank>" + categoryList[categoryList.Count - i].Value + "</a> &gt";
-            }
-            return pathHtml;
-        }
+        //public static string GetColumnPath(string colId)
+        //{
+        //    string pathHtml = ""; 
+        //    List<KeyValuePair<string, string>> categoryList = ColumnCommon.GetColumnList(colId);
+        //    for (int i = 1; i <= categoryList.Count; i++)
+        //    {
+        //        pathHtml += "<a href=\"Category_" + categoryList[categoryList.Count - i].Key + ".aspx\" target=_blank>" + categoryList[categoryList.Count - i].Value + "</a> &gt";
+        //    }
+        //    return pathHtml;
+        //}
 
-        public static DataTable GetProductCategory(string code)
-        {
-            DataTable  categoryCache =(DataTable)CacheCustom.Get("CategoryCache" + code);
-            if (categoryCache== null || categoryCache.Rows.Count==0)
-            {
-                string strWhere = " Code like '"+code+"%' order by code";
-                categoryCache = columnBll.GetList(strWhere).Tables[0];
-                CacheCustom.Insert("CategoryCache"+code, categoryCache);
-            }
-            return categoryCache;
-        }
+        //public static DataTable GetProductCategory(string code)
+        //{
+        //    DataTable  categoryCache =(DataTable)CacheCustom.Get("CategoryCache" + code);
+        //    if (categoryCache== null || categoryCache.Rows.Count==0)
+        //    {
+        //        string strWhere = " Code like '"+code+"%' order by code";
+        //        categoryCache = columnBll.GetList(strWhere).Tables[0];
+        //        CacheCustom.Insert("CategoryCache"+code, categoryCache);
+        //    }
+        //    return categoryCache;
+        //}
 
-        public static DataTable GetProductCategory()
-        {
-            DataTable categoryCache = (DataTable)CacheCustom.Get("CategoryCache");
-            if (categoryCache == null)
-            {
-                string strWhere = " 1=1 order by code";
-                categoryCache = columnBll.GetList(strWhere).Tables[0];
-                CacheCustom.Insert("CategoryCache", categoryCache);
-            }
-            return (DataTable)categoryCache;
-        }
+        //public static DataTable GetProductCategory()
+        //{
+        //    DataTable categoryCache = (DataTable)CacheCustom.Get("CategoryCache");
+        //    if (categoryCache == null)
+        //    {
+        //        string strWhere = " 1=1 order by code";
+        //        categoryCache = columnBll.GetList(strWhere).Tables[0];
+        //        CacheCustom.Insert("CategoryCache", categoryCache);
+        //    }
+        //    return (DataTable)categoryCache;
+        //}
     }
 }
