@@ -173,13 +173,13 @@
                             </span><em class="lm_love">&nbsp;</em>喜欢</a>
                         </div>
                     </div>
-                    <div class="comm_box">
+                    <div class="comm_box none_f">
                         <p class="l18_f posterContent">
                              </p>
                         <p class="comm_num">
                             <span><b>265</b> 收进杂志</span> <span><b>1292</b> 喜欢</span> <span><b>19</b> 评论</span></p>
                     </div>
-                    <div class="np_share">
+                    <div class="np_share none_f">
                         <a class="avatar32_f trans07" href="#" user_id="2207513"
                             target="_blank">
                             </a>
@@ -191,9 +191,11 @@
                         </div>
                     </div>
                     <div class="comm_share">
-                        <a class="avatar32_f trans07" user_id="19022539" href="#"
+                    <span><b>推荐理由：</b> </span>
+                        <a class="trans07"href="Goods_<%#Eval("NumIid") %>.aspx"
                             target="_blank">
-                          
+                            <%#Eval("ItemImgs")%>
+                          </a>
                         <p class="ml40_f">
                             <a class="fb_f" href="Goods_<%#Eval("NumIid") %>.aspx" target="_blank"></a><span
                                 class="gray_f"></span></p>
