@@ -5,11 +5,30 @@
 .category{border-bottom:1px dashed #ccc;padding-top:10px;width:100%;}
 .category a{text-align:center;border:1px solid #ccc;-webkit-border-radius:12px;-moz-border-radius:12px;border-radius:12px;float:left;white-space:nowrap;height:20px;line-height:20px;margin-right:5px;margin-bottom:10px;background:#EAECEB;_line-height:21px;padding:0 8px;}
 .category a.active{color:#fff;background:#FE73AB;border:1px solid #FCBFD4;}.rec_nav .category a.active:hover{color:#fff;}
-
+#maincontent { margin:20px 0;}
 </style>
+<link rel="stylesheet" type="text/css" href="static/css/ad/lrtk.css" />
+<script type="text/javascript" src="static/js/ad/slide.js"></script>
+<script type="text/javascript" src="static/js/ad/slides.js"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 <div class="content_fluid" style="width: 100%;">
+<div id="maincontent">
+   <asp:Repeater ID="rptList" runat="server">
+                <ItemTemplate>
+                <div class="element pict main">
+                <a href="Goods_<%#Eval("NumIid") %>.aspx" target="_blank"><img src="<%#Eval("pic_url") %>"></a>
+                <br/>
+               
+                </div>
+                </ItemTemplate>
+                </asp:Repeater>
+ <%--   <div class="element pict main"><a href="#"><img src="image/002.jpg"></a></div>--%>
+   
+    
+    <div class="element navi left"><img src="static/images/ad/left.gif" alt="left"></div>
+    <div class="element navi right"><img src="static/images/ad/right.gif" alt="right"></div>
+</div>
 <div class="category" style="border: none;">
                         <a class="" href="TSearch_%E8%BF%9E%E8%A1%A3%E8%A3%99.aspx">连衣裙</a>
                         <a class="" href="TSearch_%E8%A1%AC%E8%A1%AB.aspx">衬衫</a> <a class=""
