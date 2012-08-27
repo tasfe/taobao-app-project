@@ -382,7 +382,7 @@ body {
 	*padding:4px 0px 2px 0px
 }
 .i_sina,.g_sina,.i_ren,.g_ren,.i_tx,.i_qzone,.g_qzone,.i_dban,.i_renren,.i_QQ,.i_baidu,.i_wangyi,.i_taobao,.i_house,.i_buyer,.i_diamond,.i_special,.i_zv,.i_lv,.i_editor {
-	background:url("http://stc-tx.meiliworks.com/css/images/header/head_ico4.png") no-repeat;
+	background:url("head_ico4.png") no-repeat;
 	padding:1px 8px
 }
 .i_sina {
