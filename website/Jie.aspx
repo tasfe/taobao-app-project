@@ -4,6 +4,9 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
     <link href="static/css/page_guang.css" rel="stylesheet" type="text/css" />
+    <style>
+    .pageNav ul li{ float:left;}
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
   <div class="content_fluid" style="width: 1200px;">
@@ -156,8 +159,8 @@
                     </div>
                 </div>
             </div>
-           
-                <asp:Repeater ID="rptList" runat="server">
+           <div class="poster_grid poster_wall pins"  style="">
+          <asp:Repeater ID="rptList1" runat="server">
                 <ItemTemplate>
                 <div class="poster_grid poster_wall pins"  style="">
                 <div class="new_poster">
@@ -223,6 +226,212 @@
             </div>
                 </ItemTemplate>
                 </asp:Repeater>
+           </div>
+           <div class="poster_grid poster_wall pins"  style="">
+          <asp:Repeater ID="rptList2" runat="server">
+                <ItemTemplate>
+                <div class="poster_grid poster_wall pins"  style="">
+                <div class="new_poster">
+                    <div class="np_pic">
+                        <a class="pic_load" href="Goods_<%#Eval("NumIid") %>.aspx" target="_blank">
+                            <img class="goods_pic" width="200"  src="<%#Eval("Pic_Url") %>"
+                                title="BiuBiu街推荐 <%#Eval("Title") %>" alt="BiuBiu街推荐 <%#Eval("Title") %>"></a>
+                        <div class="like_merge">
+                            <a class="hw46 right_f poster_comment" href="javascript:void(0)"><span class="plm_bgr">
+                            </span><em class="lm_comm">&nbsp;</em>评论</a> <a class="hw73 left_f poster_forward"
+                                href="javascript:void(0)"><span class="plm_bgr"></span><em class="lm_shouji">&nbsp;</em>收进杂志</a>
+                            <a class="hw46 left_f poster_like " href="javascript:void(0)"><span class="plm_bgr">
+                            </span><em class="lm_love">&nbsp;</em>喜欢</a>
+                        </div>
+                    </div>
+                    <div class="comm_box none_f">
+                        <p class="l18_f posterContent">
+                             </p>
+                        <p class="comm_num">
+                            <span><b>265</b> 收进杂志</span> <span><b>1292</b> 喜欢</span> <span><b>19</b> 评论</span></p>
+                    </div>
+                    <div class="np_share none_f">
+                        <a class="avatar32_f trans07" href="#" user_id="2207513"
+                            target="_blank">
+                            </a>
+                        <p class="ml40_f">
+                            <a class="fb_f" href="#" target="_blank"></a>
+                            <span>分享到</span><a href="#" target="_blank"></a>&nbsp;&nbsp;
+                        </p>
+                        <div class="clear_f">
+                        </div>
+                    </div>
+                    <div class="comm_share">
+                    <span><b>推荐理由：</b> </span>
+                        <a class="trans07"href="Goods_<%#Eval("NumIid") %>.aspx"
+                            target="_blank">
+                            <%#Eval("ItemImgs")%>
+                          </a>
+                        <p class="ml40_f">
+                            <a class="fb_f" href="Goods_<%#Eval("NumIid") %>.aspx" target="_blank"></a><span
+                                class="gray_f"></span></p>
+                        <div class="clear_f">
+                        </div>
+                    </div>
+                    <div class="comm_share c_f">
+                        <a href="Goods_<%#Eval("NumIid") %>.aspx" target="_blank">查看全部评论...</a>
+                    </div>
+                    <div class="poster_cmt none_f">
+                        <a class="avatar32_f" href="#" user_id="0" target="_blank">
+                          
+                        <div class="cmt_r">
+                            <textarea class="poster_textarea"></textarea>
+                            <div class="clear_f">
+                            </div>
+                            <p class="discuss">
+                                <a class="pl_btn poster_comment_btn" href="javascript:void(0);">评论</a><a class="share_smileys">表情</a>
+                            </p>
+                        </div>
+                        <div class="clear_f">
+                        </div>
+                    </div>
+                </div>
+            </div>
+                </ItemTemplate>
+                </asp:Repeater>
+           </div>
+           <div class="poster_grid poster_wall pins"  style="">
+           <asp:Repeater ID="rptList3" runat="server">
+                <ItemTemplate>
+                <div class="poster_grid poster_wall pins"  style="">
+                <div class="new_poster">
+                    <div class="np_pic">
+                        <a class="pic_load" href="Goods_<%#Eval("NumIid") %>.aspx" target="_blank">
+                            <img class="goods_pic" width="200"  src="<%#Eval("Pic_Url") %>"
+                                title="BiuBiu街推荐 <%#Eval("Title") %>" alt="BiuBiu街推荐 <%#Eval("Title") %>"></a>
+                        <div class="like_merge">
+                            <a class="hw46 right_f poster_comment" href="javascript:void(0)"><span class="plm_bgr">
+                            </span><em class="lm_comm">&nbsp;</em>评论</a> <a class="hw73 left_f poster_forward"
+                                href="javascript:void(0)"><span class="plm_bgr"></span><em class="lm_shouji">&nbsp;</em>收进杂志</a>
+                            <a class="hw46 left_f poster_like " href="javascript:void(0)"><span class="plm_bgr">
+                            </span><em class="lm_love">&nbsp;</em>喜欢</a>
+                        </div>
+                    </div>
+                    <div class="comm_box none_f">
+                        <p class="l18_f posterContent">
+                             </p>
+                        <p class="comm_num">
+                            <span><b>265</b> 收进杂志</span> <span><b>1292</b> 喜欢</span> <span><b>19</b> 评论</span></p>
+                    </div>
+                    <div class="np_share none_f">
+                        <a class="avatar32_f trans07" href="#" user_id="2207513"
+                            target="_blank">
+                            </a>
+                        <p class="ml40_f">
+                            <a class="fb_f" href="#" target="_blank"></a>
+                            <span>分享到</span><a href="#" target="_blank"></a>&nbsp;&nbsp;
+                        </p>
+                        <div class="clear_f">
+                        </div>
+                    </div>
+                    <div class="comm_share">
+                    <span><b>推荐理由：</b> </span>
+                        <a class="trans07"href="Goods_<%#Eval("NumIid") %>.aspx"
+                            target="_blank">
+                            <%#Eval("ItemImgs")%>
+                          </a>
+                        <p class="ml40_f">
+                            <a class="fb_f" href="Goods_<%#Eval("NumIid") %>.aspx" target="_blank"></a><span
+                                class="gray_f"></span></p>
+                        <div class="clear_f">
+                        </div>
+                    </div>
+                    <div class="comm_share c_f">
+                        <a href="Goods_<%#Eval("NumIid") %>.aspx" target="_blank">查看全部评论...</a>
+                    </div>
+                    <div class="poster_cmt none_f">
+                        <a class="avatar32_f" href="#" user_id="0" target="_blank">
+                          
+                        <div class="cmt_r">
+                            <textarea class="poster_textarea"></textarea>
+                            <div class="clear_f">
+                            </div>
+                            <p class="discuss">
+                                <a class="pl_btn poster_comment_btn" href="javascript:void(0);">评论</a><a class="share_smileys">表情</a>
+                            </p>
+                        </div>
+                        <div class="clear_f">
+                        </div>
+                    </div>
+                </div>
+            </div>
+                </ItemTemplate>
+                </asp:Repeater>
+           </div>
+           <div class="poster_grid poster_wall pins"  style="">
+           <asp:Repeater ID="rptList4" runat="server">
+                <ItemTemplate>
+                <div class="poster_grid poster_wall pins"  style="">
+                <div class="new_poster">
+                    <div class="np_pic">
+                        <a class="pic_load" href="Goods_<%#Eval("NumIid") %>.aspx" target="_blank">
+                            <img class="goods_pic" width="200"  src="<%#Eval("Pic_Url") %>"
+                                title="BiuBiu街推荐 <%#Eval("Title") %>" alt="BiuBiu街推荐 <%#Eval("Title") %>"></a>
+                        <div class="like_merge">
+                            <a class="hw46 right_f poster_comment" href="javascript:void(0)"><span class="plm_bgr">
+                            </span><em class="lm_comm">&nbsp;</em>评论</a> <a class="hw73 left_f poster_forward"
+                                href="javascript:void(0)"><span class="plm_bgr"></span><em class="lm_shouji">&nbsp;</em>收进杂志</a>
+                            <a class="hw46 left_f poster_like " href="javascript:void(0)"><span class="plm_bgr">
+                            </span><em class="lm_love">&nbsp;</em>喜欢</a>
+                        </div>
+                    </div>
+                    <div class="comm_box none_f">
+                        <p class="l18_f posterContent">
+                             </p>
+                        <p class="comm_num">
+                            <span><b>265</b> 收进杂志</span> <span><b>1292</b> 喜欢</span> <span><b>19</b> 评论</span></p>
+                    </div>
+                    <div class="np_share none_f">
+                        <a class="avatar32_f trans07" href="#" user_id="2207513"
+                            target="_blank">
+                            </a>
+                        <p class="ml40_f">
+                            <a class="fb_f" href="#" target="_blank"></a>
+                            <span>分享到</span><a href="#" target="_blank"></a>&nbsp;&nbsp;
+                        </p>
+                        <div class="clear_f">
+                        </div>
+                    </div>
+                    <div class="comm_share">
+                    <span><b>推荐理由：</b> </span>
+                        <a class="trans07"href="Goods_<%#Eval("NumIid") %>.aspx"
+                            target="_blank">
+                            <%#Eval("ItemImgs")%>
+                          </a>
+                        <p class="ml40_f">
+                            <a class="fb_f" href="Goods_<%#Eval("NumIid") %>.aspx" target="_blank"></a><span
+                                class="gray_f"></span></p>
+                        <div class="clear_f">
+                        </div>
+                    </div>
+                    <div class="comm_share c_f">
+                        <a href="Goods_<%#Eval("NumIid") %>.aspx" target="_blank">查看全部评论...</a>
+                    </div>
+                    <div class="poster_cmt none_f">
+                        <a class="avatar32_f" href="#" user_id="0" target="_blank">
+                          
+                        <div class="cmt_r">
+                            <textarea class="poster_textarea"></textarea>
+                            <div class="clear_f">
+                            </div>
+                            <p class="discuss">
+                                <a class="pl_btn poster_comment_btn" href="javascript:void(0);">评论</a><a class="share_smileys">表情</a>
+                            </p>
+                        </div>
+                        <div class="clear_f">
+                        </div>
+                    </div>
+                </div>
+            </div>
+                </ItemTemplate>
+                </asp:Repeater>
+           </div>
+                
            
          
         </div>
@@ -233,17 +442,10 @@
         </div>
         <div class="clear_f">
         </div>
-        <div class="paging_panel c_f none_f">
+        <div class="paging_panel">
             <div class="pageNav bgcnt">
-                <a class="currentpage" href="http://www.meilishuo.com/guang?page=0">1</a> <a href="http://www.meilishuo.com/guang?page=1">
-                    2</a> <a href="http://www.meilishuo.com/guang?page=2">3</a> <a href="http://www.meilishuo.com/guang?page=3">
-                        4</a> <a href="http://www.meilishuo.com/guang?page=4">5</a> <a href="http://www.meilishuo.com/guang?page=5">
-                            6</a> <a href="http://www.meilishuo.com/guang?page=6">7</a> <a href="http://www.meilishuo.com/guang?page=7">
-                                8</a> <a href="http://www.meilishuo.com/guang?page=8">9</a> <a href="http://www.meilishuo.com/guang?page=9">
-                                    10</a> <i>...</i> <a href="http://www.meilishuo.com/guang?page=144">145</a>
-                <a class="pageNext" href="http://www.meilishuo.com/guang?page=1">下一页&gt;</a> <a style="background: none;
-                    border: none; height: 58px; width: 55px; position: absolute; right: 0; top: 0;"
-                    href="http://www.meilishuo.com/guang?page=1"></a>
+                <%=ShopUtil.HtmlPager.GetPageBar(3, "html", 1, (int)count, pageSize, currPage, "Jie_"+"0"+"_<#page#>.aspx")%>
+       
             </div>
         </div>
         <div class="ads_banner ads_bottom none_f" style="display: block;">
