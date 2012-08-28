@@ -6,6 +6,7 @@
 .category a{text-align:center;border:1px solid #ccc;-webkit-border-radius:12px;-moz-border-radius:12px;border-radius:12px;float:left;white-space:nowrap;height:20px;line-height:20px;margin-right:5px;margin-bottom:10px;background:#EAECEB;_line-height:21px;padding:0 8px;}
 .category a.active{color:#fff;background:#FE73AB;border:1px solid #FCBFD4;}.rec_nav .category a.active:hover{color:#fff;}
 #maincontent { margin:20px 0;}
+.bigtitle{position:absolute; padding:5px;top:450px; font-size:24px; font-weight:bold; color:#FF75A4;}
 </style>
 <link rel="stylesheet" type="text/css" href="static/css/ad/lrtk.css" />
 <script type="text/javascript" src="static/js/ad/slide.js"></script>
@@ -16,9 +17,9 @@
 <div id="maincontent">
    <asp:Repeater ID="rptList" runat="server">
                 <ItemTemplate>
-                <div class="element pict main">
-                <a href="Goods_<%#Eval("NumIid") %>.aspx" target="_blank"><img src="<%#Eval("pic_url") %>"></a>
-                <br/>
+                <div class="element pict main" style="position:relative;">
+                <div class="bigtitle"><%#Eval("Title") %></div>
+                <a href="Goods_<%#Eval("NumIid") %>.aspx" target="_blank"><img src="<%#Eval("pic_url") %>" alt="<%#Eval("Title") %>"/></a>
                
                 </div>
                 </ItemTemplate>
