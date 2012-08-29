@@ -38,12 +38,12 @@
                     <li><a class="group f14_f fb_f" href="/">翻杂志</a>
                     </li>
                     <li><a class="racks_d f14_f fb_f" href="jie.aspx">逛Biubiu街<span class="item_right"></span></a>
-                        <a class="racks1 f12_f" href="?2000000000000">
-                            衣服</a> <a class="racks1 f12_f" href="?6000000000000">
-                                鞋子</a> <a class="racks1 f12_f" href="?5000000000000">
-                                    包包</a> <a class="racks1 f12_f" href="?7000000000000">
-                                        配饰</a> <a class="racks1 f12_f" href="?9000000000000">
-                                            家居</a> <a class="racks1 f12_f" href="?8000000000000">
+                        <a class="racks1 f12_f" href="TSearch_30.aspx">
+                            衣服</a> <a class="racks1 f12_f" href="TSearch_34.aspx">
+                                鞋子</a> <a class="racks1 f12_f" href="TSearch_316.aspx">
+                                    包包</a> <a class="racks1 f12_f" href="TSearch_340.aspx">
+                                        配饰</a> <a class="racks1 f12_f" href="TSearch_40.aspx">
+                                            家居</a> <a class="racks1 f12_f" href="TSearch_20.aspx">
                                                 美容</a> </li>
                     <li><a class="group f14_f fb_f" href="/">搭配</a>
                         <a class="racks1 f12_f" href="/">达人</a>
