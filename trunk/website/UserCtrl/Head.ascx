@@ -10,16 +10,15 @@
                 注册</a></li>--%>
         </ul>
         <div class="ser_n">
-            <form id="frame_header_tools_searchBox" action="/search"
-            method="get">
+
             <span class="ipt1">
                 <input id="searchKey" class="searchKey" name="searchKey" type="text" autocomplete="off"
-                    value="" placeholder="搜宝贝、用户名、杂志..."></span>
+                    value="秋季新品" placeholder="搜宝贝、用户名、杂志..."></span>
             <input id="searchType" type="hidden" value="1" name="searchType">
             <input id="filter" type="hidden" value="goods" name="filter">
             <span class="ipt2">
-                <input type="submit" id="fm_hd_btm_shbx_bttn" value=""></span>
-            </form>
+                <input type="submit" id="fm_hd_btm_shbx_bttn" onclick="window.location='TSearch_'+encodeURIComponent(document.getElementById('searchKey').value)+'.aspx';return false;" value=""></span>
+            
             <ul id="search_type" class="search_type none_f" style="display: none;">
                 <li class="search_bg" stype="goods">搜<samp>"</samp><span class="input_words"></span><samp>"</samp>相关宝贝</li>
                 <li stype="user_nickname">搜<samp>"</samp><span class="input_words"></span><samp>"</samp>相关用户</li>
@@ -49,10 +48,15 @@
                     <li><a class="group f14_f fb_f" href="/">搭配</a>
                         <a class="racks1 f12_f" href="/">达人</a>
                     </li>
-                    <li><a class="tuangou f14_f fb_f" href="/">福利社</a> <a
+                    <li> <a
                         class="racks1 f12_f" href="/">团购</a> <a class="racks1 f12_f"
-                            href="/">好店</a> </li>
+                            href="/">好店</a> 
+                             <a class="racks1 f12_f"
+                            href="TopSearch.aspx">BiuBiu街推荐</a></li>
                 </ul>
             </div>
         </div>
     </div>
+    <script>
+    
+    </script>
