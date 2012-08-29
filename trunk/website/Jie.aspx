@@ -164,7 +164,7 @@
                 <ItemTemplate>
                 <div class="poster_grid poster_wall pins"  style="">
                 <div class="new_poster">
-                    <div class="np_pic">
+                    <div class="">
                         <a class="pic_load" href="Goods_<%#Eval("NumIid") %>.aspx" target="_blank">
                             <img class="goods_pic" width="200"  src="<%#Eval("Pic_Url") %>"
                                 title="BiuBiu街推荐 <%#Eval("Title") %>" alt="BiuBiu街推荐 <%#Eval("Title") %>"></a>
@@ -232,7 +232,7 @@
                 <ItemTemplate>
                 <div class="poster_grid poster_wall pins"  style="">
                 <div class="new_poster">
-                    <div class="np_pic">
+                    <div class="">
                         <a class="pic_load" href="Goods_<%#Eval("NumIid") %>.aspx" target="_blank">
                             <img class="goods_pic" width="200"  src="<%#Eval("Pic_Url") %>"
                                 title="BiuBiu街推荐 <%#Eval("Title") %>" alt="BiuBiu街推荐 <%#Eval("Title") %>"></a>
@@ -300,7 +300,7 @@
                 <ItemTemplate>
                 <div class="poster_grid poster_wall pins"  style="">
                 <div class="new_poster">
-                    <div class="np_pic">
+                    <div class="">
                         <a class="pic_load" href="Goods_<%#Eval("NumIid") %>.aspx" target="_blank">
                             <img class="goods_pic" width="200"  src="<%#Eval("Pic_Url") %>"
                                 title="BiuBiu街推荐 <%#Eval("Title") %>" alt="BiuBiu街推荐 <%#Eval("Title") %>"></a>
@@ -368,7 +368,7 @@
                 <ItemTemplate>
                 <div class="poster_grid poster_wall pins"  style="">
                 <div class="new_poster">
-                    <div class="np_pic">
+                    <div class="">
                         <a class="pic_load" href="Goods_<%#Eval("NumIid") %>.aspx" target="_blank">
                             <img class="goods_pic" width="200"  src="<%#Eval("Pic_Url") %>"
                                 title="BiuBiu街推荐 <%#Eval("Title") %>" alt="BiuBiu街推荐 <%#Eval("Title") %>"></a>
