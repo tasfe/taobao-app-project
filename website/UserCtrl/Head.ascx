@@ -45,14 +45,16 @@
                                         配饰</a> <a class="racks1 f12_f" href="TSearch_40.aspx">
                                             家居</a> <a class="racks1 f12_f" href="TSearch_20.aspx">
                                                 美容</a> </li>
-                    <li><a class="group f14_f fb_f" href="/">搭配</a>
-                        <a class="racks1 f12_f" href="/">达人</a>
-                    </li>
-                    <li> <a
+                    <li>
+                         <a
                         class="racks1 f12_f" href="/">团购</a> <a class="racks1 f12_f"
-                            href="/">好店</a> 
+                            href="/">好店</a>    </li>
+                    <li>
                              <a class="racks1 f12_f"
-                            href="TopSearch.aspx">BiuBiu街推荐</a></li>
+                            href="TopSearch.aspx">BiuBiu街推荐</a>
+                            <a class="racks1 f12_f" href="TSearch_%E7%A7%8B%E5%AD%A3%E6%96%B0%E5%93%81.aspx"><h3>秋季新品</h3></a>
+                 
+                            </li>
                 </ul>
             </div>
         </div>
