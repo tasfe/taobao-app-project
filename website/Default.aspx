@@ -1,5 +1,4 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.master" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
-
 <asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
 <style>
 .category{border-bottom:1px dashed #ccc;padding-top:10px;width:100%;}
@@ -8,6 +7,7 @@
 #maincontent { margin:20px 0;}
 .bigtitle{position:absolute; padding:5px;top:450px; font-size:24px; font-weight:bold; color:#FF75A4;}
 </style>
+
 <link rel="stylesheet" type="text/css" href="static/css/ad/lrtk.css" />
 <script type="text/javascript" src="static/js/ad/slide.js"></script>
 <script type="text/javascript" src="static/js/ad/slides.js"></script>
@@ -65,6 +65,53 @@
                         <div class="clear_f">
                         </div>
                     </div>
+</div>
+<div  style="width:1200px;margin:40px auto; overflow:hidden;">
+<%=topTaobaoContent%>
+<%--<iframe name="alimamaifrm" frameborder="0" marginheight="0" marginwidth="0" border="0" scrolling="no" width="1200" height="574" src="http://top.taobao.com/interface_v2.php?pid=mm_17112190_2418515_10858599&type=x&f=html&ie=utf8&from=taoke&unid=&name=BiuBiu%E8%A1%97%E7%BD%91%E8%B4%AD%E9%A3%8E%E5%90%91%E6%A0%87&trtp=1&up=true&goodsFilter=all&sw=1200&sh=574&sn=14&rn=7&pn=5&ls=4&rs=4&bgc=FFFFFF&bc=D9D9D9&fc=404040&tc=404040&cat_ids=TR_FS%2CTR_HZP" ></iframe>
+--%>
+<style>
+			body,div,ol{margin:0 auto;padding:0;}
+			abody{font:12px/1.5 Tahoma,Helvetica,Arial,'宋体',sans-serif;overflow:hidden}
+			img{border:0}
+			:focus{outline:0}
+			.topx-hd{height:25px;overflow:hidden;width:11500px}
+			.topx-hd .topic{float:left;padding:0 15px;font-weight:700;font-size:14px;line-height:25px}
+			.topx-hd ol{float:left;list-style:none}
+			.topx-hd li{float:left;padding:3px 8px;font-weight:700;color:#666;height:18px;cursor:pointer;*position:relative}
+			.topx-hd li.hover{border:solid #f78613;border-width:1px 1px 0 1px;background-color:#fff}
+			.line{margin-top:-1px;border-top:1px solid #f78613;height:10px;font-size:0;line-height:0}
+			.topx-bd ol{border:solid #ccc;list-style:none;border-width:1px 1px 0 1px}
+			.topx-bd ol.dis{display:block}
+			.topx-bd ol.undis{display:none}
+			.topx-bd ol:after,.topx-ft:after{content:".";display:block;height:0;clear:both;visibility:hidden}
+			.topx-bd ol,.topx-ft{*+height:1%}
+			.topx-bd li{float:left;border-bottom:1px solid #ccc}
+			.topx-bd li .unit{width:160px;height:240px;position:relative}
+			.topx-bd li .unit a:hover,a:link,a:visited{text-decoration:none}
+			.topx-bd li .unit span {display:block}
+			.topx-bd li .unit .pic{display:table-cell;*font-size:120px;overflow:hidden;width:160px;height:160px;line-height:160px;background-color:#fff;text-align:center}
+			.topx-bd li .unit .pic img{vertical-align:middle}
+			.topx-bd li .unit .price{color:#a2a2a2}
+			.topx-bd li .unit .price em{font-style:normal;font-weight:700;color:#f78613}
+			.topx-bd li .unit .sales{color:#808080}
+			.topx-bd li s{padding-right:15px;width:15px;height:30px;font-weight:700;text-decoration:none;text-align:center;color:#fff;background:url(http://img01.taobaocdn.com/tps/i1/T1L3ifXgXcXXXXXXXX-90-30.gif) no-repeat -30px 0;position:absolute;top:0;left:0}
+			.topx-bd li s.fst{background-position: 0 0}
+			.topx-ft {padding:0 5px;border:solid #ccc;border-width:0 1px 1px 1px;height:35px;font-weight:700;font-size:14px;overflow:hidden}
+			.topx-ft a {color:#f78613}
+			.topx-ft .tb-top{float:left;padding:7px 15px 7px 35px;background:url(http://img01.taobaocdn.com/tps/i1/T1L3ifXgXcXXXXXXXX-90-30.gif) no-repeat -60px 5px}
+			.topx-ft .more{float:right;padding:7px 15px}
+
+			 body{width:1200px}
+			.topx-hd .topic{color:#404040}
+			.topx-bd li .title{color:#404040;height:36px}
+			.topx-bd ol{border-color:#D9D9D9}
+			.topx-bd li{padding:10px 5px 0;border-bottom-color:#D9D9D9;width:160px;}
+			.topx-bd li.first{padding-left:9px}
+			.topx-bd li.last{padding-right:9px}
+			.topx-ft{border-color:#D9D9D9}
+			.topx-bd,.topx-ft{background-color:#FFFFFF}
+		</style>
 </div>
 </asp:Content>
 
