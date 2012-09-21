@@ -53,7 +53,7 @@ public partial class Jie : System.Web.UI.Page
 
     protected void BindList()
     {
-        Top.Api.ITopClient client = ShopUtil.OpenTaobaoUtil.GetDefaultTopClient();
+        Top.Api.ITopClient client = ShopUtil.OpenTaobaoUtil.GetTopClientInatance();
 
         TaobaokeItemsGetRequest taobaokeItemsGetRequest = new TaobaokeItemsGetRequest();
         taobaokeItemsGetRequest.Fields = "pic_url,num_iid,commission,title,price,shop_click_url,seller_credit_score,click_url";
@@ -71,7 +71,7 @@ public partial class Jie : System.Web.UI.Page
         taobaokeItemsGetRequest.PageNo = currPage;
         //taobaokeItemsGetRequest.Sort = Sort;
         TaobaokeItemsGetResponse response = client.Execute(taobaokeItemsGetRequest);
-        count = response.TotalResults;
+        count = 400;//response.TotalResults;
 
         List<TaobaokeItem> taobaokeItems = response.TaobaokeItems;
 
