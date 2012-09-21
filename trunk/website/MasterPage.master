@@ -7,6 +7,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>BiuBiu街-要Beautiful的女孩纸逛的街</title>
+    <asp:ContentPlaceHolder id="head0" runat="server">
+    </asp:ContentPlaceHolder>
     <meta name="keywords" id="keywords" runat="server" content="BiuBiu街,网购,购物分享,淘宝网购物,淘宝网女装,衣服搭配,团购"/>
     <meta name="description" id="description" runat="server" content="BiuBiu街是百万MM一起修炼变美的购物社区。各路扮美达人与你分享美人心计、购物经验、搭配秘笈、当红好店，记录你的美丽成长。快来BiuBiu街说需找你的美丽点滴吧"/>
     <meta name="baidu_union_verify" content="2cce6df9864bcab652e2831745370f0f">
