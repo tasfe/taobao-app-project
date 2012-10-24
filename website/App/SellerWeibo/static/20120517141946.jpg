@@ -1,5 +1,0 @@
-<% 
-
-response.write "1" 
-
-%>

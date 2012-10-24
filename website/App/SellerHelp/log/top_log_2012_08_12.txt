@@ -1,9 +1,0 @@
-时间:2012-8-12 22:26:40
-Remote service error|{"error_response":{"code":520,"msg":"Remote service error","sub_code":"isp.remote-service-timeout","sub_msg":"API调用服务超时"}}|
-
-时间:2012-8-12 22:30:19
-Remote service error|{"error_response":{"code":520,"msg":"Remote service error","sub_code":"isv.trade-service-rejection","sub_msg":"超时请求过多，请将查询时间间隔缩短,3分钟后再查询！"}}|
-
-时间:2012-8-12 22:31:43
-Remote service error|{"error_response":{"code":520,"msg":"Remote service error","sub_code":"isp.remote-service-timeout","sub_msg":"API调用服务超时"}}|
-
