@@ -52,6 +52,10 @@
       <Project>{AF47A1A7-B766-49FF-89DF-32483452BF6A}</Project>
       <Name>DAL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DBUtility\DBUtility.csproj">
+      <Project>{0B3A5383-CCA5-4CFB-8483-1766F56823E3}</Project>
+      <Name>DBUtility</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MODEL\MODEL.csproj">
       <Project>{BD8F1E3B-BA23-41CD-9FC3-DD2411F45A8D}</Project>
       <Name>MODEL</Name>
