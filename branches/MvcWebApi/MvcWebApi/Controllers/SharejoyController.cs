@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Web.Http;
 using sharejoy.Model;
 using sharejoy.BLL;
+using System.Data;
 
 namespace MvcWebApi.Controllers
 {
@@ -15,11 +16,12 @@ namespace MvcWebApi.Controllers
         /// 返回所有
         /// </summary>
         /// <returns>返回一个枚举类型为</returns>
-        public IEnumerable<share> GetAllProducts()
+        public IEnumerable<share> GetAllShares()
         {
             shareBll bll = new shareBll();
-            //bll.GetList("1=1");
-            return new List<share>();
+            DataTable dt= bll.GetList("1=1").Tables[0];
+
+            return DBUtility.BuildModel.BuildModelListByTable<share>(dt);       
         }
     }
 }
