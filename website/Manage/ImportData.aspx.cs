@@ -127,9 +127,9 @@ public partial class Manage_ImportData : System.Web.UI.Page
 
     protected bool CheckExist(string title)
     {
-        //int count = SASCMS.DataAccess.TaoBaoKeCommon.GetTaoBaoKe(" title ='" + title + "'", 0, 1).Rows.Count;
-        //return count==0? false:true;
-        return false;
+        int count = Shop.DataAccess.TaoBaoKeCommon.GetTaoBaoKe(" title ='" + title + "'", 0, 1).Rows.Count;
+        return count == 0 ? false : true;
+        //return false;
     }
 
     protected bool CheckKey(string title)

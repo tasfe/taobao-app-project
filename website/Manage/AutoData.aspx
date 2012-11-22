@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="ImportData.aspx.cs" Inherits="Manage_ImportData" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="AutoData.aspx.cs" Inherits="Manage_ImportData" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
