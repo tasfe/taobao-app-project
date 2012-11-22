@@ -5,7 +5,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 using System.Text.RegularExpressions;
-
+using System.Threading;
 public partial class _Default : System.Web.UI.Page
 {
     protected string topTaobaoContent="";
