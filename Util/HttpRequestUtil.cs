@@ -7,7 +7,7 @@ using System.Net;
 
 namespace Shop
 {
-    class HttpRequestUtil
+    public class HttpRequestUtil
     {
         public CookieContainer cc = new CookieContainer();
         public string Cookiesstr = string.Empty;
@@ -88,12 +88,12 @@ namespace Shop
             request.Headers.Add("Cookie:" + Cookiesstr);
             request.KeepAlive = true;
 
-            if ("1" == "1")
-            {
-                WebProxy proxy = new WebProxy("202.38.134.170", 8080);
-                proxy.Credentials = new NetworkCredential("e-microsoft2@csvw.com", "123svw");
-                request.Proxy = proxy;
-            }
+            //if ("1" == "1")
+            //{
+            //    WebProxy proxy = new WebProxy("202.38.134.170", 8080);
+            //    proxy.Credentials = new NetworkCredential("e-microsoft2@csvw.com", "123svw");
+            //    request.Proxy = proxy;
+            //}
 
             //提交请求
             //Stream stream;
@@ -111,8 +111,8 @@ namespace Shop
             StreamReader sr = new StreamReader(response.GetResponseStream(), Encoding.UTF8);
             string content = sr.ReadToEnd();
             response.Close();
-            string[] substr = content.Split(new char[] { '"' });
-            gethost = substr[1];
+            //string[] substr = content.Split(new char[] { '"' });
+            //gethost = substr[1];
 
             return content;
         }
