@@ -1,0 +1,677 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+    <meta name="viewport" content="width=320; user-scalable=no" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <title>大杂烩</title>
+    <script type="text/javascript" charset="utf-8" src="phonegap-1.0.0.js"></script>
+    <style>
+        body
+        {
+            font: 16px normal 'Helvetica Neue' ,Helvetica,sans-serif;
+            background: #E3F5FF;
+            padding: 0;
+            margin: 0;
+            -webkit-text-size-adjust: none;
+            overflow-x: hidden;
+        }
+        .header
+        {
+            height: 38px;
+            background: #2177B3;
+            border-bottom: #1C6598 solid 1px;
+            position:fixed;
+            top:0;
+            width:100%;
+        }
+        .mlist {
+padding: 10px;
+overflow: hidden;
+border-bottom: #C7C8C9 solid 1px;
+}
+.wbl {
+font-size: 0;
+}
+.fl {
+float: left;
+}
+.wbr {
+padding-left: 44px;
+}
+.wbom {
+color: #999;
+font-size: 14px;
+}
+a:visited, a:active {
+color: #4C577D;
+}
+a {
+text-decoration: none;
+color: #4E5980;
+}
+
+.wbpic .wbpic_l {
+font-size: 12px;
+ttext-align: center;
+}
+.wbpic .omg {
+display: inline-block;
+width: 50px;
+height: 20px;
+line-height: 20px;
+text-align: left;
+margin-left: 10px;
+color: #2177B3;
+}
+.usergx {
+position: relative;
+background: #EFF3F5;
+-webkit-box-shadow: rgba(0, 0, 0, 0.1) 0 -1px 3px inset;
+overflow: hidden;
+}
+.reproclo {
+position: absolute;
+right: 10px;
+font-size: 20px;
+line-height: 15px;
+color: #AFC5D2;
+width: 20px;
+text-align: right;
+top: 12px;
+z-index: 100;
+}
+.user_rm {
+padding-left: 60px;
+}
+.user_dm {
+overflow: hidden;
+padding: 10px 0;
+}
+.user_dm p {
+font-size: 12px;
+}
+.user_nick {
+font-size: 14px;
+font-weight: bolder;
+}
+.user_att, .user_atted {
+margin-left: 5px;
+float: right;
+border: #B4CEDB solid 1px;
+-webkit-border-radius: 3px;
+border-radius: 3px;
+background: -webkit-gradient(linear,0 0,0 100%,from(#F3FAFF),to(#DEEFFF));
+font-size: 12px;
+font-weight: bold;
+padding: 3px 10px;
+-webkit-box-shadow: white 0 1px 0 inset;
+margin-right: 25px;
+}
+.newwb a {
+font-size: 14px;
+border: #EEE4AA solid 1px;
+display: block;
+background: #FFFBD6;
+text-align: center;
+color: #960;
+height: 28px;
+line-height: 28px;
+text-shadow: white 0 1px 0;
+-webkit-border-radius: 3px;
+}
+.wbtil .vip {
+color: #999;
+font-size: 14px;
+}
+.fl {
+float: left;
+}
+.fr {
+float: right;
+}
+.ctrea {
+background: #F8F9F9;
+overflow: hidden;
+margin-top:38px;
+}
+.wbtil {
+overflow: hidden;
+}
+.wb_opts {
+text-align: right;
+clear: both;
+}
+.wbom .float_like, .taby .float_like {
+display: inline-block;
+color: #999;
+font-size: 14px;
+position: absolute;
+z-index: 200;
+display: none;
+height: 20px;
+width: 16px;
+}
+.wbom .wb_pst {
+background: url(http://u1.sinaimg.cn/upload/h5/img/pst/like_icon_s.png) 0 1px no-repeat;
+}
+.wbom .wb_opts a {
+display: inline-block;
+padding-left: 15px;
+position: relative;
+}
+.wbom .wb_rpt {
+background: url(http://u1.sinaimg.cn/upload/h5icons/wf_rpt_s.png) no-repeat left center;
+}
+strong, b {
+font-weight: bold;
+}
+Inherited from a.wb_rpt
+.wbom .wb_rpt, .wbom .wb_cmt, .wbom .wb_more, .wbom .wb_pst {
+line-height: 16px;
+}
+.wbom .wb_cmt {
+background: url(http://u1.sinaimg.cn/upload/h5icons/wf_cmt_s.png) left 3px no-repeat;
+}
+.wbom .wb_more {
+background: url(http://u1.sinaimg.cn/upload/h5icons/wf_m_s.png) no-repeat left center;
+}
+dl {
+display: block;
+-webkit-margin-before: 1em;
+-webkit-margin-after: 1em;
+-webkit-margin-start: 0px;
+-webkit-margin-end: 0px;
+}
+
+    </style>
+</head>
+<body class="theme">
+    <div class="header">
+    </div>
+    <div id="indexwb_0" class="ctrea">
+        <div id="usergx" class="usergx hid" style="display: none;">
+            <!--<h2><a href="#">可能感兴趣的人</a><a href="javascript:;">×</a></h2>-->
+            <a class="reproclo" href="javascript:;">×</a>
+            <!--<div class="user_line"></div>-->
+            <div class="user_slide">
+                <div id="user_slide" class="slide_m">
+                    <!--<div class="user_dm">                        <a class="user_tx" href="#"><img src="http://tp3.sinaimg.cn/1671526850/50/5599152040/0"/></a>                            <div class="user_rm">                            <a class="user_nick" href="#">D调的尛阳ooO</a>                                <a class="user_att" href="#">关注TA</a>                                <p>你的好友 马扎俞  、tim果 等4人与他互相关注</p>                            </div>                        </div>                        -->
+                    <div class="user_load">
+                        <div>
+                        </div>
+                    </div>
+                </div>
+                <!--<a class="slide_l" href="javascript:;"></a>                    <a class="slide_r" href="javascript:;"></a>-->
+            </div>
+            <div id="carousel_dots">
+            </div>
+        </div>
+        <div id="syrec" class="usergx hid" style="display: block;">
+            <a class="reproclo" href="javascript:;">×</a><div class="user_slide">
+                <div id="sy_slide" class="slide_m" style="overflow: hidden; -webkit-box-orient: vertical;
+                    display: -webkit-box;">
+                    <div style="display: -webkit-box; -webkit-box-flex: 1; -webkit-transform: translate3d(0px, 0px, 0);
+                        -webkit-transition: 50ms linear; -webkit-transform-style: preserve-3d; width: 500%;
+                        height: 100%; min-height: 100%;">
+                        <!--<div class="user_dm"><a class="user_tx" href="#"><img src="http://tp3.sinaimg.cn/1671526850/50/5599152040/0"/></a><div class="user_rm"><a class="user_nick" href="#">D调的尛阳ooO</a><a class="user_att" href="#">关注TA</a><p>你的好友 马扎俞  、tim果 等4人与他互相关注</p></div></div>-->
+                        <div class="user_dm" aid="undefined" style="width: 20%; height: 100%;">
+                            <a class="user_tx" href="http://view.sina.cn/friend.php?gsid=3_58a564c88d0e201417ff9ed00e42f62e41293a&amp;clickfrom=wb_icon_1004476625_h5"
+                                target="_blank">
+                                <img src="http://r3.sinaimg.cn/10000/2012/0525/6c/a/81206427/50x50x100x0.gif"></a><div
+                                    class="user_rm">
+                                    <a class="user_att" href="http://view.sina.cn/article.php?id=4541&amp;section_id=1469&amp;view_back=weibo&amp;gsid=3_58a564c88d0e201417ff9ed00e42f62e41293a&amp;clickfrom=wb_check_1004476625_h5"
+                                        target="_blank">查看</a><a class="user_nick" href="http://view.sina.cn/article.php?id=4541&amp;section_id=1469&amp;view_back=weibo&amp;gsid=3_58a564c88d0e201417ff9ed00e42f62e41293a&amp;clickfrom=wb_art_1004476625_h5"
+                                            target="_blank">SOHO中国：从好孩子到坏孩子</a><p>
+                                                <a href="/u/1774501890">@新浪尚品<img alt="" src="http://u1.sinaimg.cn/upload/2011/07/28/5337.gif"></a>&nbsp;&nbsp;在微博分享了这篇文章</p>
+                                </div>
+                        </div>
+                        <div class="user_dm" aid="undefined" style="width: 20%; height: 100%;">
+                            <a class="user_tx" href="http://view.sina.cn/friend.php?gsid=3_58a564c88d0e201417ff9ed00e42f62e41293a&amp;clickfrom=wb_icon_1004476625_h5"
+                                target="_blank">
+                                <img src="http://r3.sinaimg.cn/10000/2012/0525/6c/a/81206427/50x50x100x0.gif"></a><div
+                                    class="user_rm">
+                                    <a class="user_att" href="http://view.sina.cn/article.php?id=3514102430908125&amp;section_id=w_2286908003&amp;view_back=weibo&amp;gsid=3_58a564c88d0e201417ff9ed00e42f62e41293a&amp;clickfrom=wb_check_1004476625_h5"
+                                        target="_blank">查看</a><a class="user_nick" href="http://view.sina.cn/article.php?id=3514102430908125&amp;section_id=w_2286908003&amp;view_back=weibo&amp;gsid=3_58a564c88d0e201417ff9ed00e42f62e41293a&amp;clickfrom=wb_art_1004476625_h5"
+                                            target="_blank">小学生神级作文网络走红逻辑强大叹为观止(图)</a><p>
+                                                <a href="/u/2286908003">@人民网<img alt="" src="http://u1.sinaimg.cn/upload/2011/07/28/5337.gif"></a>&nbsp;&nbsp;在微博分享了这篇文章</p>
+                                </div>
+                        </div>
+                        <div class="user_dm" aid="undefined" style="width: 20%; height: 100%;">
+                            <a class="user_tx" href="http://view.sina.cn/friend.php?gsid=3_58a564c88d0e201417ff9ed00e42f62e41293a&amp;clickfrom=wb_icon_1004476625_h5"
+                                target="_blank">
+                                <img src="http://r3.sinaimg.cn/10000/2012/0525/6c/a/81206427/50x50x100x0.gif"></a><div
+                                    class="user_rm">
+                                    <a class="user_att" href="http://view.sina.cn/article.php?id=17371&amp;section_id=5&amp;view_back=weibo&amp;gsid=3_58a564c88d0e201417ff9ed00e42f62e41293a&amp;clickfrom=wb_check_1004476625_h5"
+                                        target="_blank">查看</a><a class="user_nick" href="http://view.sina.cn/article.php?id=17371&amp;section_id=5&amp;view_back=weibo&amp;gsid=3_58a564c88d0e201417ff9ed00e42f62e41293a&amp;clickfrom=wb_art_1004476625_h5"
+                                            target="_blank">十大陨落的IT消费类电子产品公司</a><p>
+                                                <a href="/u/1894021352">@威锋网<img alt="" src="http://u1.sinaimg.cn/upload/2011/07/28/5337.gif"></a>&nbsp;&nbsp;在微博分享了这篇文章</p>
+                                </div>
+                        </div>
+                        <div class="user_dm" aid="undefined" style="width: 20%; height: 100%;">
+                            <a class="user_tx" href="http://view.sina.cn/friend.php?gsid=3_58a564c88d0e201417ff9ed00e42f62e41293a&amp;clickfrom=wb_icon_1004476625_h5"
+                                target="_blank">
+                                <img src="http://r3.sinaimg.cn/10000/2012/0525/6c/a/81206427/50x50x100x0.gif"></a><div
+                                    class="user_rm">
+                                    <a class="user_att" href="http://view.sina.cn/article.php?id=10246&amp;section_id=964&amp;view_back=weibo&amp;gsid=3_58a564c88d0e201417ff9ed00e42f62e41293a&amp;clickfrom=wb_check_1004476625_h5"
+                                        target="_blank">查看</a><a class="user_nick" href="http://view.sina.cn/article.php?id=10246&amp;section_id=964&amp;view_back=weibo&amp;gsid=3_58a564c88d0e201417ff9ed00e42f62e41293a&amp;clickfrom=wb_art_1004476625_h5"
+                                            target="_blank">各地公益WiFi频遭吐槽：北京慢上海常断线</a><p>
+                                                <a href="/u/1642512402">@中国新闻周刊<img alt="" src="http://u1.sinaimg.cn/upload/2011/07/28/5337.gif"></a>&nbsp;&nbsp;在微博分享了这篇文章</p>
+                                </div>
+                        </div>
+                        <div class="user_load" style="width: 20%; height: 100%;">
+                            <div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="sycarousel_dots" style="width: 105px; height: 15px;">
+                <div id="sy_slide_0" class="carousel_pged">
+                </div>
+                <div style="width: 20px; height: 5px; float: left;">
+                    &nbsp;</div>
+                <div id="sy_slide_1" class="carousel_pg">
+                </div>
+                <div style="width: 20px; height: 5px; float: left;">
+                    &nbsp;</div>
+                <div id="sy_slide_2" class="carousel_pg">
+                </div>
+                <div style="width: 20px; height: 5px; float: left;">
+                    &nbsp;</div>
+                <div id="sy_slide_3" class="carousel_pg">
+                </div>
+                <div style="width: 20px; height: 5px; float: left;">
+                    &nbsp;</div>
+                <div id="sy_slide_4" class="carousel_pg">
+                </div>
+            </div>
+        </div>
+        <div id="list">
+            <div class="newwb">
+                <a href="javascript:void(0)" onclick="shownewwb(this,'3514460180441117')">有新微博，点击查看</a></div>
+            <div id="3514460180441117" class="mlist" data-uid="1718455577">
+                <div class="wbl fl">
+                    <a href="http://m.weibo.cn/u/1718455577?" style="">
+                        <img class="usertx picani" src="http://tp2.sinaimg.cn/1718455577/30/5646101360/0"
+                            data="http://tp2.sinaimg.cn/1718455577/30/5646101360/0"></a></div>
+                <div class="wbr ">
+                    <div class="wbtil">
+                        <div class="fl">
+                            <a href="http://m.weibo.cn/u/1718455577?">美丽说</a>
+                            <img src="http://u1.sinaimg.cn/upload/2011/07/28/5337.gif" alt="v"></div>
+                        <span class="fr vip">9分钟前</span></div>
+                    <p class="wb_txt">
+                        【TOP50·毛衣】有木有一种温暖给了你幸福感？是父母的一句话？还是恋人的一副手套？又或是外婆的一件毛衣？来这逛&gt;&gt;&gt;<a target="_blank"
+                            href="http://m.weibo.cn/sinaurl?u=http%3A%2F%2Ft.cn%2FzjLS2rw&amp;tmid=3514460180441117">http://t.cn/zjLS2rw</a></p>
+                    <div class="wbpic">
+                        <div class="wbpic_l">
+                            <a class="loadimg" pid="undefined" href="javascript:;" onclick="showpic(this,'http://wp3.sina.cn/wap320/666d8d19jw1dz1jacj6lzj.jpg','http://wp3.sina.cn/woriginal/666d8d19jw1dz1jacj6lzj.jpg')"
+                                style="">
+                                <img class="wbimg picani" src="http://wp3.sina.cn/wap128/666d8d19jw1dz1jacj6lzj.jpg"
+                                    data="http://wp3.sina.cn/wap128/666d8d19jw1dz1jacj6lzj.jpg"></a><a class="omg" href="javascript:orgpic('http://wp3.sina.cn/woriginal/666d8d19jw1dz1jacj6lzj.jpg',1)">原图</a></div>
+                    </div>
+                    <div class="wbom">
+                        <div class="fl">
+                            来自美丽说</div>
+                        <div class="wb_opts ">
+                            <span class="float_like"></span><a href="javascript:;" class="wb_pst" data="pst_icon"
+                                onclick="showPosture(event,this,&quot;3514460180441117&quot;,&quot;undefined&quot;,&quot;&quot;)">
+                                &nbsp;<span class="pst_num" rnum="0"></span></a><a href="javascript:;" onclick="xtransmit(event,this,'1718455577','3514460180441117','z64aS1QKN','美丽说','','','','undefined','')"
+                                    class="wb_rpt">&nbsp;<b>13</b></a><a href="javascript:;" class="wb_cmt" onclick="xlist(event,this,'1718455577','3514460180441117','美丽说','','undefined','z64aS1QKN','')">&nbsp;<b>6</b></a><a
+                                        id="more" data-hiddenblocksource="0" class="wb_more" href="javascript:;" onclick="more(this,'1718455577','3514460180441117','美丽说','她','0')"
+                                        data-faved="0">&nbsp;<b></b></a></div>
+                    </div>
+                </div>
+            </div>
+            <div id="3514459878271564" class="mlist" data-uid="2196734667">
+                <div class="wbl fl">
+                    <a href="http://m.weibo.cn/u/2196734667?" style="">
+                        <img class="usertx picani" src="http://tp4.sinaimg.cn/2196734667/30/5623638681/1"
+                            data="http://tp4.sinaimg.cn/2196734667/30/5623638681/1"></a></div>
+                <div class="wbr ">
+                    <div class="wbtil">
+                        <div class="fl">
+                            <a href="http://m.weibo.cn/u/2196734667?">微博位置服务平台</a>
+                            <img src="http://u1.sinaimg.cn/upload/2011/07/28/5337.gif" alt="v"></div>
+                        <span class="fr vip">11分钟前</span></div>
+                    <p class="wb_txt">
+                        <a href="http://weibo.cn/search/mblog/?keyword=%E5%9F%8E%E5%B8%82%E7%83%AD%E7%82%B9"
+                            class="k">#城市热点#</a> 【冬夜的街角】在石家庄市中华大街和永安路交叉口东北角的一个路口，每晚都会有个跪在地上写作业陪爷爷卖面包的女孩（媛媛）。孩子父母是外来务工人员，母亲刚做完手术用尽家里积蓄，父亲是送水工。面包5元4个，如果您路过这里，不妨支持一下<img
+                                alt="话筒" src="http://img.t.sinajs.cn/t35/style/images/common/face/ext/normal/1b/m_org.gif">
+                        <a target="_blank" href="http://m.weibo.cn/sinaurl?u=http%3A%2F%2Ft.cn%2FzjLSwKR&amp;tmid=3514459878271564">
+                            http://t.cn/zjLSwKR</a></p>
+                    <div class="wbpic">
+                        <div class="wbpic_l">
+                            <a class="loadimg" pid="undefined" href="javascript:;" onclick="showpic(this,'http://wp4.sina.cn/wap320/82ef82cbjw1dz1j7a0sw5j.jpg','http://wp4.sina.cn/woriginal/82ef82cbjw1dz1j7a0sw5j.jpg')"
+                                style="">
+                                <img class="wbimg picani" src="http://wp4.sina.cn/wap128/82ef82cbjw1dz1j7a0sw5j.jpg"
+                                    data="http://wp4.sina.cn/wap128/82ef82cbjw1dz1j7a0sw5j.jpg"></a><a class="omg" href="javascript:orgpic('http://wp4.sina.cn/woriginal/82ef82cbjw1dz1j7a0sw5j.jpg',1)">原图</a></div>
+                    </div>
+                    <div class="wbom">
+                        <div class="fl">
+                            来自微博位置</div>
+                        <div class="wb_opts ">
+                            <span class="float_like"></span><a href="javascript:;" class="wb_pst" data="pst_icon"
+                                onclick="showPosture(event,this,&quot;3514459878271564&quot;,&quot;undefined&quot;,&quot;&quot;)">
+                                &nbsp;<span class="pst_num" rnum="0"></span></a><a href="javascript:;" onclick="xtransmit(event,this,'2196734667','3514459878271564','z64anyHOk','微博位置服务平台','','','','undefined','')"
+                                    class="wb_rpt">&nbsp;<b>57</b></a><a href="javascript:;" class="wb_cmt" onclick="xlist(event,this,'2196734667','3514459878271564','微博位置服务平台','','undefined','z64anyHOk','')">&nbsp;<b>23</b></a><a
+                                        id="more" data-hiddenblocksource="0" class="wb_more" href="javascript:;" onclick="more(this,'2196734667','3514459878271564','微博位置服务平台','他','0')"
+                                        data-faved="0">&nbsp;<b></b></a></div>
+                    </div>
+                </div>
+            </div>
+            <div id="3514456531275096" class="mlist" data-uid="2310686612">
+                <div class="wbl fl">
+                    <a href="http://m.weibo.cn/u/2310686612?" style="">
+                        <img class="usertx picani" src="http://tp1.sinaimg.cn/2310686612/30/5629000745/1"
+                            data="http://tp1.sinaimg.cn/2310686612/30/5629000745/1"></a></div>
+                <div class="wbr ">
+                    <div class="wbtil">
+                        <div class="fl">
+                            <a href="http://m.weibo.cn/u/2310686612?">浦东张江</a>
+                        </div>
+                        <span class="fr vip">24分钟前</span></div>
+                    <p class="wb_txt">
+                        【张江偷车贼】近期，有犯罪团伙流窜于张江高科技园区，大肆行窃高档自行车，活动猖獗。在我们浦东软件园区也有数起案发。犯罪嫌疑人作案手法隐蔽，专门针对价值较高的山地车行窃，作案时间往往不超过15秒钟。两人均为男性，约20—25岁，戴眼镜，外表文雅，背双肩包。目前嫌犯已被警方锁定。</p>
+                    <div class="wbpic">
+                        <div class="wbpic_l">
+                            <a class="loadimg" pid="undefined" href="javascript:;" onclick="showpic(this,'http://wp1.sina.cn/wap320/89ba4794gw1dz1iv8vko6j.jpg','http://wp1.sina.cn/woriginal/89ba4794gw1dz1iv8vko6j.jpg')"
+                                style="">
+                                <img class="wbimg picani" src="http://wp1.sina.cn/wap128/89ba4794gw1dz1iv8vko6j.jpg"
+                                    data="http://wp1.sina.cn/wap128/89ba4794gw1dz1iv8vko6j.jpg"></a><a class="omg" href="javascript:orgpic('http://wp1.sina.cn/woriginal/89ba4794gw1dz1iv8vko6j.jpg',1)">原图</a></div>
+                    </div>
+                    <div class="wbom">
+                        <div class="fl">
+                            来自新浪微博</div>
+                        <div class="wb_opts ">
+                            <span class="float_like"></span><a href="javascript:;" class="wb_pst" data="pst_icon"
+                                onclick="showPosture(event,this,&quot;3514456531275096&quot;,&quot;undefined&quot;,&quot;&quot;)">
+                                &nbsp;<span class="pst_num" rnum="0"></span></a><a href="javascript:;" onclick="xtransmit(event,this,'2310686612','3514456531275096','z644Z5lI4','浦东张江','','','','undefined','')"
+                                    class="wb_rpt">&nbsp;<b>25</b></a><a href="javascript:;" class="wb_cmt" onclick="xlist(event,this,'2310686612','3514456531275096','浦东张江','','undefined','z644Z5lI4','')">&nbsp;<b>6</b></a><a
+                                        id="more" data-hiddenblocksource="1" class="wb_more" href="javascript:;" onclick="more(this,'2310686612','3514456531275096','浦东张江','他','0')"
+                                        data-faved="0">&nbsp;<b></b></a></div>
+                    </div>
+                </div>
+            </div>
+            <div id="3514456393243097" class="mlist" data-uid="1718455577">
+                <div class="wbl fl">
+                    <a href="http://m.weibo.cn/u/1718455577?" style="">
+                        <img class="usertx picani" src="http://tp2.sinaimg.cn/1718455577/30/5646101360/0"
+                            data="http://tp2.sinaimg.cn/1718455577/30/5646101360/0"></a></div>
+                <div class="wbr ">
+                    <div class="wbtil">
+                        <div class="fl">
+                            <a href="http://m.weibo.cn/u/1718455577?">美丽说</a>
+                            <img src="http://u1.sinaimg.cn/upload/2011/07/28/5337.gif" alt="v"></div>
+                        <span class="fr vip">24分钟前</span></div>
+                    <p class="wb_txt">
+                        【耍大牌.代购】漂洋过海的异地恋，无尽的等待，所有的累积，都为了把你带回家！来这逛&gt;&gt;&gt;<a target="_blank" href="http://m.weibo.cn/sinaurl?u=http%3A%2F%2Ft.cn%2FzjLGmE8&amp;tmid=3514456393243097">http://t.cn/zjLGmE8</a></p>
+                    <div class="wbpic">
+                        <div class="wbpic_l">
+                            <a class="loadimg" pid="undefined" href="javascript:;" onclick="showpic(this,'http://wp4.sina.cn/wap320/666d8d19jw1dz1iuovhsqj.jpg','http://wp4.sina.cn/woriginal/666d8d19jw1dz1iuovhsqj.jpg')"
+                                style="">
+                                <img class="wbimg picani" src="http://wp4.sina.cn/wap128/666d8d19jw1dz1iuovhsqj.jpg"
+                                    data="http://wp4.sina.cn/wap128/666d8d19jw1dz1iuovhsqj.jpg"></a><a class="omg" href="javascript:orgpic('http://wp4.sina.cn/woriginal/666d8d19jw1dz1iuovhsqj.jpg',1)">原图</a></div>
+                    </div>
+                    <div class="wbom">
+                        <div class="fl">
+                            来自美丽说</div>
+                        <div class="wb_opts ">
+                            <span class="float_like"></span><a href="javascript:;" class="wb_pst" data="pst_icon"
+                                onclick="showPosture(event,this,&quot;3514456393243097&quot;,&quot;undefined&quot;,&quot;&quot;)">
+                                &nbsp;<span class="pst_num" rnum="0"></span></a><a href="javascript:;" onclick="xtransmit(event,this,'1718455577','3514456393243097','z644LdBG1','美丽说','','','','undefined','')"
+                                    class="wb_rpt">&nbsp;<b>11</b></a><a href="javascript:;" class="wb_cmt" onclick="xlist(event,this,'1718455577','3514456393243097','美丽说','','undefined','z644LdBG1','')">&nbsp;<b>5</b></a><a
+                                        id="more" data-hiddenblocksource="0" class="wb_more" href="javascript:;" onclick="more(this,'1718455577','3514456393243097','美丽说','她','0')"
+                                        data-faved="0">&nbsp;<b></b></a></div>
+                    </div>
+                </div>
+            </div>
+            <div id="3514454681415956" class="mlist" data-uid="1087770692">
+                <div class="wbl fl">
+                    <a href="http://m.weibo.cn/u/1087770692?" style="">
+                        <img class="usertx picani" src="http://tp1.sinaimg.cn/1087770692/30/5647253035/1"
+                            data="http://tp1.sinaimg.cn/1087770692/30/5647253035/1"></a></div>
+                <div class="wbr ">
+                    <div class="wbtil">
+                        <div class="fl">
+                            <a href="http://m.weibo.cn/u/1087770692?">陈坤</a>
+                            <img src="http://u1.sinaimg.cn/upload/2011/07/28/5338.gif" alt="v"><img src="http://u1.sinaimg.cn/upload/h5/img/hyzs/donate_btn_s.png"
+                                alt="v"></div>
+                        <span class="fr vip">31分钟前</span></div>
+                    <p class="wb_txt">
+                        心疼！</p>
+                    <dl id="3514448058314836" class="tip">
+                        <dt></dt>
+                        <dd>
+                            <a href="http://m.weibo.cn/u/1624364062?">新浪拍客</a>
+                            <img src="http://u1.sinaimg.cn/upload/2011/07/28/5337.gif" alt="v"><p>
+                                【8岁小女孩冬夜街边跪地写作业 陪爷爷卖面包】近日，一条微博牵动了网民的心：在石家庄的一个路口，每晚都会有个跪在地上写作业，陪爷爷卖面包的女孩。拍客前去采访得知，她叫媛媛，今年八岁，住的出租屋虽然灰暗阴冷，但她学习用功，成绩一直是班上前五名……<a
+                                    target="_blank" href="http://m.weibo.cn/sinaurl?u=http%3A%2F%2Ft.cn%2FzjLX67g&amp;tmid=3514454681415956">http://t.cn/zjLX67g</a></p>
+                            <div>
+                                <a href="javascript:orig('1624364062','3514448058314836',1)">原文转发 1823</a> | <a href="javascript:orig('1624364062','3514448058314836',2)">
+                                    原文评论 214</a></div>
+                            <div class="wbpic">
+                                <div class="wbpic_l">
+                                    <a class="loadimg" href="javascript:;" pid="undefined" onclick="showpic(this,'http://wp3.sina.cn/wap320/60d1d41ejw1dz1hq7bgvij.jpg','http://wp3.sina.cn/woriginal/60d1d41ejw1dz1hq7bgvij.jpg')"
+                                        style="">
+                                        <img class="wbimg picani" src="http://wp3.sina.cn/wap128/60d1d41ejw1dz1hq7bgvij.jpg"
+                                            data="http://wp3.sina.cn/wap128/60d1d41ejw1dz1hq7bgvij.jpg"></a><a class="omg" href="javascript:orgpic('http://wp3.sina.cn/woriginal/60d1d41ejw1dz1hq7bgvij.jpg',1)">原图</a></div>
+                            </div>
+                        </dd>
+                    </dl>
+                    <div class="wbom">
+                        <div class="fl">
+                            来自iPad客户端</div>
+                        <div class="wb_opts ">
+                            <span class="float_like"></span><a href="javascript:;" class="wb_pst" data="pst_icon"
+                                onclick="showPosture(event,this,&quot;3514454681415956&quot;,&quot;undefined&quot;,&quot;&quot;)">
+                                &nbsp;<span class="pst_num" rnum="10">10</span></a><a href="javascript:;" onclick="xtransmit(event,this,'1087770692','3514454681415956','z64205Wm0','陈坤','1624364062','3514448058314836','新浪拍客','undefined','')"
+                                    class="wb_rpt">&nbsp;<b>1465</b></a><a href="javascript:;" class="wb_cmt" onclick="xlist(event,this,'1087770692','3514454681415956','陈坤','新浪拍客','undefined','z64205Wm0','')">&nbsp;<b>473</b></a><a
+                                        id="more" data-hiddenblocksource="1" class="wb_more" href="javascript:;" onclick="more(this,'1087770692','3514454681415956','陈坤','他','0')"
+                                        data-faved="0">&nbsp;<b></b></a></div>
+                    </div>
+                </div>
+            </div>
+            <div id="3514454312285893" class="mlist" data-uid="1087770692">
+                <div class="wbl fl">
+                    <a href="http://m.weibo.cn/u/1087770692?" style="">
+                        <img class="usertx picani" src="http://tp1.sinaimg.cn/1087770692/30/5647253035/1"
+                            data="http://tp1.sinaimg.cn/1087770692/30/5647253035/1"></a></div>
+                <div class="wbr ">
+                    <div class="wbtil">
+                        <div class="fl">
+                            <a href="http://m.weibo.cn/u/1087770692?">陈坤</a>
+                            <img src="http://u1.sinaimg.cn/upload/2011/07/28/5338.gif" alt="v"><img src="http://u1.sinaimg.cn/upload/h5/img/hyzs/donate_btn_s.png"
+                                alt="v"></div>
+                        <span class="fr vip">33分钟前</span></div>
+                    <p class="wb_txt">
+                        //<a href="http://m.weibo.cn/n/往西_宁静的方向">@往西_宁静的方向</a>: 行走带来的，是走在路上与自己对话时，内心所感受到的安静。<img
+                            alt="呵呵" src="http://img.t.sinajs.cn/t35/style/images/common/face/ext/normal/ac/smilea_org.gif"></p>
+                    <dl id="3514432279394489" class="tip">
+                        <dt></dt>
+                        <dd>
+                            <a href="http://m.weibo.cn/u/2165386595?">铁葫芦图书</a>
+                            <img src="http://u1.sinaimg.cn/upload/2011/07/28/5337.gif" alt="v"><p>
+                                【1点半读一点】在都市生活里，走路已成了奢侈品。十公里，十来站公交的距离，你愿意徒步一趟吗？几千人相约“禁语”，安静地行走十公里，又会是怎样奇妙的氛围？听听<a
+                                    href="http://m.weibo.cn/n/劳博">@劳博</a> 的体验。摘自 <a href="http://m.weibo.cn/n/陈坤">@陈坤</a>
+                                出品《<a href="http://m.weibo.cn/n/往西_宁静的方向">@往西_宁静的方向</a> 》。转发分享这条微博，有机会获赠本书，3个名额，截至11月21日午12点。</p>
+                            <div>
+                                <a href="javascript:orig('2165386595','3514432279394489',1)">原文转发 496</a> | <a href="javascript:orig('2165386595','3514432279394489',2)">
+                                    原文评论 128</a></div>
+                            <div class="wbpic">
+                                <div class="wbpic_l">
+                                    <a class="loadimg" href="javascript:;" pid="undefined" onclick="showpic(this,'http://wp2.sina.cn/wap320/81112d63jw1dz1g2zrihyj.jpg','http://wp2.sina.cn/woriginal/81112d63jw1dz1g2zrihyj.jpg')"
+                                        style="">
+                                        <img class="wbimg picani" src="http://wp2.sina.cn/wap128/81112d63jw1dz1g2zrihyj.jpg"
+                                            data="http://wp2.sina.cn/wap128/81112d63jw1dz1g2zrihyj.jpg"></a><a class="omg" href="javascript:orgpic('http://wp2.sina.cn/woriginal/81112d63jw1dz1g2zrihyj.jpg',1)">原图</a></div>
+                            </div>
+                        </dd>
+                    </dl>
+                    <div class="wbom">
+                        <div class="fl">
+                            来自iPad客户端</div>
+                        <div class="wb_opts ">
+                            <span class="float_like"></span><a href="javascript:;" class="wb_pst" data="pst_icon"
+                                onclick="showPosture(event,this,&quot;3514454312285893&quot;,&quot;undefined&quot;,&quot;&quot;)">
+                                &nbsp;<span class="pst_num" rnum="6">6</span></a><a href="javascript:;" onclick="xtransmit(event,this,'1087770692','3514454312285893','z641p9AFf','陈坤','2165386595','3514432279394489','铁葫芦图书','undefined','')"
+                                    class="wb_rpt">&nbsp;<b>263</b></a><a href="javascript:;" class="wb_cmt" onclick="xlist(event,this,'1087770692','3514454312285893','陈坤','铁葫芦图书','undefined','z641p9AFf','')">&nbsp;<b>121</b></a><a
+                                        id="more" data-hiddenblocksource="1" class="wb_more" href="javascript:;" onclick="more(this,'1087770692','3514454312285893','陈坤','他','0')"
+                                        data-faved="0">&nbsp;<b></b></a></div>
+                    </div>
+                </div>
+            </div>
+            <div id="3514452618451973" class="mlist" data-uid="1718455577">
+                <div class="wbl fl">
+                    <a href="http://m.weibo.cn/u/1718455577?" style="">
+                        <img class="usertx picani" src="http://tp2.sinaimg.cn/1718455577/30/5646101360/0"
+                            data="http://tp2.sinaimg.cn/1718455577/30/5646101360/0"></a></div>
+                <div class="wbr ">
+                    <div class="wbtil">
+                        <div class="fl">
+                            <a href="http://m.weibo.cn/u/1718455577?">美丽说</a>
+                            <img src="http://u1.sinaimg.cn/upload/2011/07/28/5337.gif" alt="v"></div>
+                        <span class="fr vip">39分钟前</span></div>
+                    <p class="wb_txt">
+                        【Top50 · 冬季裤袜】这年头冬天除了秋裤，还有什么不可缺？搭配裙子的话，裤袜是必备！今年格外流行酒红色和湖蓝色毛线裤袜，你有的不？——点击逛更多&gt;&gt;&gt;<a
+                            target="_blank" href="http://m.weibo.cn/sinaurl?u=http%3A%2F%2Ft.cn%2FzjLawug&amp;tmid=3514452618451973">http://t.cn/zjLawug</a>
+                    </p>
+                    <div class="wbpic">
+                        <div class="wbpic_l">
+                            <a class="loadimg" pid="undefined" href="javascript:;" onclick="showpic(this,'http://wp3.sina.cn/wap320/666d8d19jw1dz1if3a39tj.jpg','http://wp3.sina.cn/woriginal/666d8d19jw1dz1if3a39tj.jpg')"
+                                style="">
+                                <img class="wbimg picani" src="http://wp3.sina.cn/wap128/666d8d19jw1dz1if3a39tj.jpg"
+                                    data="http://wp3.sina.cn/wap128/666d8d19jw1dz1if3a39tj.jpg"></a><a class="omg" href="javascript:orgpic('http://wp3.sina.cn/woriginal/666d8d19jw1dz1if3a39tj.jpg',1)">原图</a></div>
+                    </div>
+                    <div class="wbom">
+                        <div class="fl">
+                            来自美丽说</div>
+                        <div class="wb_opts ">
+                            <span class="float_like"></span><a href="javascript:;" class="wb_pst" data="pst_icon"
+                                onclick="showPosture(event,this,&quot;3514452618451973&quot;,&quot;undefined&quot;,&quot;&quot;)">
+                                &nbsp;<span class="pst_num" rnum="0"></span></a><a href="javascript:;" onclick="xtransmit(event,this,'1718455577','3514452618451973','z63YFzsK9','美丽说','','','','undefined','')"
+                                    class="wb_rpt">&nbsp;<b>25</b></a><a href="javascript:;" class="wb_cmt" onclick="xlist(event,this,'1718455577','3514452618451973','美丽说','','undefined','z63YFzsK9','')">&nbsp;<b>54</b></a><a
+                                        id="more" data-hiddenblocksource="0" class="wb_more" href="javascript:;" onclick="more(this,'1718455577','3514452618451973','美丽说','她','0')"
+                                        data-faved="0">&nbsp;<b></b></a></div>
+                    </div>
+                </div>
+            </div>
+            <div id="3514451821384653" class="mlist" data-uid="1249193625">
+                <div class="wbl fl">
+                    <a href="http://m.weibo.cn/u/1249193625?" style="">
+                        <img class="usertx picani" src="http://tp2.sinaimg.cn/1249193625/30/40007835739/1"
+                            data="http://tp2.sinaimg.cn/1249193625/30/40007835739/1"></a></div>
+                <div class="wbr ">
+                    <div class="wbtil">
+                        <div class="fl">
+                            <a href="http://m.weibo.cn/u/1249193625?">乐嘉</a>
+                            <img src="http://u1.sinaimg.cn/upload/2011/07/28/5338.gif" alt="v"></div>
+                        <span class="fr vip">43分钟前</span></div>
+                    <p class="wb_txt">
+                        12月17日，悉尼市政厅见。你若没来的真正原因归根結底只有一个，你没兴趣看谁看懂想誰想通，你已经习惯了将掌声送给别人，一辈子为他人欢呼，还没学会如何吸取别人的力量来为自己而用。</p>
+                    <dl id="3514411845349675" class="tip">
+                        <dt></dt>
+                        <dd>
+                            <a href="http://m.weibo.cn/u/1924921841?">澳视传媒</a>
+                            <p>
+                                乐嘉为何在海外受欢迎:没有过多花俏的表演，却迎来了一片叫好声。正如<a href="http://m.weibo.cn/n/乐嘉">@乐嘉</a> 开场对观众们的许诺：“一定要让来到现场的观众得到比期望的更多，让因各种原因没有来到现场的人后悔。”<a
+                                    target="_blank" href="http://m.weibo.cn/sinaurl?u=http%3A%2F%2Ft.cn%2FzjLIZ5w&amp;tmid=3514451821384653">http://t.cn/zjLIZ5w</a>
+                                悉尼专场订票热线：0424285666</p>
+                            <div>
+                                <a href="javascript:orig('1924921841','3514411845349675',1)">原文转发 168</a> | <a href="javascript:orig('1924921841','3514411845349675',2)">
+                                    原文评论 41</a></div>
+                            <div class="wbpic">
+                                <div class="wbpic_l">
+                                    <a class="loadimg" href="javascript:;" pid="undefined" onclick="showpic(this,'http://wp1.sina.cn/wap320/72bbf9f1gw1dz1dep5h2tj.jpg','http://wp1.sina.cn/woriginal/72bbf9f1gw1dz1dep5h2tj.jpg')"
+                                        style="">
+                                        <img class="wbimg picani" src="http://wp1.sina.cn/wap128/72bbf9f1gw1dz1dep5h2tj.jpg"
+                                            data="http://wp1.sina.cn/wap128/72bbf9f1gw1dz1dep5h2tj.jpg"></a><a class="omg" href="javascript:orgpic('http://wp1.sina.cn/woriginal/72bbf9f1gw1dz1dep5h2tj.jpg',1)">原图</a></div>
+                            </div>
+                        </dd>
+                    </dl>
+                    <div class="wbom">
+                        <div class="fl">
+                            来自iPhone客户端</div>
+                        <div class="wb_opts ">
+                            <span class="float_like"></span><a href="javascript:;" class="wb_pst" data="pst_icon"
+                                onclick="showPosture(event,this,&quot;3514451821384653&quot;,&quot;undefined&quot;,&quot;&quot;)">
+                                &nbsp;<span class="pst_num" rnum="1">1</span></a><a href="javascript:;" onclick="xtransmit(event,this,'1249193625','3514451821384653','z63Xo5Od7','乐嘉','1924921841','3514411845349675','澳视传媒','undefined','')"
+                                    class="wb_rpt">&nbsp;<b>140</b></a><a href="javascript:;" class="wb_cmt" onclick="xlist(event,this,'1249193625','3514451821384653','乐嘉','澳视传媒','undefined','z63Xo5Od7','')">&nbsp;<b>173</b></a><a
+                                        id="more" data-hiddenblocksource="1" class="wb_more" href="javascript:;" onclick="more(this,'1249193625','3514451821384653','乐嘉','他','0')"
+                                        data-faved="0">&nbsp;<b></b></a></div>
+                    </div>
+                </div>
+            </div>
+            <div id="3514449195351051" class="mlist" data-uid="2016713117">
+                <div class="wbl fl">
+                    <a href="http://m.weibo.cn/u/2016713117?" style="">
+                        <img class="usertx picani" src="http://tp2.sinaimg.cn/2016713117/30/5629601968/0"
+                            data="http://tp2.sinaimg.cn/2016713117/30/5629601968/0"></a></div>
+                <div class="wbr ">
+                    <div class="wbtil">
+                        <div class="fl">
+                            <a href="http://m.weibo.cn/u/2016713117?">微博客服</a>
+                            <img src="http://u1.sinaimg.cn/upload/2011/07/28/5337.gif" alt="v"></div>
+                        <span class="fr vip">53分钟前</span></div>
+                    <p class="wb_txt">
+                        <a href="http://weibo.cn/search/mblog/?keyword=%E7%8E%A9%E8%BD%AC%E5%BE%AE%E5%8D%9A"
+                            class="k">#玩转微博#</a> 关于悄悄关注：1、悄悄关注不会给对方任何提醒，TA不会知道您对其进行了关注；2、悄悄关注的人只有自己的微博能看到；3、对方粉丝列表中不会有您、您关注列表中也不会有TA；4、如何取消悄悄关注<a
+                                target="_blank" href="http://m.weibo.cn/sinaurl?u=http%3A%2F%2Ft.cn%2FzlsKuJY&amp;tmid=3514449195351051">http://t.cn/zlsKuJY</a>；5、无法悄悄关注的原因：<a
+                                    target="_blank" href="http://m.weibo.cn/sinaurl?u=http%3A%2F%2Ft.cn%2FzlsKn8S&amp;tmid=3514449195351051">http://t.cn/zlsKn8S</a>。总有几个人想要悄悄关注~</p>
+                    <div class="wbpic">
+                        <div class="wbpic_l">
+                            <a class="loadimg" pid="undefined" href="javascript:;" onclick="showpic(this,'http://wp4.sina.cn/wap320/7834999djw1dz1i0owkcsj.jpg','http://wp4.sina.cn/woriginal/7834999djw1dz1i0owkcsj.jpg')"
+                                style="">
+                                <img class="wbimg picani" src="http://wp4.sina.cn/wap128/7834999djw1dz1i0owkcsj.jpg"
+                                    data="http://wp4.sina.cn/wap128/7834999djw1dz1i0owkcsj.jpg"></a><a class="omg" href="javascript:orgpic('http://wp4.sina.cn/woriginal/7834999djw1dz1i0owkcsj.jpg',1)">原图</a></div>
+                    </div>
+                    <div class="wbom">
+                        <div class="fl">
+                            来自专业版微博</div>
+                        <div class="wb_opts ">
+                            <span class="float_like"></span><a href="javascript:;" class="wb_pst" data="pst_icon"
+                                onclick="showPosture(event,this,&quot;3514449195351051&quot;,&quot;undefined&quot;,&quot;&quot;)">
+                                &nbsp;<span class="pst_num" rnum="1">1</span></a><a href="javascript:;" onclick="xtransmit(event,this,'2016713117','3514449195351051','z63T9ms3h','微博客服','','','','undefined','')"
+                                    class="wb_rpt">&nbsp;<b>57</b></a><a href="javascript:;" class="wb_cmt" onclick="xlist(event,this,'2016713117','3514449195351051','微博客服','','undefined','z63T9ms3h','')">&nbsp;<b>38</b></a><a
+                                        id="more" data-hiddenblocksource="0" class="wb_more" href="javascript:;" onclick="more(this,'2016713117','3514449195351051','微博客服','她','0')"
+                                        data-faved="0">&nbsp;<b></b></a></div>
+                    </div>
+                </div>
+            </div>
+            <div id="3514448843183739" class="mlist" data-uid="1718455577">
+                <div class="wbl fl">
+                    <a href="http://m.weibo.cn/u/1718455577?" style="">
+                        <img class="usertx picani" src="http://tp2.sinaimg.cn/1718455577/30/5646101360/0"
+                            data="http://tp2.sinaimg.cn/1718455577/30/5646101360/0"></a></div>
+                <div class="wbr ">
+                    <div class="wbtil">
+                        <div class="fl">
+                            <a href="http://m.weibo.cn/u/1718455577?">美丽说</a>
+                            <img src="http://u1.sinaimg.cn/upload/2011/07/28/5337.gif" alt="v"></div>
+                        <span class="fr vip">54分钟前</span></div>
+                    <p class="wb_txt">
+                        【Top50 · 短靴】短靴风潮一波接一波，姑娘们是更看中鞋子的外形还是质感呢？来这逛&gt;&gt;&gt;<a target="_blank" href="http://m.weibo.cn/sinaurl?u=http%3A%2F%2Ft.cn%2FzjLXCqc&amp;tmid=3514448843183739">http://t.cn/zjLXCqc</a></p>
+                    <div class="wbpic">
+                        <div class="wbpic_l">
+                            <a class="loadimg" pid="undefined" href="javascript:;" onclick="showpic(this,'http://wp1.sina.cn/wap320/666d8d19jw1dz1hzh7ndhj.jpg','http://wp1.sina.cn/woriginal/666d8d19jw1dz1hzh7ndhj.jpg')"
+                                style="">
+                                <img class="wbimg picani" src="http://wp1.sina.cn/wap128/666d8d19jw1dz1hzh7ndhj.jpg"
+                                    data="http://wp1.sina.cn/wap128/666d8d19jw1dz1hzh7ndhj.jpg"></a><a class="omg" href="javascript:orgpic('http://wp1.sina.cn/woriginal/666d8d19jw1dz1hzh7ndhj.jpg',1)">原图</a></div>
+                    </div>
+                    <div class="wbom">
+                        <div class="fl">
+                            来自美丽说</div>
+                        <div class="wb_opts ">
+                            <span class="float_like"></span><a href="javascript:;" class="wb_pst" data="pst_icon"
+                                onclick="showPosture(event,this,&quot;3514448843183739&quot;,&quot;undefined&quot;,&quot;&quot;)">
+                                &nbsp;<span class="pst_num" rnum="0"></span></a><a href="javascript:;" onclick="xtransmit(event,this,'1718455577','3514448843183739','z63SAdmeD','美丽说','','','','undefined','')"
+                                    class="wb_rpt">&nbsp;<b>23</b></a><a href="javascript:;" class="wb_cmt" onclick="xlist(event,this,'1718455577','3514448843183739','美丽说','','undefined','z63SAdmeD','')">&nbsp;<b>14</b></a><a
+                                        id="more" data-hiddenblocksource="0" class="wb_more" href="javascript:;" onclick="more(this,'1718455577','3514448843183739','美丽说','她','0')"
+                                        data-faved="0">&nbsp;<b></b></a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</body>
+</html>
