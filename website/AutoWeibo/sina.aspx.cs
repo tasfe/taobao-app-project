@@ -132,6 +132,8 @@ public partial class AutoWeibo_sian : System.Web.UI.Page
             sina.ThumbnailPictureUrl = entity.ThumbnailPictureUrl;
             sina.MiddleSizePictureUrl = entity.MiddleSizePictureUrl;
             sina.OriginalPictureUrl = entity.OriginalPictureUrl;
+
+            sina.CreateOn = DateTime.Now;
             //sina.GEO = entity.GEO.ToString();
 
             sina.Add();
