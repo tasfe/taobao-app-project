@@ -3,7 +3,6 @@ using System.Data;
 using System.Text;
 using System.Data.OleDb;
 using DBUtility;//请先添加引用
-using Newtonsoft.Json;
 
 namespace weibo.DataAccess
 {
