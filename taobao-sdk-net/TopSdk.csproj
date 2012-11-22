@@ -55,6 +55,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Request\TaobaokeWidgetShopsConvertRequest.cs" />
+    <Compile Include="Response\TaobaokeWidgetShopsConvertResponse.cs" />
     <Compile Include="TopObject.cs" />
     <Compile Include="ITopLogger.cs" />
     <Compile Include="Jayrock\Json\Diagnostics\DebugString.cs" />
