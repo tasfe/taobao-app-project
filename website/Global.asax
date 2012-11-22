@@ -68,12 +68,12 @@
         //objTimer.Enabled = true;
         //objTimer.Elapsed += new ElapsedEventHandler(objTimer_Elapsed);
 
-        SchedulerConfiguration config = new SchedulerConfiguration(1000 * 60* 60*12);
-        config.Jobs.Add(new SampleJob());
-        Scheduler scheduler = new Scheduler(config);
-        System.Threading.ThreadStart myThreadStart = new System.Threading.ThreadStart(scheduler.Start);
-        System.Threading.Thread schedulerThread = new System.Threading.Thread(myThreadStart);
-        schedulerThread.Start();
+        //SchedulerConfiguration config = new SchedulerConfiguration(1000 * 60* 60*12);
+        //config.Jobs.Add(new SampleJob());
+        //Scheduler scheduler = new Scheduler(config);
+        //System.Threading.ThreadStart myThreadStart = new System.Threading.ThreadStart(scheduler.Start);
+        //System.Threading.Thread schedulerThread = new System.Threading.Thread(myThreadStart);
+        //schedulerThread.Start();
     }
 
     void objTimer_Elapsed(object sender, ElapsedEventArgs e)
