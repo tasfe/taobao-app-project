@@ -48,6 +48,9 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\referencs\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Web" />
@@ -63,6 +66,8 @@
     <Compile Include="tb_user_custom.cs" />
     <Compile Include="tb_weibo.cs" />
     <Compile Include="tb_weibo_template.cs" />
+    <Compile Include="tb_sianweibo_gen.cs" />
+    <Compile Include="mirmsg.cs.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Util\ShopUtils.csproj">
