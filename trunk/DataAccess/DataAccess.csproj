@@ -67,7 +67,7 @@
     <Compile Include="tb_weibo.cs" />
     <Compile Include="tb_weibo_template.cs" />
     <Compile Include="tb_sianweibo_gen.cs" />
-    <Compile Include="mirmsg.cs.cs" />
+    <Compile Include="mirmsg.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Util\ShopUtils.csproj">
