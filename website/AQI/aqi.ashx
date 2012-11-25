@@ -29,7 +29,7 @@ public class aqi : IHttpHandler {
         }
         
         string output = JavaScriptConvert.SerializeObject(aqi);
-        context.Response.Write(output);
+        context.Response.Write("jsonpcallback(" + output+")");
     }
 
     protected AQIModel GetAQI()
