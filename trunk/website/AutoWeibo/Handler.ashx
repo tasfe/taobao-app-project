@@ -32,9 +32,9 @@ public class Handler : IHttpHandler {
                 
             al.Add(mm);
         }
-        
 
-        string output = JavaScriptConvert.SerializeObject(al);
+
+        string output = context.Request.QueryString["jsonpcallback"] + "(" + JavaScriptConvert.SerializeObject(al) + ")";
 
 
        
