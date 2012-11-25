@@ -9,5 +9,6 @@ public class Main extends DroidGap {
 	{
 		super.onCreate(bundle); 
 		super.loadUrl("file:///android_asset/www/index.html");
+		super.setIntegerProperty("loadUrlTimeoutValue", 3000); 
 	}
 }
