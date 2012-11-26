@@ -16,20 +16,28 @@ public class aqi : IHttpHandler {
         if (cacheModel == null)
         {
             aqi = GetAQI();
-            context.Cache.Add("AQIModel", aqi, null, DateTime.MaxValue, TimeSpan.FromSeconds(30), System.Web.Caching.CacheItemPriority.High, null);
+            context.Cache.Add("AQIModel", aqi, null, DateTime.Now.AddHours(1), TimeSpan.Zero, System.Web.Caching.CacheItemPriority.High, null);
         }
         else
         {
-            aqi = (AQIModel)cacheModel;
-            if (aqi.PublishTime != DateTime.Now.ToString("yyyy年MM月dd日 HH时"))
+            try
+            {
+                aqi = (AQIModel)cacheModel;
+                if (aqi.PublishTime != DateTime.Now.ToString("yyyy年MM月dd日 HH时"))
+                {
+                    aqi = GetAQI();
+                    context.Cache.Add("AQIModel", aqi, null, DateTime.Now.AddHours(1), TimeSpan.Zero, System.Web.Caching.CacheItemPriority.High, null);
+                }
+            }
+            catch
             {
                 aqi = GetAQI();
-                context.Cache.Add("AQIModel", aqi, null, DateTime.Now.AddHours(1), TimeSpan.FromSeconds(30), System.Web.Caching.CacheItemPriority.High, null);
+                context.Cache.Add("AQIModel", aqi, null, DateTime.Now.AddHours(1), TimeSpan.Zero, System.Web.Caching.CacheItemPriority.High, null);
             }
         }
         
         string output = JavaScriptConvert.SerializeObject(aqi);
-        context.Response.Write("jsonpcallback(" + output+")");
+        context.Response.Write(context.Request.QueryString["jsonpcallback"] + "(" + output + ")");
     }
 
     protected AQIModel GetAQI()
