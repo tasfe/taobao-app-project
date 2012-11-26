@@ -10,7 +10,7 @@
     body{ background:url(aqiimages/bg.jpg) repeat-x; margin:0;}
     .title{ text-align:center; padding:10px; color:#00BD00;  font-weight:bold;}
     .aqi-info{ position:relative;}
-    .aqi-face{ position:absolute; right:5px; top:0px; width:100px;}
+    .aqi-face{ position:absolute; right:5px; top:20px; width:70px;}
     .big3,.aqi-detail{ color:#000; background-color:#fff;opacity:0.7}
     .left_btnc{ display:none;}
     .bottom{ position:fixed; bottom:0; width:100%;}
@@ -66,17 +66,24 @@ ul,li{ margin:0; padding:0;}
 	</div>
 
 <ul class="button-group bottom" style="width:100%;">
-    <li style="width:33%;"><a href="#" class="button primary">刷新</a></li>
+    <li style="width:33%;border-left-width:0;"><a href="#" id="aqi_reload" class="button primary">刷新</a></li>
     <li style="width:33%; border-left-width:0; border-right-width:0;"><a href="#" class="button pill">AQI指数说明</a></li>
-    <li style="width:33%;"><a href="#" class="button pill">精品推荐</a></li>
+    <li style="width:33%;border-right-width:0;"><a href="#" class="button pill">精品推荐</a></li>
 </ul>
 </body>
 <script>
     $(function () {
-        setTimeout(function () {
+
+        $("#aqi_reload").click(function () {
+            $("#loading").show();
+            LoadAQI();
+        })
+
+        function LoadAQI() {
             $.ajax({
                 url: 'http://sasapp.hz024b.my2ip.com/aqi/aqi.ashx',
                 dataType: "jsonp",
+                cache:false,
                 jsonp: "jsonpcallback",
                 success: function (data) {
 
@@ -89,9 +96,13 @@ ul,li{ margin:0; padding:0;}
                     $("#measuresproposed").html(data.MeasuresProposed);
                     $("#aqi_face").attr("src", GetFacePic(data.AQILevel));
                     $("#loading").hide();
-                    //$("#aqi_t").show();
+                    $("#aqi_t").show();
                 }
             })
+        }
+
+        setTimeout(function () {
+            LoadAQI()
         }, 1000);
 
         function GetFacePic(aqilevel) {
