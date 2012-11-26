@@ -1,0 +1,116 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+    <meta name="viewport" content="width=320; user-scalable=no" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <title>AQI</title>
+    <script type="text/javascript" charset="utf-8" src="phonegap-1.0.0.js"></script>
+    <script type="text/javascript" charset="utf-8" src="jquery-1.6.2.min.js"></script>
+    <style>
+    body{ background:url(aqiimages/bg.jpg) repeat-x; margin:0;}
+    .title{ text-align:center; padding:10px; color:#00BD00;  font-weight:bold;}
+    .aqi-info{ position:relative;}
+    .aqi-face{ position:absolute; right:5px; top:0px; width:100px;}
+    .big3,.aqi-detail{ color:#000; background-color:#fff;opacity:0.7}
+    .left_btnc{ display:none;}
+    .bottom{ position:fixed; bottom:0; width:100%;}
+.bottom li{ float:left; list-style:none; text-align:center;background-color: #ECECEC; background-image: linear-gradient(#F4F4F4, #ECECEC);border: 1px solid #D4D4D4; height:30px;line-height:30px;}   
+.bottom li a{text-shadow: 1px 1px 0 #FFFFFF; color: #333333; text-decoration:none; border-radius: 0.2em 0.2em 0.2em 0.2em;}
+ul,li{ margin:0; padding:0;}
+     </style>
+</head>
+<body class="theme">
+ <div class="title" id="loading">数据更新中...<img src="aqiimages/loading.gif"/></div>
+<div class="left_btnc" id="aqi_t">
+	<div class="title">实时空气质量指数</div>
+	<div style="width:100%;text-align:center; line-height:15px;" id="aqitime"></div>   
+	<div style="width:100%; cursor:hand;" class="aqi-info">
+		<table style=" margin-top:18px; margin-left:10px;">
+			<tbody><tr>
+				<td  align="left" rowspan="2"><span style="font-size:16px;font-family:'微软雅黑'; font-weight:bold;">AQI：</span></td>
+				<td  align="center" rowspan="2"><span style="font-size:70px;" class="big" id="aqivalue"></span></td>
+				<td align="left"><span style="font-size:16px;font-family:'微软雅黑'; font-weight:bold;" id="aqiquality"></span></td>
+			</tr>
+			<tr>
+				<td align="left"><span style="font-size:16px;font-family:'微软雅黑'; font-weight:bold;" id="aqilevel"></span></td>
+			</tr>
+		</tbody></table>
+        <img class="aqi-face" id="aqi_face" src="aqiimages/001.png" />
+	</div>
+	<div style="width:98%;padding-left:10px;color:#5B5B5B; line-height:20px;margin-top:30px;">
+				   
+	<table style="width:100%;">
+			<tbody><tr>
+				<td width="35%"><span style="font-weight:bold;font-family:'微软雅黑'; " class="big3">首 要 污 染 物</span></td>
+				<td class="aqi-detail" id="premiercontaminants"></td>
+			</tr>
+		</tbody></table>      
+                    
+	</div>  
+	<div  style="width:98%;padding-left:10px;color:#5B5B5B; line-height:18px;margin-top:10px;cursor:hand;">
+		<table style="width:100%;">
+			<tbody><tr>
+				<td width="35%" valign="top"><span style="font-weight:bold;font-family:'微软雅黑';" class="big3">对健康的影响</span></td>
+				<td class="aqi-detail" id="impactonhealth"></td>
+			</tr>
+		</tbody></table>
+	</div>
+	<div  style="width:98%;padding-left:10px;color:#5B5B5B;line-height:18px; margin-top:10px;cursor:hand;">
+		<table style="width:100%;">
+			<tbody><tr>
+				<td width="35%" valign="top"><span style="font-weight:bold;font-family:'微软雅黑';" class="big3">建议采取的措施</span></td>
+				<td class="aqi-detail" id="measuresproposed"></td>
+			</tr>
+		</tbody></table>
+	</div>
+	</div>
+
+<ul class="button-group bottom" style="width:100%;">
+    <li style="width:33%;"><a href="#" class="button primary">刷新</a></li>
+    <li style="width:33%; border-left-width:0; border-right-width:0;"><a href="#" class="button pill">AQI指数说明</a></li>
+    <li style="width:33%;"><a href="#" class="button pill">精品推荐</a></li>
+</ul>
+</body>
+<script>
+    $(function () {
+        setTimeout(function () {
+            $.ajax({
+                url: 'http://sasapp.hz024b.my2ip.com/aqi/aqi.ashx',
+                dataType: "jsonp",
+                jsonp: "jsonpcallback",
+                success: function (data) {
+
+                    $("#aqitime").html(data.PublishTime);
+                    $("#aqivalue").html(data.AQIValue);
+                    $("#aqiquality").html(data.AQIQuality);
+                    $("#aqilevel").html(data.AQILevel);
+                    $("#premiercontaminants").html(data.PremierContaminants);
+                    $("#impactonhealth").html(data.ImpactOnHealth);
+                    $("#measuresproposed").html(data.MeasuresProposed);
+                    $("#aqi_face").attr("src", GetFacePic(data.AQILevel));
+                    $("#loading").hide();
+                    //$("#aqi_t").show();
+                }
+            })
+        }, 1000);
+
+        function GetFacePic(aqilevel) {
+
+            switch (aqilevel) {
+                case "一级":
+                    return "aqiimages/001.png";
+                case "二级":
+                    return "aqiimages/002.png";
+                case "三级":
+                    return "aqiimages/003.png";
+                case "四级":
+                    return "aqiimages/004.png";
+                case "五级":
+                    return "aqiimages/005.png";
+                case "六级":
+                    return "aqiimages/006.png";
+            }
+        }
+    })
+</script>
+</html>
