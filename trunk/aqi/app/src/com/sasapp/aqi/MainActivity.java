@@ -27,7 +27,7 @@ public class MainActivity extends DroidGap {
 		super.onCreate(savedInstanceState); 
 		
 		super.setIntegerProperty("splashscreen", R.drawable.loadingbg);
-		super.loadUrl("file:///android_asset/www/index.html",1);
+		super.loadUrl("file:///android_asset/www/index.html");
 
 		// 应用Id 应用密码 广告请求间隔(s) 测试模式
 		AdManager.init(this,"537ef88653a2993c", "b9e10bcfe994a9fb", 30, false);
@@ -39,10 +39,10 @@ public class MainActivity extends DroidGap {
 		// 初始化广告条，可以使用其他的构造函数设置文字类型广告的背景色、透明度及字体颜色
 		 
 		AdView adView = new AdView(this); 
-		LayoutParams params = new LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT);		
+		//LayoutParams params = new LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT);		
 		
-		LinearLayout gapLayout = super.root;  
-		gapLayout.addView(adView,params);  
+		//LinearLayout gapLayout = super.root;  
+		//gapLayout.addView(adView,params);  
 	}
 
 	public boolean onCreateOptionsMenu(Menu menu) { 
