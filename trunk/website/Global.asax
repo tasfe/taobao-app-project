@@ -14,7 +14,7 @@
         public void Execute()
         {
             Shop.HttpRequestUtil httpRequestUtil = new Shop.HttpRequestUtil();
-            httpRequestUtil.DoGetRequest("http://www.biubiujie.com/manage/AutoData.aspx?k=冬季女装新品&c=0001&tc=0001", "");
+            httpRequestUtil.DoGetRequest("http://localhost:13396/website/manage/AutoData.aspx?k=冬季女装新品&c=0001&tc=0001", "");
         }
     }
 
@@ -68,12 +68,12 @@
         //objTimer.Enabled = true;
         //objTimer.Elapsed += new ElapsedEventHandler(objTimer_Elapsed);
 
-        //SchedulerConfiguration config = new SchedulerConfiguration(1000 * 60* 60*12);
-        //config.Jobs.Add(new SampleJob());
-        //Scheduler scheduler = new Scheduler(config);
-        //System.Threading.ThreadStart myThreadStart = new System.Threading.ThreadStart(scheduler.Start);
-        //System.Threading.Thread schedulerThread = new System.Threading.Thread(myThreadStart);
-        //schedulerThread.Start();
+        SchedulerConfiguration config = new SchedulerConfiguration(100000 /* 60 * 60 * 12*/);
+        config.Jobs.Add(new SampleJob());
+        Scheduler scheduler = new Scheduler(config);
+        System.Threading.ThreadStart myThreadStart = new System.Threading.ThreadStart(scheduler.Start);
+        System.Threading.Thread schedulerThread = new System.Threading.Thread(myThreadStart);
+        schedulerThread.Start();
     }
 
     void objTimer_Elapsed(object sender, ElapsedEventArgs e)

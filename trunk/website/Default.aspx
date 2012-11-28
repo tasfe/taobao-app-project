@@ -6,6 +6,7 @@
 .category a.active{color:#fff;background:#FE73AB;border:1px solid #FCBFD4;}.rec_nav .category a.active:hover{color:#fff;}
 #maincontent { margin:20px 0;}
 .bigtitle{position:absolute; padding:5px;top:450px; font-size:24px; font-weight:bold; color:#FF75A4;}
+.pict{ width:100%;}
 </style>
 
 <link rel="stylesheet" type="text/css" href="static/css/ad/lrtk.css" />
