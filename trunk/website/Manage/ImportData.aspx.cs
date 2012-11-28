@@ -55,6 +55,7 @@ public partial class Manage_ImportData : System.Web.UI.Page
         taobaokeItemsGetRequest.Nick = "shenjinkui1984";
         taobaokeItemsGetRequest.StartCommissionRate = "0.2";
         taobaokeItemsGetRequest.PageNo = 0;
+        taobaokeItemsGetRequest.StartTotalnum = "10";
         taobaokeItemsGetRequest.Sort = "commissionRate_desc";
         taobaokeItems = ShopUtil.OpenTaobaoUtil.GetTopClientInatance().Execute(taobaokeItemsGetRequest).TaobaokeItems; //client.TaobaokeItemsGet(taobaokeItemsGetRequest);
         TaobaokeItem taobaokeItem = FilterItem(taobaokeItems);
@@ -79,6 +80,7 @@ public partial class Manage_ImportData : System.Web.UI.Page
             TaoBaoKe.ExpressFee = decimal.Parse(taobaokeItemDetail.Item.ExpressFee);
             TaoBaoKe.FreightPayer = taobaokeItemDetail.Item.FreightPayer;
             TaoBaoKe.Pic_Url = taobaokeItemDetail.Item.PicUrl;
+            
             List<ItemImg> itemImgs = taobaokeItemDetail.Item.ItemImgs;
             string itemImgsUrl = "";
             //foreach (ItemImg itemImg in itemImgs)
