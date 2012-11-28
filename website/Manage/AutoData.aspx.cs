@@ -56,7 +56,9 @@ public partial class Manage_ImportData : System.Web.UI.Page
         taobaokeItemsGetRequest.StartCommissionRate = "0.2";
         taobaokeItemsGetRequest.PageNo = 0;
         taobaokeItemsGetRequest.PageSize = 40;
-        taobaokeItemsGetRequest.Sort = "commissionRate_desc";
+        taobaokeItemsGetRequest.StartTotalnum = "30";
+        taobaokeItemsGetRequest.EndTotalnum = "300000";
+        taobaokeItemsGetRequest.Sort = "commissionNum_desc";
         taobaokeItems = ShopUtil.OpenTaobaoUtil.GetTopClientInatance().Execute(taobaokeItemsGetRequest).TaobaokeItems; //client.TaobaokeItemsGet(taobaokeItemsGetRequest);
         //TaobaokeItem taobaokeItem = 
         List<TaobaokeItem> filterItem = FilterItem(taobaokeItems);
