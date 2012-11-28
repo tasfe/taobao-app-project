@@ -7,16 +7,31 @@
     <script type="text/javascript" charset="utf-8" src="phonegap-1.0.0.js"></script>
     <script type="text/javascript" charset="utf-8" src="jquery-1.6.2.min.js"></script>
     <style>
-    body{ background:url(aqiimages/bg.jpg) repeat-x; margin:0;}
+    body{ background:url(aqiimages/bg.jpg) repeat-x; margin:0; font-size:12px;}
     .title{ text-align:center; padding:10px; color:#00BD00;  font-weight:bold;}
     .aqi-info{ position:relative;}
     .aqi-face{ position:absolute; right:5px; top:20px; width:70px;}
     .big3,.aqi-detail{ color:#000; background-color:#fff;opacity:0.7}
     .left_btnc{ display:none;}
-    .bottom{ position:fixed; bottom:0; width:100%;}
-.bottom li{ float:left; list-style:none; text-align:center;background-color: #ECECEC; background-image: linear-gradient(#F4F4F4, #ECECEC);border: 1px solid #D4D4D4; height:30px;line-height:30px;}   
+    .bottom{ position:fixed; bottom:0; width:100%;background-color: #ECECEC;}
+.bottom li{ float:left; list-style:none; text-align:center; background-image: linear-gradient(#F4F4F4, #ECECEC);border: 1px solid #D4D4D4; height:30px;line-height:30px;}   
 .bottom li a{text-shadow: 1px 1px 0 #FFFFFF; color: #333333; text-decoration:none; border-radius: 0.2em 0.2em 0.2em 0.2em;}
 ul,li{ margin:0; padding:0;}
+.tb01 {
+    border-color: #262626;
+    border-style: solid;
+    border-width: 1px;
+    height: 40px;
+    text-align: center;
+}
+.tb02 {
+    border-color: #262626;
+    border-style: solid;
+    border-width: 1px;
+    height: 40px;
+    padding-left: 3px;
+    text-align: left;
+}
      </style>
 </head>
 <body class="theme">
@@ -37,7 +52,7 @@ ul,li{ margin:0; padding:0;}
 		</tbody></table>
         <img class="aqi-face" id="aqi_face" src="aqiimages/001.png" />
 	</div>
-	<div style="width:98%;padding-left:10px;color:#5B5B5B; line-height:20px;margin-top:30px;">
+	<div style="width:98%;color:#5B5B5B; line-height:20px;margin-top:30px;">
 				   
 	<table style="width:100%;">
 			<tbody><tr>
@@ -47,7 +62,7 @@ ul,li{ margin:0; padding:0;}
 		</tbody></table>      
                     
 	</div>  
-	<div  style="width:98%;padding-left:10px;color:#5B5B5B; line-height:18px;margin-top:10px;cursor:hand;">
+	<div  style="width:98%;color:#5B5B5B; line-height:18px;margin-top:10px;cursor:hand;">
 		<table style="width:100%;">
 			<tbody><tr>
 				<td width="35%" valign="top"><span style="font-weight:bold;font-family:'微软雅黑';" class="big3">对健康的影响</span></td>
@@ -55,7 +70,7 @@ ul,li{ margin:0; padding:0;}
 			</tr>
 		</tbody></table>
 	</div>
-	<div  style="width:98%;padding-left:10px;color:#5B5B5B;line-height:18px; margin-top:10px;cursor:hand;">
+	<div  style="width:98%;color:#5B5B5B;line-height:18px; margin-top:10px;cursor:hand;">
 		<table style="width:100%;">
 			<tbody><tr>
 				<td width="35%" valign="top"><span style="font-weight:bold;font-family:'微软雅黑';" class="big3">建议采取的措施</span></td>
@@ -64,11 +79,98 @@ ul,li{ margin:0; padding:0;}
 		</tbody></table>
 	</div>
 	</div>
-
+<table width="100%" cellspacing="0" cellpadding="0" border="0" style=" display:none; border-collapse: collapse; background-color:#fff; opacity:0.7;text-align:center;" id="aqi_info">
+            <tbody><tr height="50">
+                <td style="font-size:18px; font-weight:bold;" colspan="5">(AQI)范围及空气质量类别对应表</td>
+            </tr>
+            <tr class="tab_01">
+                <td style="font-weight:bold;" class="tb01">
+                    指数
+                </td>
+                <td  style="width:40px;font-weight:bold;" class="tb01">
+                    状况
+                </td>
+                <td style=" font-weight:bold;" class="tb01">
+                    表示颜色
+                </td>
+                <td style="font-size:13px; font-weight:bold;" class="tb01">
+                   对健康影响情况
+                </td>
+                <td style="font-size:13px; font-weight:bold;" class="tb01">
+                    建议采取的措施
+                </td>
+            </tr>
+            <tr>
+                <td class="tb01">
+                     0~50</td>
+                <td class="tb01">
+                   优</td>
+                <td class="tb01" style="background-color:#00E400;"></td>
+                <td class="tb02">
+                    空气质量令人满意，基本无空气污染</td>
+                <td class="tb02">
+                    各类人群可正常活动</td>
+            </tr>
+            <tr>
+                <td class="tb01">
+                    51~100</td>
+                <td class="tb01">
+                    良</td>
+                <td class="tb01" style="background-color:Yellow"></td>
+                <td class="tb02">
+                    空气质量可接受，但某些污染物可能对极少数异常敏感人群健康有较弱影响</td>
+                <td class="tb02">
+                    极少数异常敏感人群应减少户外活动</td>
+            </tr>
+            <tr>
+                <td class="tb01">
+                    101~150</td>
+                <td class="tb01">
+                    轻度污染</td>
+                <td class="tb01" style="background-color:#FFA500;"></td>
+                <td class="tb02">
+                    易感人群症状有轻度加剧，健康人群出现刺激症状</td>
+                <td class="tb02">
+                    儿童、老年人及心脏病、呼吸系统疾病患者应减少长时间、高强度的户外锻炼</td>
+            </tr>
+            <tr>
+                <td class="tb01">
+                    151~200</td>
+                <td class="tb01">
+                    中度污染</td>
+                <td class="tb01" style="background-color:Red;"></td>
+                <td class="tb02">
+                    进一步加剧易感人群症状，可能对健康人群心脏、呼吸系统有影响</td>
+                <td class="tb02">
+                    儿童、老年人及心脏病、呼吸系统疾病患者避免长时间、高强度的户外锻炼，一般人群适量减少户外运动</td>
+            </tr>
+            <tr>
+                <td class="tb01">
+                    201~300</td>
+                <td class="tb01">
+                    重度污染</td>
+                <td class="tb01" style="background-color:#411445;"></td>
+                <td class="tb02">
+                    心脏病和肺病患者症状显著加剧，运动耐受力降低，健康人群普遍出现症状</td>
+                <td class="tb02">
+                    儿童、老年人及心脏病、肺病患者应停留在室内，停止户外运动，一般人群减少户外运动</td>
+            </tr>
+            <tr>
+                <td class="tb01">
+                    &gt; 300</td>
+                <td class="tb01">
+                    严重污染</td>
+                <td class="tb01" style="background-color:#7E0023;"></td>
+                <td class="tb02">
+                    健康人群运动耐受力降低，有明显强烈症状，提前出现某些疾病</td>
+                <td class="tb02">
+                    儿童、老年人和病人应停留在室内，避免体力消耗，一般人群避免户外运动</td>
+            </tr>
+        </tbody></table>
 <ul class="button-group bottom" style="width:100%;">
-    <li style="width:33%;border-left-width:0;"><a href="#" id="aqi_reload" class="button primary">刷新</a></li>
-    <li style="width:33%; border-left-width:0; border-right-width:0;"><a href="#" class="button pill">AQI指数说明</a></li>
-    <li style="width:33%;border-right-width:0;"><a href="#" id="reword" class="button pill">精品推荐</a></li>
+    <li style="width:50%;border-left-width:0;"><a href="#" id="aqi_reload" class="button primary">刷新</a></li>
+    <li style="width:49%; border-left-width:0; border-right-width:0;"><a href="#" id="show_aqi" class="button pill">AQI指数说明</a></li>
+    <!--<li style="width:33%;border-right-width:0;"><a href="#" id="reword" class="button pill">精品推荐</a></li>-->
 </ul>
 </body>
 <script>
@@ -76,21 +178,33 @@ ul,li{ margin:0; padding:0;}
 
         $("#aqi_reload").click(function () {
             $("#loading").show();
+            $("#aqi_info").hide();
             LoadAQI();
+        })
+
+        $("#show_aqi").click(function () {
+            if ($("#aqi_info").css("display") !== "none") {
+                $("#aqi_info").hide();
+                $("#aqi_t").show();
+            }
+            else {
+                $("#aqi_info").show();
+                $("#aqi_t").hide();
+            }
         })
 
         $("#reword").click(function () {
             PhoneGap.exec(function () { alert("s") },
              function () { alert("f") },
               "com.sasapp.aqi.JSInvokeShowAd",
-               "ShowAd", [0,1]);
+               "ShowAd", [0, 1]);
         })
-        
-//        PhoneGap.exec(success, error,
-//                'test01', //java类名，plugins.xml中注册的名字
-//                'test',    //action，Java方法中用来匹配的字段
-//                [testData1, testData2]    //params 传递的参数，Array形式
-//    );
+
+        //        PhoneGap.exec(success, error,
+        //                'test01', //java类名，plugins.xml中注册的名字
+        //                'test',    //action，Java方法中用来匹配的字段
+        //                [testData1, testData2]    //params 传递的参数，Array形式
+        //    );
 
         function LoadAQI() {
             $.ajax({
