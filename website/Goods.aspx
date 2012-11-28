@@ -3,6 +3,7 @@
     <link href="static/css/global_new.css" rel="stylesheet" type="text/css" />
     <link href="static/css/share_page.css" rel="stylesheet" type="text/css" />
     <link href="static/css/social_active.css" rel="stylesheet" type="text/css" />
+
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
@@ -70,7 +71,7 @@
 		
     <div class="t_tag r">
         <div class="share left">
-                <a href="javascript:void(0)" onclick="return false;"><b class="f14 red" id="r365824987">32</b>评论</a>| 分享到:
+                <a href="javascript:void(0)" onclick="return false;"><b class="f14 red" id="r365824987"></b>评论</a>| 分享到:
             </div>
   
        <div class="goods_pic none" type="display:none"></div>
@@ -102,7 +103,9 @@
 								
 															</ul>
 				<div class="clear"></div>
-								<div id="pageNav1"><a class="currentpage">1</a><a href="javascript:void(0)" onclick="twitterItemNote.getNoteList(&#39;1&#39;);">2</a><a href="javascript:void(0)" onclick="twitterItemNote.getNoteList(&#39;2&#39;);">3</a><a href="javascript:void(0)" onclick="twitterItemNote.getNoteList(&#39;3&#39;);">4</a><a href="javascript:void(0)" onclick="twitterItemNote.getNoteList(&#39;1&#39;);" class="pageNext">下一页&gt;</a></div>
+								<div id="pageNav1">
+                                <a class="currentpage">1</a><a href="javascript:void(0)" onclick="twitterItemNote.getNoteList(&#39;1&#39;);">2</a><a href="javascript:void(0)" onclick="twitterItemNote.getNoteList(&#39;2&#39;);">3</a><a href="javascript:void(0)" onclick="twitterItemNote.getNoteList(&#39;3&#39;);">4</a><a href="javascript:void(0)" onclick="twitterItemNote.getNoteList(&#39;1&#39;);" class="pageNext">下一页&gt;</a>
+                                </div>
 			</div><!-- /.note-list -->
 			
 			<div class="reply_box mt10 none">
@@ -151,22 +154,67 @@
 						<div class="clear"></div>
 	</div><!-- main -->
     <script type="text/javascript">
+        var maxPage = 1;
         function jsonp_reviews_list(rate) {
             //alert(rate.comments[0].content)
             var template = $("#rate-temp").html();
             var html = "";
-            for (var i = 0; i < rate.comments.length; i++) {
-                html += template
+            if (rate.comments) {
+                maxPage = rate.maxPage;
+                for (var i = 0; i < rate.comments.length; i++) {
+                    html += template
             .replace("{content}", rate.comments[i].content)
             .replace("{time}", rate.comments[i].date)
             .replace("{nick}", rate.comments[i].user.nick)
             .replace("{avatar}", rate.comments[i].user.avatar)
-            }
+                }
 
-            $("#rate-list").html(html)
+                $("#rate-list").html(html)
+            }
         }
 </script>
-<script type="text/javascript" charset="GB2312" src="http://rate.taobao.com/feedRateList.htm?userNumId=<%=taobaokeShop.UserId %>&auctionNumId=<%=taobaokeItemDetail.Item.NumIid%>&currentPageNum=1&rateType=&orderType=sort_weight&showContent=1&attribute=&callback=jsonp_reviews_list"></script>
+<script src="http://a.tbcdn.cn/apps/top/x/sdk.js?appkey=21121786"></script>
+<script>
+
+    var userID = "";
+    $(function () {
+        TOP.api({
+            method: 'taobao.taobaoke.widget.shops.convert',
+            seller_nicks: '<%=taobaokeItemDetail.Item.Nick %>',
+            fields: 'user_id'
+        }, function (resp) {
+            var userID = resp.taobaoke_shops.taobaoke_shop[0].user_id;
+            maxPage
+            //var url = "http://rate.taobao.com/feedRateList.htm?userNumId=899955988&auctionNumId=17902891727&currentPageNum=1&rateType=&orderType=sort_weight&showContent=1&attribute=&callback=jsonp_reviews_list";
+            maxPage
+            GetRate(userID, 1)
+        })
+
+    })
+
+    function GetRate(userid, page) {
+        $.getScript("http://rate.taobao.com/feedRateList.htm?userNumId=" + userid + "&auctionNumId=<%=taobaokeItemDetail.Item.NumIid%>&currentPageNum=" + page + "&rateType=&orderType=sort_weight&showContent=1&attribute=&callback=jsonp_reviews_list",
+                function () {
+                    var pageHtml = "";
+                    for (var i = 1; i <= maxPage; i++) {
+                        //alert(i);
+                        pageHtml += "<a href='javascript:void(0)'";
+                        if (i == page) {
+                            pageHtml += " class=\"currentpage\" ";
+                        }
+                        else {
+                            pageHtml += " onclick='GetRate(\"" + userid + "\", " + i + ")' ";
+                        }
+
+                        pageHtml += ">" + i + "</a>";
+                    }
+
+                    $("#pageNav1").html(pageHtml);
+                }
+            );
+    }
+</script>
+
 
 
 </asp:Content>
