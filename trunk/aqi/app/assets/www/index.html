@@ -168,9 +168,9 @@ ul,li{ margin:0; padding:0;}
             </tr>
         </tbody></table>
 <ul class="button-group bottom" style="width:100%;">
-    <li style="width:50%;border-left-width:0;"><a href="#" id="aqi_reload" class="button primary">刷新</a></li>
-    <li style="width:49%; border-left-width:0; border-right-width:0;"><a href="#" id="show_aqi" class="button pill">AQI指数说明</a></li>
-    <!--<li style="width:33%;border-right-width:0;"><a href="#" id="reword" class="button pill">精品推荐</a></li>-->
+    <li style="width:33%;border-left-width:0;"><a href="#" id="aqi_reload" class="button primary">刷新</a></li>
+    <li style="width:33%; border-left-width:0; border-right-width:0;"><a href="#" id="show_aqi" class="button pill">AQI指数说明</a></li>
+    <li style="width:33%;border-right-width:0;"><a href="#" id="reword" onclick="window.js2java.back()" class="button pill">精品推荐</a></li>
 </ul>
 </body>
 <script>
@@ -193,12 +193,12 @@ ul,li{ margin:0; padding:0;}
             }
         })
 
-        $("#reword").click(function () {
-            PhoneGap.exec(function () { alert("s") },
-             function () { alert("f") },
-              "com.sasapp.aqi.JSInvokeShowAd",
-               "ShowAd", [0, 1]);
-        })
+//        $("#reword").click(function () {
+//            PhoneGap.exec(function () { alert("s") },
+//             function () { alert("f") },
+//              "com.sasapp.aqi.JSInvokeShowAd",
+//               "ShowAd", [0, 1]);
+//        })
 
         //        PhoneGap.exec(success, error,
         //                'test01', //java类名，plugins.xml中注册的名字

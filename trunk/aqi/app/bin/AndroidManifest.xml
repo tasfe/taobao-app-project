@@ -36,19 +36,19 @@ android:name="com.android.browser.permission.WRITE_HISTORY_BOOKMARKS">
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@android:style/Theme.NoTitleBar" >
         <activity
             android:name="com.sasapp.aqi.MainActivity"
             android:label="@string/app_name" 
             android:configChanges="orientation|keyboardHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-       <activity android:name="net.youmi.android.AdActivity"
-android:configChanges="keyboard|keyboardHidden|orientation"/>
+     <activity android:configChanges="keyboard|keyboardHidden|orientation"
+android:name="net.youmi.android.appoffers.YoumiOffersActivity" >
+</activity>
        <receiver android:name="net.youmi.android.YoumiReceiver">
 <intent-filter>
 <action android:name="android.intent.action.PACKAGE_ADDED"/>
