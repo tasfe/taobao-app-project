@@ -9,13 +9,13 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
          <div class="top box_inset">
 		     <div class="top_con box_inset">
-		         <a class="hot" href="?" target="_blank">今日最热</a>
-		         <a class="dress" href="?cata_id=2000000000000&frm=book_section1" target="_blank">衣服榜</a>
-		         <a class="shoes" href="?cata_id=6000000000000&frm=book_section1" target="_blank">鞋子榜</a>
-		         <a class="bag" href="?cata_id=5000000000000&frm=book_section1" target="_blank">包包榜</a>
-		         <a class="access" href="?cata_id=7000000000000&frm=book_section1" target="_blank">配饰榜</a>
-		         <a class="beauty" href="?cata_id=8000000000000&frm=book_section1" target="_blank">美容榜</a>
-		         <a class="jiaju" href="?cata_id=9000000000000&frm=book_section1" target="_blank">家居榜</a>
+		         <a class="hot" href="TSearch_307.aspx?" target="_blank">今日最热</a>
+		         <a class="dress" href="TSearch_301.aspx?cata_id=2000000000000&frm=book_section1" target="_blank">衣服榜</a>
+		         <a class="shoes" href="TSearch_302.aspx?cata_id=6000000000000&frm=book_section1" target="_blank">鞋子榜</a>
+		         <a class="bag" href="TSearch_303.aspx?cata_id=5000000000000&frm=book_section1" target="_blank">包包榜</a>
+		         <a class="access" href="TSearch_304.aspx?cata_id=7000000000000&frm=book_section1" target="_blank">配饰榜</a>
+		         <a class="beauty" href="TSearch_305.aspx?cata_id=8000000000000&frm=book_section1" target="_blank">美容榜</a>
+		         <a class="jiaju" href="TSearch_306.aspx?cata_id=9000000000000&frm=book_section1" target="_blank">家居榜</a>
 		         </div>
 		 </div>
 		<div class="clear"></div>
