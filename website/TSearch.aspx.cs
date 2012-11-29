@@ -69,6 +69,9 @@ public partial class Jie : System.Web.UI.Page
         //if (EndCommissionRate != "-1")
             //taobaokeItemsGetRequest.EndCommissionRate = EndCommissionRate;
         taobaokeItemsGetRequest.PageNo = currPage;
+        taobaokeItemsGetRequest.StartTotalnum = "30";
+        taobaokeItemsGetRequest.EndTotalnum = "300000";
+        taobaokeItemsGetRequest.Sort = "commissionNum_desc";
         //taobaokeItemsGetRequest.Sort = Sort;
         TaobaokeItemsGetResponse response = client.Execute(taobaokeItemsGetRequest);
         count = 400;//response.TotalResults;
@@ -79,26 +82,29 @@ public partial class Jie : System.Web.UI.Page
         List<TaobaokeItem> dt2 = new List<TaobaokeItem>();
         List<TaobaokeItem> dt3 = new List<TaobaokeItem>();
         List<TaobaokeItem> dt4 = new List<TaobaokeItem>();
-        for (int i = 0; i < taobaokeItems.Count; i++)
+
+        if (taobaokeItems != null && taobaokeItems.Count > 0)
         {
-            if (i < 10)
+            for (int i = 0; i < taobaokeItems.Count; i++)
             {
-                dt1.Add(taobaokeItems[i]);
-            }
-            else if (i < 20)
-            {
-                dt2.Add(taobaokeItems[i]);
-            }
-            else if (i < 30)
-            {
-                dt3.Add(taobaokeItems[i]);
-            }
-            else if (i < 40)
-            {
-                dt4.Add(taobaokeItems[i]);
+                if (i < 10)
+                {
+                    dt1.Add(taobaokeItems[i]);
+                }
+                else if (i < 20)
+                {
+                    dt2.Add(taobaokeItems[i]);
+                }
+                else if (i < 30)
+                {
+                    dt3.Add(taobaokeItems[i]);
+                }
+                else if (i < 40)
+                {
+                    dt4.Add(taobaokeItems[i]);
+                }
             }
         }
-
         rptList1.DataSource = dt1;
         rptList1.DataBind();
 
@@ -121,6 +127,8 @@ public partial class Jie : System.Web.UI.Page
         //}
         //else
         //{
+
+        //ShopUtil.CacheCustom.ClearAll();
         XmlDocument xd = new XmlDocument();
         xd.Load(Server.MapPath("~/config/TaoBaoCatList.xml"));
         XmlNodeList xnl = xd.SelectNodes("/Categorys/Category/SubCategory");
@@ -130,7 +138,7 @@ public partial class Jie : System.Web.UI.Page
         {
             sl.Add(xn.Attributes["id"].Value, new TaoBaoCategoryList(xn.Attributes["id"].Value, xn.Attributes["name"].Value, xn.Attributes["key"].Value));
         }
-        ShopUtil.CacheCustom.Insert("CatList", sl);
+        //ShopUtil.CacheCustom.Insert("CatList", sl);
         return sl;
         //}
     }
