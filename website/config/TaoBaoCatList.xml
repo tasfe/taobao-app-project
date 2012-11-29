@@ -114,6 +114,16 @@
   </Category>
   <Category id="3" name="3">
     <SubCategory id="30" name="女装清仓" key="女装清仓" />
+    
+    <SubCategory id="301" name="衣服榜" key="衣服" />
+    <SubCategory id="302" name="鞋子榜" key="鞋子" />
+    <SubCategory id="303" name="包包榜" key="包包" />
+    <SubCategory id="304" name="配饰榜" key="配饰" />
+    <SubCategory id="305" name="美容榜" key="美容" />
+    <SubCategory id="306" name="家居榜" key="家居" />
+    <SubCategory id="307" name="最热" key="最热" />
+    
+
     <SubCategory id="31" name="韩版" key="韩版" />
     <SubCategory id="32" name="T恤" key="T恤" />
     <SubCategory id="33" name="连衣裙" key="连衣裙" />
