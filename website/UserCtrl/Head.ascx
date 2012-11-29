@@ -13,7 +13,7 @@
 
             <span class="ipt1">
                 <input id="searchKey" class="searchKey" name="searchKey" type="text" autocomplete="off"
-                    value="秋季新品" placeholder="搜宝贝、用户名、杂志..."></span>
+                    value="冬季新品" placeholder="搜宝贝、用户名、杂志..."></span>
             <input id="searchType" type="hidden" value="1" name="searchType">
             <input id="filter" type="hidden" value="goods" name="filter">
             <span class="ipt2">
@@ -52,7 +52,7 @@
                     <li>
                              <a class="racks1 f12_f"
                             href="TopSearch.aspx">BiuBiu街推荐</a>
-                            <a class="racks1 f12_f" href="TSearch_%E7%A7%8B%E5%AD%A3%E6%96%B0%E5%93%81.aspx"><h3>秋季新品</h3></a>
+                            <a class="racks1 f12_f" href="TSearch_%E7%A7%8B%E5%AD%A3%E6%96%B0%E5%93%81.aspx"><h3>冬季新品</h3></a>
                  
                             </li>
                 </ul>
