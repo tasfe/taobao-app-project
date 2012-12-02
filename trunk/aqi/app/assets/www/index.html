@@ -8,7 +8,7 @@
     <script type="text/javascript" charset="utf-8" src="jquery-1.6.2.min.js"></script>
     <style>
     body{ background:url(aqiimages/bg.jpg) repeat-x; margin:0; font-size:12px;}
-    .title{ text-align:center; padding:10px; color:#00BD00;  font-weight:bold;}
+    .title{ text-align:center; padding:10px; color:#00BD00;  font-weight:bold;background-color: #ECECEC;}
     .aqi-info{ position:relative;}
     .aqi-face{ position:absolute; right:5px; top:20px; width:70px;}
     .big3,.aqi-detail{ color:#000; background-color:#fff;opacity:0.7}
@@ -32,10 +32,12 @@ ul,li{ margin:0; padding:0;}
     padding-left: 3px;
     text-align: left;
 }
+#update_info{ display:none;}
      </style>
 </head>
 <body class="theme">
  <div class="title" id="loading">数据更新中...<img src="aqiimages/loading.gif"/></div>
+ <div class="title" id="update_info"></div>
 <div class="left_btnc" id="aqi_t">
 	<div class="title">实时空气质量指数</div>
 	<div style="width:100%;text-align:center; line-height:15px;" id="aqitime"></div>   
@@ -105,10 +107,10 @@ ul,li{ margin:0; padding:0;}
                      0~50</td>
                 <td class="tb01">
                    优</td>
-                <td class="tb01" style="background-color:#00E400;"></td>
-                <td class="tb02">
+                <td class="tb01" style="background-color:#00E400;" id="level1_color"></td>
+                <td class="tb02" id="level1_impact">
                     空气质量令人满意，基本无空气污染</td>
-                <td class="tb02">
+                <td class="tb02" id="level1_proposed">
                     各类人群可正常活动</td>
             </tr>
             <tr>
@@ -116,10 +118,10 @@ ul,li{ margin:0; padding:0;}
                     51~100</td>
                 <td class="tb01">
                     良</td>
-                <td class="tb01" style="background-color:Yellow"></td>
-                <td class="tb02">
+                <td class="tb01" style="background-color:Yellow" id="level2_color"></td>
+                <td class="tb02" id="level2_impact">
                     空气质量可接受，但某些污染物可能对极少数异常敏感人群健康有较弱影响</td>
-                <td class="tb02">
+                <td class="tb02" id="level2_proposed">
                     极少数异常敏感人群应减少户外活动</td>
             </tr>
             <tr>
@@ -127,10 +129,10 @@ ul,li{ margin:0; padding:0;}
                     101~150</td>
                 <td class="tb01">
                     轻度污染</td>
-                <td class="tb01" style="background-color:#FFA500;"></td>
-                <td class="tb02">
+                <td class="tb01" style="background-color:#FFA500;" id="level3_color"></td>
+                <td class="tb02" id="level3_impact">
                     易感人群症状有轻度加剧，健康人群出现刺激症状</td>
-                <td class="tb02">
+                <td class="tb02" id="level3_proposed">
                     儿童、老年人及心脏病、呼吸系统疾病患者应减少长时间、高强度的户外锻炼</td>
             </tr>
             <tr>
@@ -138,10 +140,10 @@ ul,li{ margin:0; padding:0;}
                     151~200</td>
                 <td class="tb01">
                     中度污染</td>
-                <td class="tb01" style="background-color:Red;"></td>
-                <td class="tb02">
+                <td class="tb01" style="background-color:Red;" id="level4_color"></td>
+                <td class="tb02" id="level4_impact">
                     进一步加剧易感人群症状，可能对健康人群心脏、呼吸系统有影响</td>
-                <td class="tb02">
+                <td class="tb02" id="level4_proposed">
                     儿童、老年人及心脏病、呼吸系统疾病患者避免长时间、高强度的户外锻炼，一般人群适量减少户外运动</td>
             </tr>
             <tr>
@@ -149,10 +151,10 @@ ul,li{ margin:0; padding:0;}
                     201~300</td>
                 <td class="tb01">
                     重度污染</td>
-                <td class="tb01" style="background-color:#411445;"></td>
-                <td class="tb02">
+                <td class="tb01" style="background-color:#411445;" id="level5_color"></td>
+                <td class="tb02" id="level5_impact">
                     心脏病和肺病患者症状显著加剧，运动耐受力降低，健康人群普遍出现症状</td>
-                <td class="tb02">
+                <td class="tb02" id="level5_proposed">
                     儿童、老年人及心脏病、肺病患者应停留在室内，停止户外运动，一般人群减少户外运动</td>
             </tr>
             <tr>
@@ -160,10 +162,10 @@ ul,li{ margin:0; padding:0;}
                     &gt; 300</td>
                 <td class="tb01">
                     严重污染</td>
-                <td class="tb01" style="background-color:#7E0023;"></td>
-                <td class="tb02">
+                <td class="tb01" style="background-color:#7E0023;" id="level6_color"></td>
+                <td class="tb02" id="level6_impact">
                     健康人群运动耐受力降低，有明显强烈症状，提前出现某些疾病</td>
-                <td class="tb02">
+                <td class="tb02" id="level6_proposed">
                     儿童、老年人和病人应停留在室内，避免体力消耗，一般人群避免户外运动</td>
             </tr>
         </tbody></table>
@@ -193,12 +195,12 @@ ul,li{ margin:0; padding:0;}
             }
         })
 
-//        $("#reword").click(function () {
-//            PhoneGap.exec(function () { alert("s") },
-//             function () { alert("f") },
-//              "com.sasapp.aqi.JSInvokeShowAd",
-//               "ShowAd", [0, 1]);
-//        })
+        //        $("#reword").click(function () {
+        //            PhoneGap.exec(function () { alert("s") },
+        //             function () { alert("f") },
+        //              "com.sasapp.aqi.JSInvokeShowAd",
+        //               "ShowAd", [0, 1]);
+        //        })
 
         //        PhoneGap.exec(success, error,
         //                'test01', //java类名，plugins.xml中注册的名字
@@ -219,11 +221,46 @@ ul,li{ margin:0; padding:0;}
                     $("#aqiquality").html(data.AQIQuality);
                     $("#aqilevel").html(data.AQILevel);
                     $("#premiercontaminants").html(data.PremierContaminants);
-                    $("#impactonhealth").html(data.ImpactOnHealth);
-                    $("#measuresproposed").html(data.MeasuresProposed);
+
                     $("#aqi_face").attr("src", GetFacePic(data.AQILevel));
                     $("#loading").hide();
                     $("#aqi_t").show();
+
+                    var aqiValue = parseInt(data.AQIValue);
+                    if (aqiValue <= 50) {
+                        $("#impactonhealth").html($("#level1_impact").text());
+                        $("#measuresproposed").html($("#level1_proposed").text());
+                        $("#aqivalue").css("color", $("#level1_color").css("background-color"));
+                    } else
+                        if (aqiValue <= 100) {
+                            $("#impactonhealth").html($("#level2_impact").text());
+                            $("#measuresproposed").html($("#level2_proposed").text());
+                            $("#aqivalue").css("color", $("#level2_color").css("background-color"));
+                        } else
+                            if (aqiValue <= 150) {
+                                $("#impactonhealth").html($("#level3_impact").text());
+                                $("#measuresproposed").html($("#level3_proposed").text());
+                                $("#aqivalue").css("color", $("#level3_color").css("background-color"));
+                            } else
+                                if (aqiValue <= 200) {
+                                    $("#impactonhealth").html($("#level4_impact").text());
+                                    $("#measuresproposed").html($("#level4_proposed").text());
+                                    $("#aqivalue").css("color", $("#level4_color").css("background-color"));
+                                } else
+                                    if (aqiValue <= 300) {
+                                        $("#impactonhealth").html($("#level5_impact").text());
+                                        $("#measuresproposed").html($("#level5_proposed").text());
+                                        $("#aqivalue").css("color", $("#level5_color").css("background-color"));
+                                    } else
+                                        if (aqiValue > 300) {
+                                            $("#impactonhealth").html($("#level6_impact").text());
+                                            $("#measuresproposed").html($("#level6_proposed").text());
+                                            $("#aqivalue").css("color", $("#level6_color").css("background-color"));
+                                        }
+
+                    if (data.UpdatePath && data.UpdatePath.length > 0) {
+                        $("#update_info").html(data.UpdatePath).show();
+                    }
                 }
             })
         }
