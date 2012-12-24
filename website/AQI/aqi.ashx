@@ -48,33 +48,67 @@ public class aqi : IHttpHandler {
         Shop.HttpRequestUtil httpRequestUtil = new Shop.HttpRequestUtil();
         string aqiContent = httpRequestUtil.DoGetRequest("http://www.semc.gov.cn/aqi/home/Index.aspx", "");
 
-        Regex reg = new Regex("<span class='big' style=\"font-size:72px;\">(.*?)</span>");
-        if (reg.Match(aqiContent).Groups.Count > 1)
-        {
-            aqi.AQIValue = reg.Match(aqiContent).Groups[1].Value;
-        }
+        string ptIndexString = "width: 75%; float: left; text-align: center; line-height: 20px; margin-left: 30px;\">";
+        int startIndex = aqiContent.IndexOf(ptIndexString) + ptIndexString.Length;
+        int startEnd = aqiContent.IndexOf("</div>",startIndex);
+        aqi.PublishTime = aqiContent.Substring(startIndex, startEnd - startIndex).Trim();
 
-        //reg = new Regex("<td align=\"left\"><span style=\"font-size:16px;font-family:'微软雅黑'; font-weight:bold;\">(.*?)</span></td>");
-        MatchCollection mc = Regex.Matches(aqiContent, "<td align=\"left\"><span style=\"font-size:16px;font-family:'微软雅黑'; font-weight:bold;\">(.*?)</span></td>", RegexOptions.None);
-        if (mc.Count > 1)
-        {
-            aqi.AQIQuality = mc[0].Groups[1].Value;
-            aqi.AQILevel = mc[1].Groups[1].Value;
-        }
+        ptIndexString = "<span class='big' style=\"font-size: 70px;\">";
+        startIndex = aqiContent.IndexOf(ptIndexString, startIndex) + ptIndexString.Length;
+        startEnd = aqiContent.IndexOf("</span>", startIndex);
+        aqi.AQIValue = aqiContent.Substring(startIndex, startEnd - startIndex).Trim();
 
-        mc = Regex.Matches(aqiContent, "<td >(.*?)</td>", RegexOptions.None);
-        if (mc.Count > 2)
-        {
-            aqi.PremierContaminants = mc[0].Groups[1].Value;
-            aqi.ImpactOnHealth = mc[1].Groups[1].Value;
-            aqi.MeasuresProposed = mc[2].Groups[1].Value;
-        }
+        ptIndexString = "<span style=\"font-size: 16px; font-family: '微软雅黑'; font-weight: bold; padding-left: 15px\">";
+        startIndex = aqiContent.IndexOf(ptIndexString, startIndex) + ptIndexString.Length;
+        startEnd = aqiContent.IndexOf("</span>", startIndex);
+        aqi.AQIQuality = aqiContent.Substring(startIndex, startEnd - startIndex).Trim();
 
-        mc = Regex.Matches(aqiContent, "<div style=\"width:100%;text-align:center; line-height:15px;\">(.*?)</div>", RegexOptions.None);
-        if (mc.Count > 0)
-        {
-            aqi.PublishTime = mc[0].Groups[1].Value;
-        }
+        ptIndexString = "<span style=\"font-size: 16px; font-family: '微软雅黑'; font-weight: bold; padding-left: 15px\">";
+        startIndex = aqiContent.IndexOf(ptIndexString, startIndex) + ptIndexString.Length;
+        startEnd = aqiContent.IndexOf("</span>", startIndex);
+        aqi.AQILevel = aqiContent.Substring(startIndex, startEnd - startIndex).Trim();
+        //Regex reg = new Regex("<span class='big' style=\"font-size:72px;\">(.*?)</span>");
+        //if (reg.Match(aqiContent).Groups.Count > 1)
+        //{
+        //    aqi.AQIValue = reg.Match(aqiContent).Groups[1].Value;
+        //}
+
+        ////reg = new Regex("<td align=\"left\"><span style=\"font-size:16px;font-family:'微软雅黑'; font-weight:bold;\">(.*?)</span></td>");
+        //MatchCollection mc = Regex.Matches(aqiContent, "<span style=\"font-size:16px;font-family:'微软雅黑'; font-weight:bold;\">(.*?)</span>", RegexOptions.None);
+        //if (mc.Count > 1)
+        //{
+        //    aqi.AQIQuality = mc[0].Groups[1].Value;
+        //    aqi.AQILevel = mc[1].Groups[1].Value;
+        //}
+
+        //mc = Regex.Matches(aqiContent, "<td >(.*?)</td>", RegexOptions.None);
+        //if (mc.Count > 1)
+        //{
+        //    aqi.PremierContaminants = mc[0].Groups[1].Value;
+        //    aqi.ImpactOnHealth = mc[1].Groups[1].Value;
+        //}
+        
+        //<span style="font-weight: bold; font-family: '微软雅黑';" class="big3">首 要 污 染 物</span>
+        ptIndexString = "首 要 污 染 物</span>";
+        startIndex = aqiContent.IndexOf(ptIndexString, startIndex) + ptIndexString.Length;
+        ptIndexString = "<td>";
+        startIndex = aqiContent.IndexOf(ptIndexString, startIndex) + ptIndexString.Length;
+        
+        startEnd = aqiContent.IndexOf("</td>", startIndex);
+        aqi.PremierContaminants = aqiContent.Substring(startIndex, startEnd - startIndex).Trim();
+        //if (mc.Count > 2)
+        //{
+        //    aqi.MeasuresProposed = mc[2].Groups[1].Value;
+        //}
+
+        //mc = Regex.Matches(aqiContent, "<div style=\"width: 75%; float: left; text-align: center; line-height: 20px; margin-left: 30px;\">(.*?)</div>", RegexOptions.None);     
+        //if (mc.Count > 0)
+        //{
+        //    aqi.PublishTime = mc[0].Groups[1].Value;
+        //}
+
+        //aqi.UpdatePath = "<a href='http://sasapp.hz024b.my2ip.com/aqi/aqi.apk'>http://sasapp.hz024b.my2ip.com/aqi/aqi.apk</a>";
+        
         return aqi;
     }
     
@@ -144,5 +178,13 @@ public class AQIModel
     {
         get { return _PublishTime; }
         set { _PublishTime = value; }
+    }
+
+    private string _UpdatePath;
+
+    public string UpdatePath
+    {
+        get { return _UpdatePath; }
+        set { _UpdatePath = value; }
     }
 }
