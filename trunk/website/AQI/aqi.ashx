@@ -12,31 +12,31 @@ public class aqi : IHttpHandler {
 
         AQIModel aqi = new AQIModel();
 
-        object cacheModel= context.Cache.Get("AQIModel");
+        object cacheModel = HttpRuntime.Cache.Get("AQIModel0");
         if (cacheModel == null)
         {
             aqi = GetAQI();
-            context.Cache.Add("AQIModel", aqi, null, DateTime.Now.AddHours(1), TimeSpan.Zero, System.Web.Caching.CacheItemPriority.High, null);
         }
         else
         {
             try
             {
-                aqi = (AQIModel)cacheModel;
-                if (aqi.PublishTime != DateTime.Now.ToString("yyyy年MM月dd日 HH时"))
-                {
-                    aqi = GetAQI();
-                    context.Cache.Add("AQIModel", aqi, null, DateTime.Now.AddHours(1), TimeSpan.Zero, System.Web.Caching.CacheItemPriority.High, null);
-                }
+                aqi = (AQIModel)JavaScriptConvert.DeserializeObject(cacheModel.ToString(), typeof(AQIModel));
+                aqi.UpdatePath = " ";      
+                //if (aqi.PublishTime != DateTime.Now.AddMinutes(-30).ToString("yyyy年MM月dd日 HH时"))
+                //{
+                //    aqi = GetAQI();
+                //}
             }
             catch
             {
                 aqi = GetAQI();
-                context.Cache.Add("AQIModel", aqi, null, DateTime.Now.AddHours(1), TimeSpan.Zero, System.Web.Caching.CacheItemPriority.High, null);
             }
         }
         
         string output = JavaScriptConvert.SerializeObject(aqi);
+        HttpRuntime.Cache.Add("AQIModel0", output, null, DateTime.Now.AddHours(1), TimeSpan.Zero, System.Web.Caching.CacheItemPriority.High, null);
+        
         context.Response.Write(context.Request.QueryString["jsonpcallback"] + "(" + output + ")");
     }
 
@@ -48,22 +48,34 @@ public class aqi : IHttpHandler {
         Shop.HttpRequestUtil httpRequestUtil = new Shop.HttpRequestUtil();
         string aqiContent = httpRequestUtil.DoGetRequest("http://www.semc.gov.cn/aqi/home/Index.aspx", "");
 
-        string ptIndexString = "width: 75%; float: left; text-align: center; line-height: 20px; margin-left: 30px;\">";
+        //<div style="width: 90%; float: left; text-align: center; line-height: 20px; margin-left: 30px;">
+        //                            2013年03月05日 13 时
+        //                        </div>
+        string ptIndexString = "<div style=\"width: 90%; float: left; text-align: center; line-height: 20px; margin-left: 30px;\">";
         int startIndex = aqiContent.IndexOf(ptIndexString) + ptIndexString.Length;
         int startEnd = aqiContent.IndexOf("</div>",startIndex);
         aqi.PublishTime = aqiContent.Substring(startIndex, startEnd - startIndex).Trim();
 
+        //<span class='big' style="font-size: 70px;">
+        //                                            183
+        //                                        </span>
         ptIndexString = "<span class='big' style=\"font-size: 70px;\">";
         startIndex = aqiContent.IndexOf(ptIndexString, startIndex) + ptIndexString.Length;
         startEnd = aqiContent.IndexOf("</span>", startIndex);
         aqi.AQIValue = aqiContent.Substring(startIndex, startEnd - startIndex).Trim();
 
-        ptIndexString = "<span style=\"font-size: 16px; font-family: '微软雅黑'; font-weight: bold; padding-left: 15px\">";
+        //<span style="font-size: 16px; font-family: '微软雅黑'; font-weight: bold; padding-left: 15px;">
+        //                                            中度污染
+        //                                        </span>
+        ptIndexString = "<span style=\"font-size: 16px; font-family: '微软雅黑'; font-weight: bold; padding-left: 15px;\">";
         startIndex = aqiContent.IndexOf(ptIndexString, startIndex) + ptIndexString.Length;
         startEnd = aqiContent.IndexOf("</span>", startIndex);
         aqi.AQIQuality = aqiContent.Substring(startIndex, startEnd - startIndex).Trim();
 
-        ptIndexString = "<span style=\"font-size: 16px; font-family: '微软雅黑'; font-weight: bold; padding-left: 15px\">";
+        //<span style="font-size: 16px; font-family: '微软雅黑'; font-weight: bold; padding-left: 15px;">
+        //                                            四级
+        //                                        </span>
+        ptIndexString = "<span style=\"font-size: 16px; font-family: '微软雅黑'; font-weight: bold; padding-left: 15px;\">";
         startIndex = aqiContent.IndexOf(ptIndexString, startIndex) + ptIndexString.Length;
         startEnd = aqiContent.IndexOf("</span>", startIndex);
         aqi.AQILevel = aqiContent.Substring(startIndex, startEnd - startIndex).Trim();
@@ -88,12 +100,17 @@ public class aqi : IHttpHandler {
         //    aqi.ImpactOnHealth = mc[1].Groups[1].Value;
         //}
         
-        //<span style="font-weight: bold; font-family: '微软雅黑';" class="big3">首 要 污 染 物</span>
-        ptIndexString = "首 要 污 染 物</span>";
+      //<td width="22%">
+      //                                          <span class='big3' style="font-weight: bold; font-family: '微软雅黑';">首 要 污 染 物</span></td>
+      //                                      <td>
+      //                                          PM<sub>2.5</sub>
+      //                                      </td>
+        
+        ptIndexString = "style=\"font-weight: bold; font-family: '微软雅黑';\">首 要 污 染 物</span></td>";
         startIndex = aqiContent.IndexOf(ptIndexString, startIndex) + ptIndexString.Length;
         ptIndexString = "<td>";
         startIndex = aqiContent.IndexOf(ptIndexString, startIndex) + ptIndexString.Length;
-        
+
         startEnd = aqiContent.IndexOf("</td>", startIndex);
         aqi.PremierContaminants = aqiContent.Substring(startIndex, startEnd - startIndex).Trim();
         //if (mc.Count > 2)
