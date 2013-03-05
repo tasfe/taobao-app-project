@@ -48,7 +48,7 @@ public class MainActivity extends Activity {
 	        // 启用JavaScript
 	        ws.setJavaScriptEnabled(true);
 	       webView.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);  
-	        //载入assets目录下的一个页面
+	     //载入assets目录下的一个页面
 	        webView.loadUrl("file:///android_asset/www/index.html");
 	        
 	     // 应用Id 应用密码 广告请求间隔(s) 测试模式
@@ -85,7 +85,7 @@ public class MainActivity extends Activity {
 	            }  
 	              
 	        }); 
-	        
+	      
 	      //JavaScript中可以通过"window.js2java"来调用Java对象的方法
 	        webView.addJavascriptInterface(new JSInvokeClass(), "js2java");
 	        
