@@ -86,13 +86,39 @@ public partial class pages_Ajax : UI.PageBase
 
                 //DeleteFile(fileName);
 
-                OAuthTXWeibo.t t = new OAuthTXWeibo.t();
-                t.access_token = GetQueryString("accesstoken");
-                t.oauth_consumer_key = ShopUtil.XmlCOM.ReadConfig("TXAppKey");
-                t.openid = GetQueryString("k");
-                t.clientip = Request.UserHostAddress;//GetClientIP();
+                //OAuthTXWeibo.t t = new OAuthTXWeibo.t();
+                //t.access_token = GetQueryString("accesstoken");
+                //t.oauth_consumer_key = ShopUtil.XmlCOM.ReadConfig("TXAppKey");
+                //t.openid = GetQueryString("k");
+                
+                //t.clientip = Request.UserHostAddress;//GetClientIP();
 
-                string result = t.AddPicUrl(content, "", "", pic);
+                string fileName = "";
+                if (pic.Length > 0)
+                {
+                    fileName = DownLoadFile(pic);
+                }
+                else
+                {
+                    fileName = Server.MapPath("~/app/SellerWeibo/static/images/logo/tx.png");
+                }
+
+                QWeiboSDK.OauthKey oauthKey = new QWeiboSDK.OauthKey();
+                oauthKey.customKey = ShopUtil.XmlCOM.ReadConfig("TXAppKey");
+                oauthKey.customSecret = ShopUtil.XmlCOM.ReadConfig("TXAppSecret");
+                oauthKey.tokenKey = key;
+                oauthKey.tokenSecret = GetQueryString("s");
+                
+                QWeiboSDK.t t = new QWeiboSDK.t(oauthKey, "json");
+                UTF8Encoding utf8 = new UTF8Encoding();
+
+                string result = t.add_pic(utf8.GetString(utf8.GetBytes(content)),
+                    utf8.GetString(utf8.GetBytes(Request.UserHostAddress)),
+                    utf8.GetString(utf8.GetBytes("")),
+                    utf8.GetString(utf8.GetBytes("")),
+                    utf8.GetString(utf8.GetBytes(fileName)));
+
+                //string result = t.add_pic(content, Request.UserHostAddress, "", "", fileName); //t.AddPicUrl(content, "", "", pic);
 
                 ShopUtil.LogInfo.FileLogPath = Server.MapPath("~/app/Sellerweibo/log");
                 ShopUtil.LogInfo.WriteLog("tx_log_" + DateTime.Now.ToString("yyyy_MM_dd") + ".txt", result);
@@ -105,7 +131,7 @@ public partial class pages_Ajax : UI.PageBase
         }
         catch(Exception e)
         {
-            LogInfo.WriteLog(Server.MapPath("~/app/SellerWeibo/log.txt"), e.ToString());
+            LogInfo.WriteLog(Server.MapPath("~/app/SellerWeibo/log/tx_log.txt"), e.ToString());
             Response.Write("{\"msg\":\"error\",\"detail\":\""+e.ToString()+"\"}");
         }
     }
@@ -166,7 +192,7 @@ public partial class pages_Ajax : UI.PageBase
         }
         catch (Exception e)
         {
-            LogInfo.WriteLog(Server.MapPath("~/pages/log.txt"), e.ToString());
+            LogInfo.WriteLog(Server.MapPath("~/app/Sellerweibo/log/sina_log.txt"), e.ToString());
             Response.Write("{\"msg\":\"no\",\"detail\":\"出现网络错误，发送失败！\",\"detail1\":\" " + e.ToString().Replace("\r","").Replace("\n","") + "\"}");          
         }
     }
