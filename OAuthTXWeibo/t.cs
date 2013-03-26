@@ -51,17 +51,34 @@ namespace OAuthTXWeibo
             List<Parameter> paras = new List<Parameter>();
             List<Parameter> files = new List<Parameter>();
 
-            paras.Add(new Parameter("format", "xml"));
+            paras.Add(new Parameter("format", "json"));
             paras.Add(new Parameter("content", content));
             paras.Add(new Parameter("clientip", clientip));
             paras.Add(new Parameter("jing", jing));
             paras.Add(new Parameter("wei", wei));
 
+            paras.Add(new Parameter("oauth_consumer_key", oauth_consumer_key));
+            paras.Add(new Parameter("access_token", access_token));
+            paras.Add(new Parameter("openid", openid));
+            paras.Add(new Parameter("clientip", clientip));
+            oauth_version = "2.a";
+            paras.Add(new Parameter("oauth_version", oauth_version));
+            scope = "all";
+            paras.Add(new Parameter("scope", scope));
+
             files.Add(new Parameter("pic", pic));
 
+            StringBuilder sb = new StringBuilder();
+            foreach (Parameter p in paras)
+            {
+                sb.Append(string.Format("&{0}={1}",p.Name,p.Value));
+            }
 
             WebUtils webUtils = new WebUtils();
-            return webUtils.HttpPostWithFile("", "", files);
+            SyncHttp syncHttp = new SyncHttp();
+
+            //syncHttp.HttpPostWithFile("http://open.t.qq.com/api/t/add_pic",
+            return webUtils.HttpPostWithFile("http://open.t.qq.com/api/t/add_pic", sb.ToString(), files);
         }
     }
 }

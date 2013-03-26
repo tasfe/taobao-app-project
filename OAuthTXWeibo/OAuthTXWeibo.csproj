@@ -69,6 +69,7 @@
     <Compile Include="OAuthTXWeiboBase.cs" />
     <Compile Include="Parameter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SyncHttp.cs" />
     <Compile Include="t.cs" />
     <Compile Include="tBase.cs" />
     <Compile Include="WebUtils.cs" />
