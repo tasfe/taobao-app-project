@@ -4,7 +4,7 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "website", "website\", "{6D85034E-8971-41B9-9549-BCAF3A490FC8}"
 	ProjectSection(WebsiteProperties) = preProject
 		TargetFrameworkMoniker = ".NETFramework,Version%3Dv2.0"
-		ProjectReferences = "{C9556693-6B1F-4506-BA09-E5AACF84FE69}|ShopUtil.dll;{EB0E4A03-FE18-4A39-BB9A-9558FAEE4AC8}|DataAccess.dll;{9C11CAE5-5188-4E71-825B-68FC3135728A}|TopSdk.dll;{407C3459-3EE2-4D28-BB68-0EFD84774040}|OpenSinaAPI.dll;{7B795714-40D6-4B2E-A277-CBE13C33E1ED}|NetDimension.Weibo.dll;{CBDE7531-E39C-49D1-BFCD-B396421028CC}|OAuthTXWeibo.dll;{DE2F86D0-D5AA-4263-8B0A-E3C502C2FF8C}|ShopUI.dll;{32C7AB32-0CF5-486B-9CA7-72A5E9E8E6E3}|TaoBaoKeDAL.dll;"
+		ProjectReferences = "{C9556693-6B1F-4506-BA09-E5AACF84FE69}|ShopUtil.dll;{EB0E4A03-FE18-4A39-BB9A-9558FAEE4AC8}|DataAccess.dll;{9C11CAE5-5188-4E71-825B-68FC3135728A}|TopSdk.dll;{407C3459-3EE2-4D28-BB68-0EFD84774040}|OpenSinaAPI.dll;{7B795714-40D6-4B2E-A277-CBE13C33E1ED}|NetDimension.Weibo.dll;{CBDE7531-E39C-49D1-BFCD-B396421028CC}|OAuthTXWeibo.dll;{DE2F86D0-D5AA-4263-8B0A-E3C502C2FF8C}|ShopUI.dll;{32C7AB32-0CF5-486B-9CA7-72A5E9E8E6E3}|TaoBaoKeDAL.dll;{91F5A411-031C-49D9-9743-F3DED1333F58}|QWeiboSDK.dll;"
 		Debug.AspNetCompiler.VirtualPath = "/website"
 		Debug.AspNetCompiler.PhysicalPath = "website\"
 		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\website\"
@@ -40,6 +40,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopUI", "ShopUI\ShopUI.csproj", "{DE2F86D0-D5AA-4263-8B0A-E3C502C2FF8C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TaoBaoKeDAL", "TaoBaoKeDAL\TaoBaoKeDAL.csproj", "{32C7AB32-0CF5-486B-9CA7-72A5E9E8E6E3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QWeiboSDK", "CSharpSDK-v1.1\Source\QWeiboSDK.csproj", "{91F5A411-031C-49D9-9743-F3DED1333F58}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -129,6 +131,14 @@ Global
 		{32C7AB32-0CF5-486B-9CA7-72A5E9E8E6E3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{32C7AB32-0CF5-486B-9CA7-72A5E9E8E6E3}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{32C7AB32-0CF5-486B-9CA7-72A5E9E8E6E3}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{91F5A411-031C-49D9-9743-F3DED1333F58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91F5A411-031C-49D9-9743-F3DED1333F58}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91F5A411-031C-49D9-9743-F3DED1333F58}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{91F5A411-031C-49D9-9743-F3DED1333F58}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{91F5A411-031C-49D9-9743-F3DED1333F58}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91F5A411-031C-49D9-9743-F3DED1333F58}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91F5A411-031C-49D9-9743-F3DED1333F58}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{91F5A411-031C-49D9-9743-F3DED1333F58}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
