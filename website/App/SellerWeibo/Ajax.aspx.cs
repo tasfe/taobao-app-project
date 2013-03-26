@@ -86,12 +86,12 @@ public partial class pages_Ajax : UI.PageBase
 
                 //DeleteFile(fileName);
 
-                //OAuthTXWeibo.t t = new OAuthTXWeibo.t();
-                //t.access_token = GetQueryString("accesstoken");
-                //t.oauth_consumer_key = ShopUtil.XmlCOM.ReadConfig("TXAppKey");
-                //t.openid = GetQueryString("k");
-                
-                //t.clientip = Request.UserHostAddress;//GetClientIP();
+                OAuthTXWeibo.t t = new OAuthTXWeibo.t();
+                t.access_token = GetQueryString("accesstoken");
+                t.oauth_consumer_key = ShopUtil.XmlCOM.ReadConfig("TXAppKey");
+                t.openid = GetQueryString("k");
+
+                t.clientip = Request.UserHostAddress;//GetClientIP();
 
                 string fileName = "";
                 if (pic.Length > 0)
@@ -103,28 +103,29 @@ public partial class pages_Ajax : UI.PageBase
                     fileName = Server.MapPath("~/app/SellerWeibo/static/images/logo/tx.png");
                 }
 
-                QWeiboSDK.OauthKey oauthKey = new QWeiboSDK.OauthKey();
-                oauthKey.customKey = ShopUtil.XmlCOM.ReadConfig("TXAppKey");
-                oauthKey.customSecret = ShopUtil.XmlCOM.ReadConfig("TXAppSecret");
-                oauthKey.tokenKey = key;
-                oauthKey.tokenSecret = GetQueryString("s");
+                //QWeiboSDK.OauthKey oauthKey = new QWeiboSDK.OauthKey();
+                //oauthKey.customKey = ShopUtil.XmlCOM.ReadConfig("TXAppKey");
+                //oauthKey.customSecret = ShopUtil.XmlCOM.ReadConfig("TXAppSecret");
+                //oauthKey.tokenKey = key;
+                //oauthKey.tokenSecret = GetQueryString("s");
                 
-                QWeiboSDK.t t = new QWeiboSDK.t(oauthKey, "json");
-                UTF8Encoding utf8 = new UTF8Encoding();
+                //QWeiboSDK.t t = new QWeiboSDK.t(oauthKey, "json");
+                //UTF8Encoding utf8 = new UTF8Encoding();
 
-                string result = t.add_pic(utf8.GetString(utf8.GetBytes(content)),
-                    utf8.GetString(utf8.GetBytes(Request.UserHostAddress)),
-                    utf8.GetString(utf8.GetBytes("")),
-                    utf8.GetString(utf8.GetBytes("")),
-                    utf8.GetString(utf8.GetBytes(fileName)));
+                //string result = t.add_pic(utf8.GetString(utf8.GetBytes(content)),
+                //    utf8.GetString(utf8.GetBytes(Request.UserHostAddress)),
+                //    utf8.GetString(utf8.GetBytes("")),
+                //    utf8.GetString(utf8.GetBytes("")),
+                //    utf8.GetString(utf8.GetBytes(fileName)));
 
-                //string result = t.add_pic(content, Request.UserHostAddress, "", "", fileName); //t.AddPicUrl(content, "", "", pic);
+                string result = t.add_pic(content, Request.UserHostAddress, "", "", fileName); //t.AddPicUrl(content, "", "", pic);
 
                 ShopUtil.LogInfo.FileLogPath = Server.MapPath("~/app/Sellerweibo/log");
                 ShopUtil.LogInfo.WriteLog("tx_log_" + DateTime.Now.ToString("yyyy_MM_dd") + ".txt", result);
      
                 weibo.DataAccess.tb_access_weibo access_weibo = new weibo.DataAccess.tb_access_weibo();
                 access_weibo.UpdateDaySend(key);
+                DeleteFile(fileName);
                 //<root><data><id>162090029033472</id><time>1343972664</time></data><errcode>0</errcode><msg>ok</msg><ret>0</ret><seqid>5772319312922313769</seqid></root>
                 Response.Write(result);
             }
