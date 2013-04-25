@@ -142,6 +142,8 @@ public partial class SellerHelp_Main : Shop.ShopUI.BasePage
         string result = "{\"result\":\"{0}\",\"msg\":\"{1}\",\"path\":\"{2}\"}";
         try
         {
+            ShopUtil.LogInfo.FileLogPath = Server.MapPath("~/app/Sellerhelp");
+            ShopUtil.LogInfo.WriteLog("log.txt", result);
             string tradeIds = GetFormString("tids");
             if (tradeIds.EndsWith(","))
             {
@@ -209,7 +211,8 @@ public partial class SellerHelp_Main : Shop.ShopUI.BasePage
             {
                 result = result.Replace("{0}", "no").Replace("{1}", "文件写入失败").Replace("{2}", "temp/" + DateTime.Now.ToString("yyyy-MM-dd") + "/" + fileName);
             }
-
+            ShopUtil.LogInfo.FileLogPath = Server.MapPath("~/app/Sellerhelp");
+            ShopUtil.LogInfo.WriteLog("log.txt", result);
             return result;
         }
         catch (Exception e)
