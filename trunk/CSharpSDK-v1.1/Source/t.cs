@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-//using System.Linq;
 using System.Text;
 
 namespace QWeiboSDK
@@ -146,6 +145,8 @@ namespace QWeiboSDK
             paras.Add(new Parameter("clientip",clientip));
             paras.Add(new Parameter("jing",jing));
             paras.Add(new Parameter("wei",wei));
+            paras.Add(new Parameter("syncflag", "0"));
+            paras.Add(new Parameter("compatibleflag", "0"));
 
             files.Add(new Parameter("pic",pic));
 
