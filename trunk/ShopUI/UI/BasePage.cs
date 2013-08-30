@@ -152,7 +152,22 @@ namespace Shop.ShopUI
             object o = GetSession(key);
             if (o == null)
             {
-                return "";
+                HttpCookie hc = GetFromCookie(key);
+                if (hc == null)
+                {
+                    if (!string.IsNullOrEmpty(Request.QueryString["top_session"]))
+                    {
+                        return Request.QueryString["top_session"];
+                    }
+                    else
+                    {
+                        return "";
+                    }
+                }
+                else
+                {
+                    return hc.Value;
+                }
             }
             else
             {
@@ -281,7 +296,9 @@ namespace Shop.ShopUI
 
         protected void SetFromCookie(string key,string  value)
         {
-            Response.SetCookie(new HttpCookie(key,value));
+            HttpCookie hc = new HttpCookie(key, value);
+            hc.Expires = DateTime.Now.AddDays(1);
+            Response.SetCookie(hc);
         }
 
         public string GetUrlEncode(string str)
