@@ -138,131 +138,6 @@ public partial class SellerHelp_Main : Shop.ShopUI.BasePage
         return sb.ToString();
     }
 
-    protected string Import()
-    {
-        string result = "{\"result\":\"{0}\",\"msg\":\"{1}\",\"path\":\"{2}\"}";
-        try
-        {
-            string tradeIds = GetFormString("tids");
-            if (tradeIds.EndsWith(","))
-            {
-                tradeIds = tradeIds.Substring(0, tradeIds.Length - 1);
-            }
-
-            string cols = GetFormString("cols");
-            string importCols = "";
-            string importColsName = "";
-            foreach (string col in cols.Split(','))
-            {
-                if (col.IndexOf('|') > 0)
-                {
-                    string[] colInfo = col.Split('|');
-                    importCols += colInfo[1] + ",";
-                    importColsName += colInfo[0] + ",";
-                }
-            }
-
-            if (importCols.EndsWith(","))
-            {
-                importCols = importCols.Substring(0, importCols.Length - 1);
-            }
-
-            if (importColsName.EndsWith(","))
-            {
-                importColsName = importColsName.Substring(0, importColsName.Length - 1);
-            }
-
-            string topSession = GetSessionString("top_session");
-
-            List<Trade> trades = new List<Trade>();
-            foreach (string tid in tradeIds.Split(','))
-            {
-                trades.Add(ShopUtil.OpenTaobaoUtil.GetTrade(importCols.Replace("[", "").Replace("]", "").Replace("-", ","), long.Parse(tid), topSession));
-            }
-
-            string format = GetFormString("format");
-
-            string importText = GetImportRow(importColsName.Split(','), importCols.Split(','), trades);
-            string filePath = Server.MapPath("~/app/SellerHelp/temp");
-            string fileName = GetSessionString("tb_username") + "-" + DateTime.Now.ToString("yyyyMMddhhmmss") + "." + format;
-
-            if (WriteFile(Path.Combine(filePath, fileName), importText))
-            {
-                result = result.Replace("{0}", "ok").Replace("{1}", "成功").Replace("{2}", "temp/" + fileName);
-            }
-            else
-            {
-                result = result.Replace("{0}", "no").Replace("{1}", "文件写入失败").Replace("{2}", "temp/" + fileName);
-            }
-
-            return result;
-        }
-        catch (Exception e)
-        {
-            return result.Replace("{0}", "no").Replace("{1}", e.ToString()).Replace("{2}", "");
-        }
-    }
-
-    protected string GetImportRow(string[] rowName, string[] cols, List<Trade> trades)
-    {
-        StringBuilder sb = new StringBuilder();
-        sb.Append(string.Join(",", rowName) + "\r\n");
-
-        StringBuilder row = new StringBuilder();
-        Type objType = typeof(Trade);
-        PropertyInfo propertyInfo;
-        PropertyInfo[] propertyInfos = objType.GetProperties();
-
-        foreach (Trade trade in trades)
-        {
-            row.Remove(0, row.Length);
-            for (int i = 0; i < cols.Length; i++)
-            {
-                if (cols[i].IndexOf('[') == -1)
-                {
-                    propertyInfo = GetPropertyInfo(propertyInfos, cols[i].Replace("_", ""));
-                    if (propertyInfo != null)
-                    {
-                        object objValue = propertyInfo.GetValue(trade, null);
-                        if (objValue != null)
-                        {
-                            row.Append(objValue.ToString());
-                        }
-                    }
-                }
-                else
-                {
-                    string[] subCols = cols[i].Replace("[", "").Replace("]", "").Split('-');
-                    for (int j = 0; j < subCols.Length; j++)
-                    {
-                        propertyInfo = GetPropertyInfo(propertyInfos, subCols[j].Replace("_", ""));
-                        if (propertyInfo != null)
-                        {
-                            object objValue = propertyInfo.GetValue(trade, null);
-                            if (objValue != null)
-                            {
-                                row.Append(objValue.ToString());
-                            }
-                        }
-                        if (j < subCols.Length - 1)
-                        {
-                            row.Append(" ");
-                        }
-                    }
-                }
-                if (i < cols.Length - 1)
-                {
-                    row.Append(",");
-                }
-
-            }
-            sb.Append(row);
-            sb.Append("\r\n");
-        }
-
-        return sb.ToString();
-    }
-
     protected PropertyInfo GetPropertyInfo(PropertyInfo[] propertyInfos, string name)
     {
         foreach (PropertyInfo propertyInfo in propertyInfos)
@@ -310,7 +185,7 @@ public partial class SellerHelp_Main : Shop.ShopUI.BasePage
 
     public void CheckLogin()
     {
-        if (GetSession("tb_username") == null)
+        if (String.IsNullOrEmpty(GetSessionString("tb_username")))
         {
             Response.Redirect("Default.aspx?from=timeout");
         }
@@ -324,8 +199,8 @@ public partial class SellerHelp_Main : Shop.ShopUI.BasePage
         }
         else
         {
-            lblMsg.Text = string.Format("亲，免费用户不能自定义查询哦，赶快<a href='{0}' target='_blank'>点此订购</a>吧，只要￥3元",
-                "http://fuwu.taobao.com/item/subsc.htm?items=ts-13815-3:1");
+            lblMsg.Text = string.Format("亲，免费用户不能自定义查询哦，赶快<a href='{0}' target='_blank'>点此订购</a>吧",
+                "http://fuwu.taobao.com/ser/detail.htm?service_code=ts-13815");
         }
     }
 
@@ -361,7 +236,7 @@ public partial class SellerHelp_Main : Shop.ShopUI.BasePage
             if (IsFreeUser())
             {
                 return result.Replace("{0}", "no").Replace("{1}", "失败").Replace("{2}", string.Format("亲，免费用户不能批量评价哦，赶快<a href='{0}' style='color:red' target='_blank'>点此订购</a>吧，只要￥3元，同时拥有批量评价和交易导出",
-                "http://fuwu.taobao.com/item/subsc.htm?items=ts-13815-3:1"));
+                "http://fuwu.taobao.com/ser/detail.htm?service_code=ts-13815"));
 
             }
             string tid = GetFormString("tid");

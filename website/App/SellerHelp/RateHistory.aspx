@@ -10,10 +10,10 @@
     <div class="left">
     <div class="category add_weibo">
     淘翻天卖家助手_进阶版订购：<br />
-    1个月：￥3，<a href="http://fuwu.taobao.com/item/subsc.htm?items=ts-13815-3:1"  target="_blank">订购</a><br />
-    3个月：￥8，<a href="http://fuwu.taobao.com/item/subsc.htm?items=ts-13815-3:3"  target="_blank">订购</a><br />
-    6个月：￥16，<a href="http://fuwu.taobao.com/item/subsc.htm?items=ts-13815-3:6"  target="_blank">订购</a><br />
-    12个月：￥30<a href="http://fuwu.taobao.com/item/subsc.htm?items=ts-13815-3:12"  target="_blank">订购</a>
+    1个月：<a href="http://fuwu.taobao.com/ser/detail.htm?service_code=ts-13815"  target="_blank">订购</a><br />
+    3个月：<a href="http://fuwu.taobao.com/ser/detail.htm?service_code=ts-13815"  target="_blank">订购</a><br />
+    6个月：<a href="http://fuwu.taobao.com/ser/detail.htm?service_code=ts-13815"  target="_blank">订购</a><br />
+    12个月：<a href="http://fuwu.taobao.com/ser/detail.htm?service_code=ts-13815"  target="_blank">订购</a>
     </div>
     <div class="category">
    
