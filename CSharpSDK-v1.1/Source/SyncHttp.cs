@@ -124,9 +124,18 @@ namespace QWeiboSDK
 
                 foreach (Parameter param in listParams)
                 {
-                    string formitem = string.Format(formdataTemplate, param.Name, param.Value);
-                    byte[] formitembytes =Encoding.UTF8.GetBytes(formitem);
-                    memStream.Write(formitembytes, 0, formitembytes.Length);
+                    if (param.Name != "content")
+                    {
+                        string formitem = string.Format(formdataTemplate, param.Name, param.Value);
+                        byte[] formitembytes = Encoding.UTF8.GetBytes(formitem);
+                        memStream.Write(formitembytes, 0, formitembytes.Length);
+                    }
+                    else
+                    {
+                        string formitem = string.Format(formdataTemplate, param.Name, System.Web.HttpUtility.UrlDecode(param.Value));
+                        byte[] formitembytes = Encoding.UTF8.GetBytes(formitem);
+                        memStream.Write(formitembytes, 0, formitembytes.Length);
+                    }
                 }
 
                 memStream.Write(boundarybytes, 0, boundarybytes.Length);
