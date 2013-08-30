@@ -19,30 +19,45 @@
                 var impoartFormat = $("#import .import_format:checked").val();
                 var impoartRate = $("#import .import_rate:checked").val();
 
-                var postData = "action=import&tids={0}&cols={1}&format={2}&rate={3}";
-                postData = postData.replace("{0}", tradeIds).replace("{1}", import_cols).replace("{2}", impoartFormat).replace("{3}", impoartRate)
+                var postDataTemp = "action=import&tids={0}&cols={1}&format={2}&rate={3}";
+                var postData = postDataTemp.replace("{0}", tradeIds).replace("{1}", import_cols).replace("{2}", impoartFormat).replace("{3}", impoartRate)
                 ShowMsg("文件正在生成中......请稍后<img src='static/images/ajax-loader.gif'/>【请不要关闭窗口】");
                 postData = encodeURI(postData);
 
-                $.ajax({
-                    url: "main.aspx",
-                    type: "POST",
-                    dataType: "json",
-                    cache: false,
-                    data: postData,
-                    error: function (e) {
-                        ShowMsg("网络中断，文件导出失败，请重试");
-                    },
-                    success: function (result) {
-                        //alert(result.result)
-                        if (result.result == "ok") {
-                            ShowMsg("文件导出成功，<a href='" + result.path + "' class='download' target='_blank'>点击下载</a>");
-                        }
-                        else {
+                var getImport = function () {
+                    $.ajax({
+                        url: "main.aspx",
+                        type: "POST",
+                        dataType: "json",
+                        cache: false,
+                        data: postData,
+                        error: function (e) {
                             ShowMsg("网络中断，文件导出失败，请重试");
+                        },
+                        success: function (result) {
+                            //alert(result.result)
+                            if (result.result == "ok") {
+                                ShowMsg("文件导出成功，<a href='" + result.path + "' class='download' target='_blank'>点击下载</a>");
+                            } else if (result.result == "waiting") {
+                                postData = postDataTemp
+                                .replace("{0}", "")
+                                .replace("{1}", import_cols)
+                                .replace("{2}", impoartFormat)
+                                .replace("{3}", impoartRate)
+                                + "&taskid=" + result.msg
+
+                                setTimeout(function () { getImport(); }, 2000);
+                            }
+                            else if (result.result == "error") {
+                                ShowMsg(result.msg);
+                            }
+                            else {
+                                ShowMsg("网络中断，文件导出失败，请重试");
+                            }
                         }
-                    }
-                })
+                    })
+                }
+                getImport();
             }
         }
     });
@@ -65,7 +80,7 @@
 
     $(".btn-rateimport").click(function () {
         if ($(this).attr("isfreeuser") != "0") {
-            ShowMsg("亲，免费用户不能导出哦，赶紧<a style='color:red' target='_blank' href='http://fuwu.taobao.com/item/subsc.htm?items=ts-13815-3:1'>点击</a>订购吧，只要￥3元"); 
+            ShowMsg("亲，免费用户不能导出哦，赶紧<a style='color:red' target='_blank' href='http://fuwu.taobao.com/ser/detail.htm?service_code=ts-13815'>点击</a>订购吧");
         }
         else if ($("#list .chk-item:checked").length == 0) {
             ShowMsg("请至少选择一个交易记录");
@@ -206,6 +221,22 @@
         }
         else {
             $('#rate').dialog('open');
+        }
+    })
+
+    $("input.btn-import-3").click(function () {
+        var start = $("#search .dtstart").val();
+        var end = $("#search .dtend").val();
+        if (start.length == 0 || end.length == 0) {
+            ShowMsg("请选择要导出的交易起始时间和交易结束时间!");
+            return false;
+        }
+        if (Date.parse(start.replace("-", "/")) - Date.parse(end.replace("-", "/")) >= 0) {
+            ShowMsg("开始时间必须小于结束时间!");
+            return false;
+        }
+        if (confirm("选择交易的时间越长，交易记录越多，导出等待的时间越长\n请在导出任务列表中及时查看任务状态，任务完成后下载导出的文件，确定继续？")) {
+            return true;
         }
     })
 })
