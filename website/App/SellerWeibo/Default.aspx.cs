@@ -21,10 +21,12 @@ public partial class pages_Default : UI.PageBase
             {
                 UserGetResponse userGetResponse = new UserGetResponse();
                 //taobao open login
-                if (CheckOpenTaobaoLogin(out userGetResponse))             
+                if (CheckOpenTaobaoLogin(out userGetResponse) && userGetResponse.User!=null)             
                 {
+                    //ShopUtil.LogInfo.WriteLog(Server.MapPath("~/app/Sellerweibo/log/debug.txt"), userGetResponse.User == null ? "true-" : "false-" + userGetResponse.Body);
                     weibo.DataAccess.tb_user tb_user = new weibo.DataAccess.tb_user();
                     tb_user.GetModelByNick(userGetResponse.User.Nick);
+
                     string subscribeCode = GetSubscribe(userGetResponse.User.Nick);
                     //Response.Write("subscribeCode:" + subscribeCode);
                     //new customer
@@ -73,11 +75,12 @@ public partial class pages_Default : UI.PageBase
                 access_weibo.weibo_name = accessToken.name;
                 access_weibo.ExpiresIn = accessToken.expires_in;
                 access_weibo.AccessTokenExpires = DateTime.Now.AddSeconds(accessToken.expires_in);
+                access_weibo.accesskey = Request.QueryString["openid"];
+                access_weibo.accesssecret = Request.QueryString["openkey"];
 
                 if (access_weibo.ID<=0)
                 {
-                    access_weibo.accesskey = Request.QueryString["openid"];
-                    access_weibo.accesssecret = Request.QueryString["openkey"];
+                    
                     access_weibo.day_send = 0;
                     access_weibo.lastOperateOn = DateTime.Now;
                     access_weibo.updateOn = DateTime.Now;
