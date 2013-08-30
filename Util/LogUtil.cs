@@ -125,32 +125,31 @@ namespace ShopUtil
             try
             {
                 FileStream fs = new FileStream(filePath, FileMode.Append);
-                StreamWriter strwriter=new StreamWriter(fs);
+                StreamWriter strwriter = new StreamWriter(fs);
                 try
                 {
-                    
-                    DateTime d=DateTime.Now;
-                    strwriter.WriteLine("时间:"+d.ToString());
+
+                    DateTime d = DateTime.Now;
+                    strwriter.WriteLine("时间:" + d.ToString());
                     strwriter.WriteLine(Message);
                     strwriter.WriteLine();
                     strwriter.Flush();
                 }
-                catch(Exception ee)
+                catch (Exception ee)
                 {
-                    Console.WriteLine("日志文件写入失败信息:"+ee.ToString());    
+                    Console.WriteLine("日志文件写入失败信息:" + ee.ToString());
                 }
                 finally
                 {
                     strwriter.Close();
-                    strwriter=null;
+                    strwriter = null;
                     fs.Close();
-                    fs=null;
+                    fs = null;
                 }
             }
-            catch(Exception ee)
+            catch (Exception ee)
             {
-                Console.WriteLine("日志文件没有打开,详细信息如下:"+ee.ToString());
-                
+                Console.WriteLine("日志文件没有打开,详细信息如下:" + ee.ToString());
             }
         }
     }
