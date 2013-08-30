@@ -140,10 +140,10 @@ namespace weibo.DataAccess
             StringBuilder strSql = new StringBuilder();
             strSql.Append("select * ");
             strSql.Append(" FROM [tb_access_weibo] ");
-            strSql.Append(" where Weibo_Name=@ID ");
+            strSql.Append(" where Weibo_Name=@Weibo_Name ");
             OleDbParameter[] parameters = {
-					new OleDbParameter("@ID", OleDbType.Integer,4)};
-            parameters[0].Value = SinaUID;
+					new OleDbParameter("@weiboName", OleDbType.VarChar)};
+            parameters[0].Value = weiboName;
 
             DataSet ds = DbHelperSQL.Query(strSql.ToString(), parameters);
             if (ds.Tables[0].Rows.Count > 0)
