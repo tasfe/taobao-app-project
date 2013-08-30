@@ -10,10 +10,14 @@
     <script src="static/js/dialog/js/jquery-ui-1.8.14.custom.min.js?t=1" type="text/javascript"></script>
     <script src="static/js/weibo.js" type="text/javascript"></script>
     <link href="static/js/dialog/css/cupertino/jquery-ui-1.8.14.custom.css" rel="stylesheet" type="text/css" />
-  
+  <style>
+      .qq{ position:absolute; right:0; top:300px;}
+      </style>
 </head>
 <body>
     <form id="form1" runat="server">
+    <div class="qq"><a target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=2010375437&site=qq&menu=yes"><img border="0" src="http://wpa.qq.com/pa?p=2:2010375437:53" alt="有问题？联想我" title="有问题？联想我，不在线也可以留言哦"/></a> </div>  
+
      <div class="wrapper ad">还在为做卖家发愁吗？快来
        <a href="http://fuwu.taobao.com/serv/detail.htm?service_id=13815" target="_blank">试试</a>淘翻天卖家助手吧
        <a href="http://fuwu.taobao.com/serv/detail.htm?service_id=13815" target="_blank">
@@ -34,7 +38,7 @@
        <span class="msg-red">2011-07-23升级提示：1.增加了绑定多个账户功能。2.增加了保存模板功能。3.请老用户重新绑定帐号，感谢您的支持！</span>
     </div>
      <div class="wrapper upgrade" id="upgrade">
-   免费用户<a href="http://fuwu.taobao.com/item/subsc.htm?items=ts-12485-1:1" target="_blank">点此
+   免费用户<a href="http://fuwu.taobao.com/ser/detail.htm?spm=a1z13.2196609.2196609.20.tRlVbj&service_code=ts-12485" target="_blank">点此
      <img alt="升级" class="uimg" longdesc="升级" src="static/images/hp-update.gif" />
      </a>每天只需1毛钱，升级享受更多的服务
    <%--  <a href="#" class="usertypea">区别呢?</a>--%>
@@ -63,7 +67,8 @@
 <span class="navR">发微博从此轻松啦......</span>
 </div>
 <div class="wrapper mainb main">
-    <div class="left">
+ <div class="left">
+
     <div class="category add_weibo">
     <input type='button' value='添加微博帐号' id='add_weibo'/>
    
