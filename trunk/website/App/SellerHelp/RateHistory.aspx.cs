@@ -39,7 +39,7 @@ public partial class SellerHelp_Default2 : Shop.ShopUI.BasePage
     }
     public void CheckLogin()
     {
-        if (GetSession("tb_username") == null)
+        if (string.IsNullOrEmpty(GetSessionString("tb_username")))
         {
             Response.Redirect("Default.aspx?from=timeout");
         }

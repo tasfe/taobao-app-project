@@ -45,6 +45,8 @@ public partial class SellerHelp_Main : Shop.ShopUI.BasePage
             SetSearch();
             BindProduct(currPage);
         }
+
+        BindTask();
     }
 
     protected void BindProduct(int pageNo)
@@ -97,7 +99,7 @@ public partial class SellerHelp_Main : Shop.ShopUI.BasePage
         if (tradesSoldGetResponse.IsError)
         {
             ShopUtil.LogInfo.FileLogPath = Server.MapPath("~/app/Sellerhelp/log");
-            ShopUtil.LogInfo.WriteLog("top_log_"+DateTime.Now.ToString("yyyy_MM_dd")+".txt", tradesSoldGetResponse.ErrMsg + "|" + tradesSoldGetResponse.Body + "|");
+            ShopUtil.LogInfo.WriteLog("top_log_" + DateTime.Now.ToString("yyyy_MM_dd") + ".txt", tradesSoldGetResponse.ErrMsg + "|" + tradesSoldGetResponse.Body + "|" + GetSessionString("top_session"));
         }
         //taobao.trade.fullinfo.get 
     }
@@ -119,6 +121,11 @@ public partial class SellerHelp_Main : Shop.ShopUI.BasePage
             if (action == "logout")
             {
                 Response.Redirect("default.aspx");
+            }
+            if (action == "checktask")
+            {
+                Response.Write("");
+                Response.End();
             }
         }
     }
@@ -142,78 +149,68 @@ public partial class SellerHelp_Main : Shop.ShopUI.BasePage
         string result = "{\"result\":\"{0}\",\"msg\":\"{1}\",\"path\":\"{2}\"}";
         try
         {
-            ShopUtil.LogInfo.FileLogPath = Server.MapPath("~/app/Sellerhelp");
-            ShopUtil.LogInfo.WriteLog("log.txt", result);
-            string tradeIds = GetFormString("tids");
-            if (tradeIds.EndsWith(","))
-            {
-                tradeIds = tradeIds.Substring(0, tradeIds.Length - 1);
-            }
-
-            string cols = GetFormString("cols");
-            string importCols = "";
-            string importColsName = "";
-            foreach (string col in cols.Split(','))
-            {
-                if (col.IndexOf('|') > 0)
-                {
-                    string[] colInfo = col.Split('|');
-                    importCols += colInfo[1] + ",";
-                    importColsName += colInfo[0] + ",";
-                }
-            }
-
-            if (importCols.EndsWith(","))
-            {
-                importCols = importCols.Substring(0, importCols.Length - 1);
-            }
-
-            if (importColsName.EndsWith(","))
-            {
-                importColsName = importColsName.Substring(0, importColsName.Length - 1);
-            }
-
-            string topSession = GetSessionString("top_session");
-            string rate = GetFormString("rate");
-
+            long tradesTaskId = 0;
             List<Trade> trades = new List<Trade>();
-            foreach (string tid in tradeIds.Split(','))
+            if (!string.IsNullOrEmpty(GetFormString("taskid")) && long.TryParse(GetFormString("taskid"), out tradesTaskId))
             {
-                if (rate != "all")
+                string taskStatus = ShopUtil.OpenTaobaoUtil.GetAtsTrade(tradesTaskId, out trades);
+                if (taskStatus == "done")
                 {
-                    if(CheckRate(long.Parse(tid),rate))
-                    {
-                        trades.Add(ShopUtil.OpenTaobaoUtil.GetTrade(importCols.Replace("[", "").Replace("]", "").Replace("-", ","), long.Parse(tid), topSession));
-                    }
+                    return ImportToFile(trades);
                 }
                 else
                 {
-                    trades.Add(ShopUtil.OpenTaobaoUtil.GetTrade(importCols.Replace("[", "").Replace("]", "").Replace("-", ","), long.Parse(tid), topSession));
+                    return result.Replace("{0}", "waiting").Replace("{1}", tradesTaskId.ToString()).Replace("{2}", "");
                 }
-            }
-
-            string format = GetFormString("format");
-
-            string importText = GetImportRow(importColsName.Split(','), importCols.Split(','), trades);
-            string filePath = Server.MapPath("~/app/SellerHelp/temp/"+DateTime.Now.ToString("yyyy-MM-dd"));
-            if (!Directory.Exists(filePath))
-            {
-                Directory.CreateDirectory(filePath);
-            }
-
-            string fileName = GetSessionString("tb_username") + "-" + DateTime.Now.ToString("yyyyMMddhhmmss") + "." + format;
-
-            if (WriteFile(Path.Combine(filePath, fileName), importText))
-            {
-                result = result.Replace("{0}", "ok").Replace("{1}", "成功").Replace("{2}", "temp/" + DateTime.Now.ToString("yyyy-MM-dd") + "/" + fileName);
             }
             else
             {
-                result = result.Replace("{0}", "no").Replace("{1}", "文件写入失败").Replace("{2}", "temp/" + DateTime.Now.ToString("yyyy-MM-dd") + "/" + fileName);
+                string tradeIds = GetFormString("tids");
+                if (tradeIds.EndsWith(","))
+                {
+                    tradeIds = tradeIds.Substring(0, tradeIds.Length - 1);
+                }
+
+                string cols = GetFormString("cols");
+                string importCols = "";
+                string importColsName = "";
+                foreach (string col in cols.Split(','))
+                {
+                    if (col.IndexOf('|') > 0)
+                    {
+                        string[] colInfo = col.Split('|');
+                        importCols += colInfo[1] + ",";
+                        importColsName += colInfo[0] + ",";
+                    }
+                }
+
+                if (importCols.EndsWith(","))
+                {
+                    importCols = importCols.Substring(0, importCols.Length - 1);
+                }
+
+                if (importColsName.EndsWith(","))
+                {
+                    importColsName = importColsName.Substring(0, importColsName.Length - 1);
+                }
+
+                string topSession = GetSessionString("top_session");
+                if (!string.IsNullOrEmpty(topSession))
+                {
+                    tradesTaskId = ShopUtil.OpenTaobaoUtil.GetAtsTrade(importCols.Replace("[", "").Replace("]", "").Replace("-", ","), tradeIds.Replace(',', ';'), topSession);
+
+                    return result.Replace("{0}", "waiting").Replace("{1}", tradesTaskId.ToString()).Replace("{2}", "");
+                }
+                else
+                {
+                    return result.Replace("{0}", "error").Replace("{1}", "登录超时，授权失败，请刷新页面重新登录后再试！").Replace("{2}", "");
+                }
             }
-            ShopUtil.LogInfo.FileLogPath = Server.MapPath("~/app/Sellerhelp");
-            ShopUtil.LogInfo.WriteLog("log.txt", result);
-            return result;
+
+           // string rate = GetFormString("rate");
+
+           //orders.buyer_rate
+
         }
         catch (Exception e)
         {
@@ -221,6 +218,61 @@ public partial class SellerHelp_Main : Shop.ShopUI.BasePage
             ShopUtil.LogInfo.WriteLog("log.txt", e.ToString());
             return result.Replace("{0}", "no").Replace("{1}", e.ToString()).Replace("{2}", "");
         }
+    }
+
+    protected string ImportToFile(List<Trade> trades)
+    {
+        string result = "{\"result\":\"{0}\",\"msg\":\"{1}\",\"path\":\"{2}\"}";
+
+        string cols = GetFormString("cols");
+        string importCols = "";
+        string importColsName = "";
+        foreach (string col in cols.Split(','))
+        {
+            if (col.IndexOf('|') > 0)
+            {
+                string[] colInfo = col.Split('|');
+                importCols += colInfo[1] + ",";
+                importColsName += colInfo[0] + ",";
+            }
+        }
+
+        if (importCols.EndsWith(","))
+        {
+            importCols = importCols.Substring(0, importCols.Length - 1);
+        }
+
+        if (importColsName.EndsWith(","))
+        {
+            importColsName = importColsName.Substring(0, importColsName.Length - 1);
+        }
+
+        //string topSession = GetSessionString("top_session");
+        //string rate = GetFormString("rate");
+
+
+        string format = GetFormString("format");
+
+        string importText = GetImportRow(importColsName.Split(','), importCols.Split(','), trades);
+        string filePath = Server.MapPath("~/app/SellerHelp/temp/" + DateTime.Now.ToString("yyyy-MM-dd"));
+        if (!Directory.Exists(filePath))
+        {
+            Directory.CreateDirectory(filePath);
+        }
+
+        string fileName = GetSessionString("tb_username") + "-" + DateTime.Now.ToString("yyyyMMddhhmmss") + "." + format;
+
+        if (WriteFile(Path.Combine(filePath, fileName), importText))
+        {
+            result = result.Replace("{0}", "ok").Replace("{1}", "成功").Replace("{2}", "temp/" + DateTime.Now.ToString("yyyy-MM-dd") + "/" + fileName);
+        }
+        else
+        {
+            result = result.Replace("{0}", "no").Replace("{1}", "文件写入失败").Replace("{2}", "temp/" + DateTime.Now.ToString("yyyy-MM-dd") + "/" + fileName);
+        }
+        ShopUtil.LogInfo.FileLogPath = Server.MapPath("~/app/Sellerhelp");
+        ShopUtil.LogInfo.WriteLog("log.txt", result);
+        return result;
     }
 
     protected bool CheckRate(long tid,string result)
@@ -254,8 +306,9 @@ public partial class SellerHelp_Main : Shop.ShopUI.BasePage
         PropertyInfo propertyInfo;
         PropertyInfo[] propertyInfos = objType.GetProperties();
 
+        //string rate = GetFormString("rate");
         foreach (Trade trade in trades)
-        {
+        {   
             row.Remove(0, row.Length);
             for (int i = 0; i < cols.Length; i++)
             {
@@ -351,7 +404,7 @@ public partial class SellerHelp_Main : Shop.ShopUI.BasePage
 
     public void CheckLogin()
     {
-        if (GetSession("tb_username") == null)
+        if (string.IsNullOrEmpty(GetSessionString("tb_username")))
         {
             Response.Redirect("Default.aspx?from=timeout");
         }
@@ -365,8 +418,8 @@ public partial class SellerHelp_Main : Shop.ShopUI.BasePage
         }
         else
         {
-            lblMsg.Text = string.Format("亲，免费用户不能自定义查询哦，赶快<a href='{0}' target='_blank'>点此订购</a>吧，只要￥3元",
-                "http://fuwu.taobao.com/item/subsc.htm?items=ts-13815-3:1");
+            lblMsg.Text = string.Format("亲，免费用户不能自定义查询哦，赶快<a href='{0}' target='_blank'>点此订购</a>吧",
+                "http://fuwu.taobao.com/ser/detail.htm?service_code=ts-13815");
         }
     }
 
@@ -392,5 +445,110 @@ public partial class SellerHelp_Main : Shop.ShopUI.BasePage
     protected bool IsFreeUser()
     {
         return subscribeCode.IndexOf(GetSessionString("subscribe_code"))!=-1 ? false : true;
+    }
+    protected void btnImport3_Click(object sender, EventArgs e)
+    {
+        try
+        {
+
+            if (tbStartTDate.Text.Length > 0)
+            {
+                DateTime.TryParse(tbStartTDate.Text, out dtStart);
+                if (dtStart < DateTime.Now.AddMonths(-3))
+                {
+                    lblMsg.Text = "开始时间必须在3个月以内";
+                    return;
+                }
+            }
+            if (tbEndDate.Text.Length > 0)
+            {
+                DateTime.TryParse(tbEndDate.Text, out dtEnd);
+                if (dtEnd < DateTime.Now.AddMonths(-3))
+                {
+                    lblMsg.Text = "结束时间必须在3个月以内";
+                    return;
+                }
+                if (dtEnd.ToString("yyyyMMdd")==DateTime.Now.ToString("yyyyMMdd"))
+                {
+                    lblMsg.Text = "结束时间为1天以前";
+                    return;
+                }
+            }
+           
+            string topSession = GetSessionString("top_session");
+            if (!string.IsNullOrEmpty(topSession))
+            {
+                long tradesTaskId = 0;
+                string msg="";
+                string fields = "created,payment,receiver_state,receiver_city,receiver_district,receiver_address,receiver_name,receiver_zip,buyer_nick,receiver_mobile,receiver_phone,buyer_email";
+                tradesTaskId = ShopUtil.OpenTaobaoUtil.GetTopatsTradesSold(fields, dtStart, dtEnd, topSession, out msg);
+                if (tradesTaskId == -1)
+                {
+                    lblMsg.Text = "创建导出任务失败:" + msg + ",请重新导出!";
+                }
+                else
+                {
+                    lblMsg.Text = "创建导出任务成功，请随时关注任务状态，任务完成后点击下载文件！";
+
+                    TaobaoApp.DataAccess.tb_task tb_task = new TaobaoApp.DataAccess.tb_task();
+                    tb_task.TaskId = tradesTaskId.ToString();
+                    tb_task.TaobaoNick = GetSessionString("tb_username");
+                    tb_task.StartDate = dtStart;
+                    tb_task.EndDate = dtEnd;
+                    tb_task.Status = "new";
+                    tb_task.UpdateOn = DateTime.Now;
+                    tb_task.Add();
+                }
+            }
+            else
+            {
+                lblMsg.Text = "登录超时，授权失败，请刷新页面重新登录后再试！";
+            }
+        }
+        catch (Exception exp)
+        {
+            ShopUtil.LogInfo.FileLogPath = Server.MapPath("~/app/Sellerhelp");
+            ShopUtil.LogInfo.WriteLog("log.txt", exp.ToString());
+            lblMsg.Text = "创建导出任务失败，请重新导出！";
+        }
+    }
+
+    protected void BindTask()
+    {
+        TaobaoApp.DataAccess.tb_task tb_task = new TaobaoApp.DataAccess.tb_task();
+        DataTable dtTask = tb_task.GetList(" taobaonick='" + GetSessionString("tb_username") + "' order by updateon desc").Tables[0];
+
+        rptTask.DataSource = dtTask;
+        rptTask.DataBind();
+    }
+
+    protected string CheckTaskStatus(long taskID)
+    {
+        string result = "{\"result\":\"{0}\",\"msg\":\"{1}\",\"path\":\"{2}\"}";
+        string ret = "";
+        //1.检查生成的文件
+        //2.检查下载文件
+        //3.检查任务状态
+        //4.下载文件
+        string baseFolder = Server.MapPath("~/App/SellerHelp/ats_task");
+        string taskFolder = Path.Combine(baseFolder, taskID.ToString());
+        if(!Directory.Exists(taskFolder))
+        {
+            Directory.CreateDirectory(taskFolder);
+            ret=result.Replace("{0}", "waiting").Replace("{1}", "createfolder").Replace("{2}", "");
+        }
+
+        string taskFile = Path.Combine(taskFolder, "download.xsl");
+        if (!File.Exists(taskFile))
+        {
+            ret = result.Replace("{0}", "waiting").Replace("{1}", "nofile").Replace("{2}", "");
+        }
+        else
+        {
+            return result.Replace("{0}", "ok").Replace("{1}", "").Replace("{2}", taskFile);
+        }
+
+
+        return ret;
     }
 }
