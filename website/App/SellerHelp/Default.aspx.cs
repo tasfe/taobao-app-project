@@ -24,9 +24,10 @@ public partial class pages_Default : Shop.ShopUI.BasePage
                 //taobao open login
                 if (CheckOpenTaobaoLogin(out userGetResponse))             
                 {
-                    SetSession("tb_username", userGetResponse.User.Nick);
-                    SetSession("top_session", GetQueryString("top_session"));
-                    SetSession("subscribe_code", GetSubscribe(userGetResponse.User.Nick));
+                    SetFromCookie("tb_username", userGetResponse.User.Nick);
+                    SetFromCookie("top_session", GetQueryString("top_session"));
+                    SetFromCookie("subscribe_code", GetSubscribe(userGetResponse.User.Nick));
+                    jumpUrl = jumpUrl + "?top_session=" + GetQueryString("top_session");
                 }
                 else
                 {
