@@ -44,7 +44,16 @@ namespace OAuthTXWeibo
                         if (s.IndexOf('=') > -1)
                         {
                             string[] temp = s.Split('=');
-                            result.Add(new Parameter(temp[0], temp[1]));
+                            string t = "";
+                            if (temp.Length > 2)
+                            {
+                                t = temp[1] +"=" +temp[2];
+                            }
+                            else
+                            {
+                                t = temp[1];
+                            }
+                            result.Add(new Parameter(temp[0],t));
                         }
                     }
                 }
